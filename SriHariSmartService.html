@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Sri Hari Tyres Smart Service</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f5f7;color:#17202a}
+header{background:#111827;color:#fff;padding:16px;text-align:center;position:sticky;top:0;z-index:5}
+header h1{margin:0;font-size:22px}header small{opacity:.8}
+nav{display:flex;gap:8px;padding:10px;background:#fff;position:sticky;top:70px;z-index:4;box-shadow:0 2px 8px #0001}
+nav button{flex:1;padding:12px 5px;border:0;border-radius:10px;background:#e5e7eb;font-weight:bold}
+nav button.active{background:#111827;color:#fff}
+main{max-width:1000px;margin:auto;padding:14px}.page{display:none}.page.active{display:block}
+.card{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 3px 15px #00000012}
+label{display:block;font-weight:bold;margin:10px 0 5px}input,select,button{font:inherit}
+input,select{width:100%;padding:13px;border:1px solid #d1d5db;border-radius:10px}
+.primary{background:#111827;color:white;border:0;padding:13px 16px;border-radius:10px;font-weight:bold;width:100%;margin-top:12px}
+.secondary{background:#e5e7eb;border:0;padding:10px 12px;border-radius:9px;font-weight:bold}
+.danger{background:#fee2e2;color:#991b1b}.success{background:#dcfce7;color:#166534}
+.status{display:inline-block;padding:6px 10px;border-radius:99px;font-weight:bold;font-size:12px}
+.waiting{background:#fef3c7;color:#92400e}.serving{background:#dbeafe;color:#1d4ed8}.done{background:#dcfce7;color:#166534}
+.hero{text-align:center;padding:22px;background:#111827;color:white;border-radius:18px;margin-bottom:14px}
+.token{font-size:52px;font-weight:900}.vehicle{font-size:28px;font-weight:800}.muted{color:#6b7280}
+.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{padding:13px;background:#f8fafc;border-radius:12px;text-align:center}.stat b{display:block;font-size:20px}
+.queue-item{display:flex;justify-content:space-between;gap:10px;align-items:center;border-top:1px solid #eee;padding:12px 0}
+.queue-item:first-child{border-top:0}.actions{display:flex;gap:6px;flex-wrap:wrap}
+.tv{background:#050505;color:#fff;min-height:calc(100vh - 70px);padding:24px}.tv .hero{background:#161616;border:1px solid #333}
+.tv .card{background:#111;color:#fff;border:1px solid #333}.tv .muted{color:#aaa}
+.tv .queue-item{border-color:#333}.tv h2{font-size:28px}.tv .token{font-size:72px}
+.notice{padding:12px;border-radius:10px;background:#eff6ff;margin:10px 0}
+small.err{color:#b91c1c}
+@media(max-width:600px){.grid{grid-template-columns:1fr}.queue-item{align-items:flex-start;flex-direction:column}.tv{padding:12px}.tv .token{font-size:54px}}
+</style>
+</head>
+<body>
+<header><h1>🚗 SRI HARI TYRES</h1><small>Smart Service Experience</small></header>
+
+<nav>
+<button id="staffTab" class="active" onclick="showPage('staff')">📱 Staff</button>
+<button id="tvTab" onclick="showPage('tv')">📺 TV</button>
+<button id="customerTab" onclick="showPage('customer')">👤 Customer</button>
+</nav>
+
+<main id="staff" class="page active">
+<div class="card">
+<h2>➕ Add Vehicle</h2>
+<label>Vehicle Number</label><input id="vehicleNo" placeholder="TN 49 AB 1234">
+<label>Vehicle Model</label><input id="model" placeholder="Tata Punch">
+<label>Service</label>
+<select id="service"><option>Wheel Alignment</option><option>Alignment + Balancing</option><option>Tyre Check</option><option>Other Service</option></select>
+<label>Technician</label>
+<select id="technician"><option>Aravind</option><option>Vijay</option><option>Sarath</option><option>Arivazhagan</option><option>Arjun</option></select>
+<button class="primary" onclick="addVehicle()">ADD TO QUEUE</button>
+<div id="dbNotice" class="notice">Connecting to Firebase...</div>
+</div>
+
+<div class="card"><h2>📋 Live Queue</h2><div id="staffQueue"></div></div>
+</main>
+
+<main id="tv" class="page tv">
+<div id="tvContent">
+<div class="hero"><div>NOW SERVING</div><div class="token">--</div><div class="vehicle">No vehicle</div><div>Waiting for service</div></div>
+<div class="card"><h2>⏭ NEXT VEHICLES</h2><div id="tvNext"></div></div>
+</div>
+</main>
+
+<main id="customer" class="page">
+<div class="card">
+<h2>🔎 Find My Vehicle</h2>
+<label>Token Number</label><input id="customerToken" type="number" placeholder="Example: 27">
+<button class="primary" onclick="findCustomer()">VIEW STATUS</button>
+</div>
+<div id="customerResult"></div>
+</main>
+
+<script type="module">
+/* =========================================================
+   PASTE YOUR FIREBASE CONFIG BELOW
+   Replace ONLY the values inside firebaseConfig.
+   ========================================================= */
+const firebaseConfig = {
+  apiKey: "AIzaSyAhvfSgluNVW53mIXDiwKr8TXgsYdok-VA",
+  authDomain: "sriharismartservice.firebaseapp.com",
+  databaseURL: "https://sriharismartservice-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "sriharismartservice",
+  storageBucket: "sriharismartservice.firebasestorage.app",
+  messagingSenderId: "1055234466491",
+  appId: "1:1055234466491:web:2306ef58239ebe8aa2ff9e"
+};
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
+import { getDatabase, ref, push, set, update, onValue } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
+
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
+const queueRef = ref(db,"queue");
+
+let queue = {};
+let lastToken = 0;
+
+onValue(queueRef, snap=>{
+  queue = snap.val() || {};
+  renderAll();
+  document.getElementById("dbNotice").textContent =
+    "🟢 Firebase connected — live updates are ON";
+}, err=>{
+  document.getElementById("dbNotice").innerHTML =
+    "🔴 Firebase connection error. Check your Firebase config and Realtime Database rules.";
+  console.error(err);
+});
+
+function nextToken(){
+  const nums=Object.values(queue).map(x=>Number(x.token)||0);
+  return Math.max(0,...nums,lastToken)+1;
+}
+
+window.addVehicle = async ()=>{
+  const vehicleNo=document.getElementById("vehicleNo").value.trim().toUpperCase();
+  const model=document.getElementById("model").value.trim();
+  const service=document.getElementById("service").value;
+  const technician=document.getElementById("technician").value;
+  if(!vehicleNo || !model){alert("Please enter vehicle number and model.");return;}
+  const token=nextToken(); lastToken=token;
+  const itemRef=push(queueRef);
+  await set(itemRef,{
+    token, vehicleNo, model, service, technician,
+    status:"waiting",
+    createdAt:Date.now()
+  });
+  document.getElementById("vehicleNo").value="";
+  document.getElementById("model").value="";
+  alert("Token #"+token+" added successfully.");
+};
+
+window.changeStatus = async (id,status)=>{
+  await update(ref(db,"queue/"+id),{status});
+};
+
+window.removeVehicle = async id=>{
+  if(confirm("Remove this vehicle from the queue?")){
+    await set(ref(db,"queue/"+id),null);
+  }
+};
+
+function sorted(){
+  return Object.entries(queue).map(([id,x])=>({id,...x}))
+    .sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
+}
+
+function renderAll(){
+  const arr=sorted();
+  const staff=document.getElementById("staffQueue");
+  if(!arr.length){staff.innerHTML='<p class="muted">No vehicles in queue.</p>';return;}
+  staff.innerHTML=arr.map(x=>`
+    <div class="queue-item">
+      <div>
+        <b>#${x.token} — ${escapeHtml(x.vehicleNo)}</b><br>
+        ${escapeHtml(x.model)} · ${escapeHtml(x.service)}<br>
+        👨‍🔧 ${escapeHtml(x.technician)}
+        <br><span class="status ${x.status}">${x.status.toUpperCase()}</span>
+      </div>
+      <div class="actions">
+        ${x.status==="waiting"?`<button class="secondary" onclick="changeStatus('${x.id}','serving')">▶ START</button>`:""}
+        ${x.status==="serving"?`<button class="secondary success" onclick="changeStatus('${x.id}','done')">✅ COMPLETE</button>`:""}
+        <button class="secondary danger" onclick="removeVehicle('${x.id}')">REMOVE</button>
+      </div>
+    </div>`).join("");
+
+  const serving=arr.find(x=>x.status==="serving");
+  const next=arr.filter(x=>x.status==="waiting").slice(0,6);
+
+  const hero=document.querySelector("#tv .hero");
+  if(serving){
+    hero.innerHTML=`<div>NOW SERVING</div>
+      <div class="token">#${serving.token}</div>
+      <div class="vehicle">${escapeHtml(serving.vehicleNo)}</div>
+      <div>${escapeHtml(serving.model)}</div>
+      <div>🔧 ${escapeHtml(serving.service)} · 👨‍🔧 ${escapeHtml(serving.technician)}</div>
+      <div class="status serving" style="margin-top:12px">ALIGNMENT IN PROGRESS</div>`;
+  }else{
+    hero.innerHTML=`<div>NOW SERVING</div><div class="token">--</div>
+      <div class="vehicle">No vehicle</div><div>Ready for next service</div>`;
+  }
+
+  document.getElementById("tvNext").innerHTML=next.length ? next.map(x=>`
+    <div class="queue-item"><div><b>#${x.token} — ${escapeHtml(x.vehicleNo)}</b><br>
+    ${escapeHtml(x.model)} · 👨‍🔧 ${escapeHtml(x.technician)}</div>
+    <span class="status waiting">WAITING</span></div>`).join("")
+    : '<p class="muted">No vehicles waiting.</p>';
+}
+
+window.findCustomer=()=>{
+  const token=Number(document.getElementById("customerToken").value);
+  const x=Object.values(queue).find(v=>Number(v.token)===token);
+  const out=document.getElementById("customerResult");
+  if(!x){out.innerHTML='<div class="card"><b>Token not found.</b><br>Please check your token number.</div>';return;}
+  out.innerHTML=`<div class="hero">
+    <div>YOUR SERVICE STATUS</div><div class="token">#${x.token}</div>
+    <div class="vehicle">${escapeHtml(x.vehicleNo)}</div>
+    <div>${escapeHtml(x.model)}</div>
+  </div>
+  <div class="card"><div class="grid">
+    <div class="stat"><b>${escapeHtml(x.service)}</b>Service</div>
+    <div class="stat"><b>${escapeHtml(x.technician)}</b>Technician</div>
+  </div><p style="text-align:center;margin-top:18px">
+    <span class="status ${x.status}">${x.status.toUpperCase()}</span></p></div>`;
+};
+
+window.showPage=(name)=>{
+  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
+  document.getElementById(name).classList.add("active");
+  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
+  document.getElementById(name+"Tab").classList.add("active");
+};
+
+function escapeHtml(s){
+  return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+}
+</script>
+</body>
+</html>
