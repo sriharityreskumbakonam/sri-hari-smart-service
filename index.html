@@ -1,222 +1,460 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<title>Sri Hari Tyres Smart Service</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sri Hari SmartQueue - Staff Control</title>
 <style>
-*{box-sizing:border-box}body{margin:0;font-family:Arial,Helvetica,sans-serif;background:#f3f5f7;color:#17202a}
-header{background:#111827;color:#fff;padding:16px;text-align:center;position:sticky;top:0;z-index:5}
-header h1{margin:0;font-size:22px}header small{opacity:.8}
-nav{display:flex;gap:8px;padding:10px;background:#fff;position:sticky;top:70px;z-index:4;box-shadow:0 2px 8px #0001}
-nav button{flex:1;padding:12px 5px;border:0;border-radius:10px;background:#e5e7eb;font-weight:bold}
-nav button.active{background:#111827;color:#fff}
-main{max-width:1000px;margin:auto;padding:14px}.page{display:none}.page.active{display:block}
-.card{background:#fff;border-radius:16px;padding:16px;margin-bottom:14px;box-shadow:0 3px 15px #00000012}
-label{display:block;font-weight:bold;margin:10px 0 5px}input,select,button{font:inherit}
-input,select{width:100%;padding:13px;border:1px solid #d1d5db;border-radius:10px}
-.primary{background:#111827;color:white;border:0;padding:13px 16px;border-radius:10px;font-weight:bold;width:100%;margin-top:12px}
-.secondary{background:#e5e7eb;border:0;padding:10px 12px;border-radius:9px;font-weight:bold}
-.danger{background:#fee2e2;color:#991b1b}.success{background:#dcfce7;color:#166534}
-.status{display:inline-block;padding:6px 10px;border-radius:99px;font-weight:bold;font-size:12px}
-.waiting{background:#fef3c7;color:#92400e}.serving{background:#dbeafe;color:#1d4ed8}.done{background:#dcfce7;color:#166534}
-.hero{text-align:center;padding:22px;background:#111827;color:white;border-radius:18px;margin-bottom:14px}
-.token{font-size:52px;font-weight:900}.vehicle{font-size:28px;font-weight:800}.muted{color:#6b7280}
-.grid{display:grid;grid-template-columns:repeat(2,1fr);gap:10px}.stat{padding:13px;background:#f8fafc;border-radius:12px;text-align:center}.stat b{display:block;font-size:20px}
-.queue-item{display:flex;justify-content:space-between;gap:10px;align-items:center;border-top:1px solid #eee;padding:12px 0}
-.queue-item:first-child{border-top:0}.actions{display:flex;gap:6px;flex-wrap:wrap}
-.tv{background:#050505;color:#fff;min-height:calc(100vh - 70px);padding:24px}.tv .hero{background:#161616;border:1px solid #333}
-.tv .card{background:#111;color:#fff;border:1px solid #333}.tv .muted{color:#aaa}
-.tv .queue-item{border-color:#333}.tv h2{font-size:28px}.tv .token{font-size:72px}
-.notice{padding:12px;border-radius:10px;background:#eff6ff;margin:10px 0}
-small.err{color:#b91c1c}
-@media(max-width:600px){.grid{grid-template-columns:1fr}.queue-item{align-items:flex-start;flex-direction:column}.tv{padding:12px}.tv .token{font-size:54px}}
-</style>
-</head>
-<body>
-<header><h1>🚗 SRI HARI TYRES</h1><small>Smart Service Experience</small></header>
-
-<nav>
-<button id="staffTab" class="active" onclick="showPage('staff')">📱 Staff</button>
-<button id="tvTab" onclick="showPage('tv')">📺 TV</button>
-<button id="customerTab" onclick="showPage('customer')">👤 Customer</button>
-</nav>
-
-<main id="staff" class="page active">
+:root{--blue:#064a8e;--blue2:#0877d1;--navy:#061d38;--bg:#eef5fb;--white:#fff;--text:#10233a;--muted:#718096;--green:#11945b}
+*{box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}body{margin:0;background:var(--bg);color:var(--text)}
+.login{min-height:100vh;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at top right,#168be8,transparent 38%),linear-gradient(135deg,#041b34,#0757a3);padding:20px}.loginbox{width:100%;max-width:420px;background:#fff;border-radius:28px;padding:42px 30px;box-shadow:0 30px 80px #0008;text-align:center}.logo{width:82px;height:82px;border-radius:24px;background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;display:grid;place-items:center;margin:auto;font-size:25px;font-weight:bold;box-shadow:0 12px 25px #0877d166}h1{margin:18px 0 5px}.muted{color:var(--muted)}input,select{width:100%;padding:14px;border:1px solid #dce7f0;border-radius:13px;font-size:16px;background:#fbfdff;margin-top:7px}input:focus,select:focus{outline:none;border-color:#168be8;box-shadow:0 0 0 4px #168be822}button{border:0;border-radius:13px;padding:13px 17px;font-weight:bold;cursor:pointer}.primary{background:linear-gradient(135deg,var(--blue),var(--blue2));color:#fff;width:100%;box-shadow:0 8px 18px #0877d144}
+#app{display:none}header{background:linear-gradient(100deg,var(--navy),var(--blue));color:#fff;padding:16px 24px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 5px 20px #06264d44}header h2{margin:0;font-size:20px}.logout{background:#ffffff18;color:#fff;border:1px solid #ffffff30}
+main{max-width:1200px;margin:auto;padding:25px}.hero{margin-bottom:20px}.hero h1{font-size:28px}.card{background:#fff;border-radius:24px;padding:24px;margin-bottom:20px;box-shadow:0 8px 28px #173f6212;border:1px solid #e5edf5}.form-title{display:flex;align-items:center;gap:12px;margin-bottom:15px}.icon{width:42px;height:42px;border-radius:14px;background:#e9f4ff;color:var(--blue);display:grid;place-items:center;font-size:20px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;align-items:end}.field label,.label{font-size:11px;color:var(--muted);font-weight:bold;letter-spacing:.5px}.queue-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}.badge{background:#e9f4ff;color:var(--blue);padding:7px 13px;border-radius:99px;font-weight:bold}.queue{display:flex;flex-direction:column;gap:12px}.row{display:grid;grid-template-columns:100px 1fr 1fr 1fr auto;gap:16px;align-items:center;padding:16px;border:1px solid #e2ebf3;border-radius:19px;background:linear-gradient(100deg,#fff,#f8fbfe)}.token{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border-radius:16px;padding:14px;text-align:center;font-size:25px;font-weight:bold;box-shadow:0 8px 18px #064a8e33}.save{background:#eaf4ff;color:var(--blue);width:100%;margin-top:7px}.done{background:var(--green);color:#fff;width:100%;margin-top:7px}.empty{padding:45px;text-align:center;color:var(--muted)}@media(max-width:850px){main{padding:16px}.grid{grid-template-columns:1fr 1fr}.grid .primary{grid-column:span 2}.row{grid-template-columns:1fr 1fr}.token{grid-column:span 2}.actions{grid-column:span 2;display:flex;gap:8px}.actions button{margin:0;flex:1}}@media(max-width:520px){.grid{grid-template-columns:1fr}.grid .primary{grid-column:span 1}.row{grid-template-columns:1fr}.token{grid-column:auto}.actions{grid-column:auto}header{padding:14px}header h2{font-size:16px}}
+.empty{padding:22px;text-align:center;color:#718096}\n</style><style>
+.reminder-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:14px}
+.rem-stat{padding:18px;border-radius:16px;text-align:center;border:1px solid #e1ebf3;background:#f8fbfe}
+.rem-stat span{display:block;font-size:32px;font-weight:800;line-height:1.1}.rem-stat small{font-weight:700;color:#718096;font-size:11px}
+.rem-stat.overdue{border-color:#f0b9b9}.rem-stat.overdue span{color:#c43d3d}
+.rem-stat.week{border-color:#f2cf9e}.rem-stat.week span{color:#d77d13}
+.rem-stat.upcoming{border-color:#b9dfc9}.rem-stat.upcoming span{color:#12945b}
+.rem-stat.total{border-color:#bfd6ee}.rem-stat.total span{color:#2563a8}
+@media(max-width:650px){.reminder-stats{grid-template-columns:1fr 1fr}}
+</style><style>
+.history-search{display:flex;gap:10px;margin-top:14px}.history-search input{flex:1;padding:13px;border:1px solid #d9e5ef;border-radius:12px}
+.history-results{margin-top:14px}.history-item{padding:16px;border:1px solid #e1ebf3;border-radius:14px;margin-bottom:10px;background:#f8fbfe}.history-item b{font-size:18px}.history-item small{display:block;color:#718096;margin-top:5px}
+@media(max-width:650px){.history-search{flex-direction:column}}
+</style><style>
+.tech-stats{grid-template-columns:repeat(3,1fr)}
+.tech-performance-item{display:flex;justify-content:space-between;align-items:center;padding:16px;border:1px solid #e1ebf3;border-radius:14px;margin-top:10px;background:#f8fbfe}
+.tech-performance-item .rank{font-size:13px;color:#718096;font-weight:700}
+.tech-performance-item .count{font-size:24px;font-weight:800}
+@media(max-width:650px){.tech-stats{grid-template-columns:1fr}}
+</style><style>
+.report-stats{grid-template-columns:repeat(4,1fr)}
+.report-section{margin-top:22px}.report-section h3{margin:0 0 10px;font-size:16px}
+.report-row{display:flex;justify-content:space-between;align-items:center;padding:14px 16px;border:1px solid #e1ebf3;border-radius:14px;margin-bottom:9px;background:#f8fbfe}
+.report-row b{font-size:17px}.report-row small{display:block;color:#718096;margin-top:3px}.report-number{font-size:22px;font-weight:800}
+@media(max-width:650px){.report-stats{grid-template-columns:1fr 1fr}}
+</style><style>.service-stats{grid-template-columns:repeat(3,1fr)}@media(max-width:650px){.service-stats{grid-template-columns:1fr}}</style><style>.tech-status-board{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}.tech-status-card{padding:16px;border:1px solid #e1ebf3;border-radius:16px;background:#f8fbfe}.tech-status-top{display:flex;justify-content:space-between;align-items:center;gap:8px}.tech-status-name{font-size:17px;font-weight:800}.status-pill{padding:5px 9px;border-radius:999px;font-size:11px;font-weight:800}.status-available{background:#e8f7ef;color:#15804a}.status-busy{background:#fff3df;color:#b86800}.current-job{margin-top:12px;font-size:14px}.tech-status-card small{display:block;color:#718096;margin-top:4px}.workload-count{margin-top:12px;font-size:12px;font-weight:700;color:#4a5568}@media(max-width:800px){.tech-status-board{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.tech-status-board{grid-template-columns:1fr}}</style><style>
+.shop-overview{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:14px}
+.overview-stat{padding:16px 10px;border:1px solid #e1ebf3;border-radius:15px;text-align:center;background:#f8fbfe}
+.overview-stat span{display:block;font-size:25px;font-weight:850;line-height:1.2}
+.overview-stat small{display:block;margin-top:6px;color:#718096;font-size:10px;font-weight:800}
+.overview-top span{font-size:17px;word-break:break-word}
+.overview-summary{margin-top:14px;padding:14px 16px;border-radius:14px;background:#f8fbfe;border:1px solid #e1ebf3;font-size:14px;font-weight:650}
+@media(max-width:1000px){.shop-overview{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:600px){.shop-overview{grid-template-columns:repeat(2,1fr)}}
+</style><style>
+.attendance-board{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:14px}
+.att-card{padding:15px;border:1px solid #e1ebf3;border-radius:16px;background:#f8fbfe}
+.att-top{display:flex;justify-content:space-between;gap:8px;align-items:center}.att-name{font-size:17px;font-weight:800}
+.att-status{font-size:10px;font-weight:800;padding:5px 8px;border-radius:999px;background:#edf2f7;color:#718096}.att-present{background:#e8f7ef;color:#15804a}.att-out{background:#eef4ff;color:#285ea8}
+.att-time{margin-top:12px;font-size:13px;color:#4a5568;line-height:1.7}.att-actions{display:flex;gap:8px;margin-top:12px}.att-actions button{flex:1}
+.attendance-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:14px}.attendance-summary div{padding:13px;text-align:center;border:1px solid #e1ebf3;border-radius:14px;background:#f8fbfe}.attendance-summary b{display:block;font-size:24px}.attendance-summary small{font-size:10px;font-weight:800;color:#718096}
+@media(max-width:800px){.attendance-board{grid-template-columns:repeat(2,1fr)}}@media(max-width:500px){.attendance-board{grid-template-columns:1fr}.attendance-summary{grid-template-columns:1fr}}
+</style></head><body>
+<div id="login" class="login"><div class="loginbox"><div class="logo">SH</div><h1>Sri Hari SmartQueue</h1><p class="muted">CEAT Alignment Queue</p><input id="email" type="email" placeholder="Email"><input id="password" type="password" placeholder="Password"><button class="primary" onclick="doLogin()">SECURE LOGIN</button><p id="loginMsg" class="muted"></p></div></div>
+<div id="app"><header><div><h2>SRI HARI SMARTQUEUE</h2><small>Staff Control</small></div><button class="logout" onclick="doLogout()">Logout</button></header><main><div class="hero"><h1>Queue Control</h1><p class="muted">Add vehicles and manage the live alignment queue.</p>
+<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:12px">
+  <span id="todayLabel" class="badge"></span>
+  <button onclick="startNewDay()" style="background:#fff0f0;color:#c93535;border:1px solid #ffd2d2">Start New Day / Clear Queue</button>
+</div></div>
+<div class="card"><div class="form-title"><div class="icon">+</div><div><h2 style="margin:0">Add New Vehicle</h2><small class="muted">Enter the alignment details</small></div></div><div class="grid"><div><div class="label">NEXT TOKEN</div><div id="nextToken" style="margin-top:7px;padding:14px;border:1px solid #dce7f0;border-radius:13px;background:#eef7ff;color:#0757a3;font-size:22px;font-weight:bold;text-align:center">01</div></div><div><div class="label">CUSTOMER NAME</div><input id="customerName" placeholder="Customer name (optional)"></div>
+<div><div class="label">WHATSAPP NUMBER</div><input id="customerPhone" inputmode="tel" placeholder="9876543210 (optional)"></div>
+<div><div class="label">VEHICLE NUMBER</div><input id="vehicle" placeholder="TN 49 AB 1234"></div><div><div class="label">VEHICLE MODEL</div><input id="model" placeholder="Creta"></div><div><div class="label">TECHNICIAN</div><select id="tech"><option value="">Loading technicians...</option></select></div><button class="primary" onclick="addVehicle()">+ ADD TO QUEUE</button></div></div>
 <div class="card">
-<h2>➕ Add Vehicle</h2>
-<label>Vehicle Number</label><input id="vehicleNo" placeholder="TN 49 AB 1234">
-<label>Vehicle Model</label><input id="model" placeholder="Tata Punch">
-<label>Service</label>
-<select id="service"><option>Wheel Alignment</option><option>Alignment + Balancing</option><option>Tyre Check</option><option>Other Service</option></select>
-<label>Technician</label>
-<select id="technician"><option>Aravind</option><option>Vijay</option><option>Sarath</option><option>Arivazhagan</option><option>Arjun</option></select>
-<button class="primary" onclick="addVehicle()">ADD TO QUEUE</button>
-<div id="dbNotice" class="notice">Connecting to Firebase...</div>
+<div class="queue-head"><div><h2 style="margin:0">Technician Attendance</h2><small class="muted">Daily check-in, check-out and working hours</small></div></div>
+<div id="attendanceBoard" class="attendance-board"></div>
+<div class="attendance-summary">
+ <div><b id="attPresent">0</b><small>PRESENT TODAY</small></div>
+ <div><b id="attCheckedOut">0</b><small>CHECKED OUT</small></div>
+ <div><b id="attMonth">0</b><small>ATTENDANCE THIS MONTH</small></div>
 </div>
-
-<div class="card"><h2>📋 Live Queue</h2><div id="staffQueue"></div></div>
-</main>
-
-<main id="tv" class="page tv">
-<div id="tvContent">
-<div class="hero"><div>NOW SERVING</div><div class="token">--</div><div class="vehicle">No vehicle</div><div>Waiting for service</div></div>
-<div class="card"><h2>⏭ NEXT VEHICLES</h2><div id="tvNext"></div></div>
+</div><div class="card">
+<div class="queue-head"><div><h2 style="margin:0">Today’s Shop Overview</h2><small class="muted">Live summary of today’s operations</small></div></div>
+<div class="shop-overview">
+ <div class="overview-stat"><span id="ovWaiting">0</span><small>WAITING</small></div>
+ <div class="overview-stat"><span id="ovCompleted">0</span><small>COMPLETED TODAY</small></div>
+ <div class="overview-stat"><span id="ovAvailable">0</span><small>TECHNICIANS AVAILABLE</small></div>
+ <div class="overview-stat"><span id="ovBusy">0</span><small>TECHNICIANS BUSY</small></div>
+ <div class="overview-stat"><span id="ovDue">0</span><small>REMINDERS DUE</small></div>
+ <div class="overview-stat overview-top"><span id="ovTop">—</span><small>TOP TECHNICIAN TODAY</small></div>
 </div>
-</main>
-
-<main id="customer" class="page">
+<div id="overviewSummary" class="overview-summary"></div>
+</div><div class="card"><div class="queue-head"><div><h2 style="margin:0">Technician Workload Status</h2><small class="muted">Live status from active queue</small></div></div><div id="technicianStatusBoard" class="tech-status-board"></div></div><div class="card"><div class="queue-head"><div><h2 style="margin:0">Service Type Statistics</h2><small class="muted">Track services without revenue</small></div></div>
+<div class="reminder-stats service-stats"><div class="rem-stat total"><span id="svcAlign">0</span><small>ALIGNMENT TODAY</small></div><div class="rem-stat upcoming"><span id="svcBal">0</span><small>ALIGNMENT + BALANCING</small></div><div class="rem-stat week"><span id="svcOther">0</span><small>OTHER TODAY</small></div></div>
+<div class="report-section"><h3>This Month — Service Type Summary</h3><div id="serviceTypeSummary" class="history-results"></div></div></div><div class="card">
+<div class="queue-head"><div><h2 style="margin:0">Daily & Monthly Service Reports</h2><small class="muted">Live reports from completed services</small></div></div>
+<div class="reminder-stats report-stats">
+  <div class="rem-stat total"><span id="reportToday">0</span><small>TODAY</small></div>
+  <div class="rem-stat upcoming"><span id="reportMonth">0</span><small>THIS MONTH</small></div>
+  <div class="rem-stat week"><span id="reportDays">0</span><small>ACTIVE DAYS</small></div>
+  <div class="rem-stat overdue"><span id="reportTechs">0</span><small>TECHNICIANS</small></div>
+</div>
+<div class="report-section">
+  <h3>Daily Service Summary</h3>
+  <div id="dailyReportList" class="history-results"></div>
+</div>
+<div class="report-section">
+  <h3>This Month — Technician Summary</h3>
+  <div id="monthlyTechReport" class="history-results"></div>
+</div>
+</div>
 <div class="card">
-<h2>🔎 Find My Vehicle</h2>
-<label>Token Number</label><input id="customerToken" type="number" placeholder="Example: 27">
-<button class="primary" onclick="findCustomer()">VIEW STATUS</button>
+<div class="queue-head"><div><h2 style="margin:0">Technician Performance</h2><small class="muted">Live performance from completed services</small></div></div>
+<div class="reminder-stats tech-stats">
+  <div class="rem-stat total"><span id="perfToday">0</span><small>COMPLETED TODAY</small></div>
+  <div class="rem-stat upcoming"><span id="perfTotal">0</span><small>TOTAL COMPLETED</small></div>
+  <div class="rem-stat week"><span id="perfTop">—</span><small>TOP TECHNICIAN</small></div>
 </div>
-<div id="customerResult"></div>
-</main>
-
+<div id="techPerformanceList" class="history-results"></div>
+</div>
+<div class="card">
+<div class="queue-head"><div><h2 style="margin:0">Customer & Vehicle History</h2><small class="muted">Search previous completed visits</small></div></div>
+<div class="history-search">
+  <input id="historySearch" placeholder="Enter Vehicle Number, Customer Name or WhatsApp Number">
+  <button class="primary" onclick="renderHistory()">SEARCH</button>
+</div>
+<div id="historyResults" class="history-results"><div class="empty">Search to view customer and vehicle history.</div></div>
+</div>
+<div class="card">
+<div class="queue-head"><div><h2 style="margin:0">Reminder Dashboard</h2><small class="muted">Live service reminder overview</small></div></div>
+<div class="reminder-stats">
+  <div class="rem-stat overdue"><span id="statOverdue">0</span><small>OVERDUE</small></div>
+  <div class="rem-stat week"><span id="statWeek">0</span><small>DUE THIS WEEK</small></div>
+  <div class="rem-stat upcoming"><span id="statUpcoming">0</span><small>UPCOMING</small></div>
+  <div class="rem-stat total"><span id="statTotal">0</span><small>TOTAL CUSTOMERS</small></div>
+</div>
+</div>
+<div class="card">
+<div class="queue-head"><div><h2 style="margin:0">Automatic Service Reminders</h2><small class="muted">Track due customers by date and KM</small></div><div id="dueCount" class="badge">0 DUE</div></div>
+<div id="reminderList" class="queue"></div>
+</div>
+<div class="card"><div class="queue-head"><div><h2 style="margin:0">Active Queue</h2><small class="muted">Live Firebase data</small></div><div id="count" class="badge">0</div></div><div id="queue" class="queue"></div></div></main></div>
 <script type="module">
-/* =========================================================
-   PASTE YOUR FIREBASE CONFIG BELOW
-   Replace ONLY the values inside firebaseConfig.
-   ========================================================= */
+import {initializeApp} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-auth.js";
+import {getDatabase,ref,push,set,onValue,update,remove} from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
 const firebaseConfig = {
-  apiKey: "AIzaSyAhvfSgluNVW53mIXDiwKr8TXgsYdok-VA",
-  authDomain: "sriharismartservice.firebaseapp.com",
-  databaseURL: "https://sriharismartservice-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "sriharismartservice",
-  storageBucket: "sriharismartservice.firebasestorage.app",
-  messagingSenderId: "1055234466491",
-  appId: "1:1055234466491:web:2306ef58239ebe8aa2ff9e"
+  apiKey: "AIzaSyCsIGzdwciUw3vsQ76cVzh4yUQ7ntZ079g",
+  authDomain: "sri-hari-smartqueue.firebaseapp.com",
+  databaseURL: "https://sri-hari-smartqueue-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "sri-hari-smartqueue",
+  storageBucket: "sri-hari-smartqueue.firebasestorage.app",
+  messagingSenderId: "226602314704",
+  appId: "1:226602314704:web:2898dacf4d5a580394e7d5"
 };
 
-import { initializeApp } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-app.js";
-import { getDatabase, ref, push, set, update, onValue } from "https://www.gstatic.com/firebasejs/12.1.0/firebase-database.js";
-
-const app = initializeApp(firebaseConfig);
-const db = getDatabase(app);
-const queueRef = ref(db,"queue");
-
-let queue = {};
-let lastToken = 0;
-
-onValue(queueRef, snap=>{
-  queue = snap.val() || {};
-  renderAll();
-  document.getElementById("dbNotice").textContent =
-    "🟢 Firebase connected — live updates are ON";
-}, err=>{
-  document.getElementById("dbNotice").innerHTML =
-    "🔴 Firebase connection error. Check your Firebase config and Realtime Database rules.";
-  console.error(err);
-});
-
-function nextToken(){
-  const nums=Object.values(queue).map(x=>Number(x.token)||0);
-  return Math.max(0,...nums,lastToken)+1;
+const firebaseApp=initializeApp(firebaseConfig),auth=getAuth(firebaseApp),db=getDatabase(firebaseApp);
+let items={}, techs=[];
+function localDayKey(){const d=new Date(); const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");return `${y}-${m}-${day}`;}
+function nextTokenNumber(){
+  const today=localDayKey();
+  const todays=Object.values(items).filter(v=>!v.queueDate || v.queueDate===today);
+  const nums=todays.map(v=>Number(v.token)||0).filter(n=>n>0);
+  return nums.length ? Math.max(...nums)+1 : 1;
 }
+function updateNextToken(){const el=document.getElementById("nextToken");if(el)el.textContent=String(Number(nextTokenNumber())).padStart(2,"0");}
 
-window.addVehicle = async ()=>{
-  const vehicleNo=document.getElementById("vehicleNo").value.trim().toUpperCase();
-  const model=document.getElementById("model").value.trim();
-  const service=document.getElementById("service").value;
-  const technician=document.getElementById("technician").value;
-  if(!vehicleNo || !model){alert("Please enter vehicle number and model.");return;}
-  const token=nextToken(); lastToken=token;
-  const itemRef=push(queueRef);
-  await set(itemRef,{
-    token, vehicleNo, model, service, technician,
-    status:"waiting",
-    createdAt:Date.now()
+window.doLogin=async()=>{try{await signInWithEmailAndPassword(auth,email.value,password.value)}catch(e){loginMsg.textContent=e.message}};
+window.doLogout=()=>signOut(auth);
+onAuthStateChanged(auth,u=>{login.style.display=u?"none":"flex";document.getElementById("app").style.display=u?"block":"none";if(u)load()});
+function load(){
+  onValue(ref(db,"technicians"),s=>{
+    const raw=s.val()||{};
+    techs=Object.values(raw).filter(t=>t.status!=="outside").map(t=>t.name).sort((a,b)=>a.localeCompare(b));
+    renderTechDropdown();
+    render();
   });
-  document.getElementById("vehicleNo").value="";
-  document.getElementById("model").value="";
-  alert("Token #"+token+" added successfully.");
+  onValue(ref(db,"activeQueue"),s=>{items=s.val()||{};render();renderTechnicianStatus();renderShopOverview()});
+}
+function renderTechDropdown(){
+  const select=document.getElementById("tech");
+  const current=select.value;
+  select.innerHTML='<option value="">Select Technician</option>'+
+    techs.map(t=>`<option value="${t}">${t}</option>`).join("");
+  if(techs.includes(current)) select.value=current;
+}
+document.getElementById("todayLabel").textContent=new Date().toLocaleDateString("en-IN",{weekday:"long",day:"2-digit",month:"long",year:"numeric"});
+window.startNewDay=async()=>{
+  const entries=Object.keys(items);
+  if(!entries.length){alert("The active queue is already empty.");return;}
+  if(!confirm("Start a new day? This will clear ONLY the active queue. Completed vehicle reports will remain safe."))return;
+  await Promise.all(entries.map(id=>remove(ref(db,"activeQueue/"+id))));
+  alert("New day started. The next token is 01.");
+};
+window.addVehicle=async()=>{
+ let t=nextTokenNumber(),
+ c=document.getElementById("customerName").value.trim(),
+ p=document.getElementById("customerPhone").value.replace(/\D/g,""),
+ v=vehicle.value.trim().toUpperCase(),m=model.value.trim(),x=tech.value;
+ if(!v||!m||!x)return alert("Please fill Vehicle Number, Model and Technician");
+ let id=push(ref(db,"activeQueue")).key;
+ await set(ref(db,"activeQueue/"+id),{token:t,queueDate:localDayKey(),customerName:c,customerPhone:p,vehicle:v,model:m,technician:x,createdAt:Date.now()});
+ document.getElementById("customerName").value="";
+ document.getElementById("customerPhone").value="";
+ vehicle.value=model.value=tech.value="";
+};
+window.changeTech=async id=>{let s=document.getElementById("tech-"+id);await update(ref(db,"activeQueue/"+id),{technician:s.value})};
+window.complete=async id=>{
+ let v=items[id];
+ const choice=prompt("Service Type:\n1 = Alignment\n2 = Alignment + Balancing\n3 = Other","1");
+ if(choice===null)return;
+ const serviceMap={"1":"Alignment","2":"Alignment + Balancing","3":"Other"};
+ v.serviceType=serviceMap[String(choice).trim()]||"Other";
+ const createReminder=confirm("Create service reminder for this customer?");
+ v.completedAt=Date.now();
+ await set(ref(db,"completedQueue/"+id),v);
+ if(createReminder && v.customerPhone && String(v.customerPhone).replace(/\D/g,"").length>=10){
+   const currentKmText=prompt("Current KM reading","");
+   if(currentKmText===null){await remove(ref(db,"activeQueue/"+id));return;}
+   const currentKm=Number(String(currentKmText).replace(/,/g,"").trim());
+   if(!Number.isFinite(currentKm)||currentKm<0){alert("Invalid KM. Reminder was not created.");await remove(ref(db,"activeQueue/"+id));return;}
+   const freeKmText=prompt("Next FREE service KM",""+(currentKm+2000));
+   const paidKmText=prompt("Next PAID alignment service KM",""+(currentKm+3000));
+   const freeServiceKm=Number(String(freeKmText||"").replace(/,/g,"").trim());
+   const paidAlignmentKm=Number(String(paidKmText||"").replace(/,/g,"").trim());
+   const now=new Date(), due=new Date(now); due.setMonth(due.getMonth()+2);
+   const reminderId=push(ref(db,"serviceReminders")).key;
+   await set(ref(db,"serviceReminders/"+reminderId),{
+     customerName:v.customerName||"",
+     customerPhone:String(v.customerPhone).replace(/\D/g,""),
+     vehicle:v.vehicle||"",
+     model:v.model||"",
+     currentKm:currentKm,
+     freeServiceKm:Number.isFinite(freeServiceKm)?freeServiceKm:currentKm+2000,
+     paidAlignmentKm:Number.isFinite(paidAlignmentKm)?paidAlignmentKm:currentKm+3000,
+     lastServiceDate:now.toISOString().slice(0,10),
+     dueDate:due.toISOString().slice(0,10),
+     status:"pending",
+     createdAt:Date.now()
+   });
+ }
+ await remove(ref(db,"activeQueue/"+id));
 };
 
-window.changeStatus = async (id,status)=>{
-  await update(ref(db,"queue/"+id),{status});
+const attendanceTechs=["Aravind","Arjun","Arivazhagan","Sarath","Venkatesh","Vijay"];
+let attendanceData={};
+function localDateKey(){
+ const d=new Date();const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,"0"),day=String(d.getDate()).padStart(2,"0");
+ return `${y}-${m}-${day}`;
+}
+onValue(ref(db,"attendance"),snap=>{attendanceData=snap.val()||{};renderAttendance();});
+function formatTime(ts){return ts?new Date(ts).toLocaleTimeString("en-IN",{hour:"2-digit",minute:"2-digit"}):"—";}
+function workHours(checkIn,checkOut){
+ if(!checkIn)return "—";
+ const end=checkOut||Date.now(),mins=Math.max(0,Math.floor((end-checkIn)/60000));
+ return `${Math.floor(mins/60)}h ${mins%60}m`;
+}
+function renderAttendance(){
+ const board=document.getElementById("attendanceBoard");if(!board)return;
+ const day=localDateKey(),records=attendanceData[day]||{};
+ const names=[...new Set([...attendanceTechs,...Object.keys(records)])];
+ let present=0,checkedOut=0;
+ board.innerHTML=names.map(name=>{
+   const r=records[name],isPresent=!!r?.checkIn,isOut=!!r?.checkOut;
+   if(isPresent)present++;if(isOut)checkedOut++;
+   const status=!isPresent?"NOT CHECKED IN":isOut?"CHECKED OUT":"PRESENT";
+   const cls=!isPresent?"":isOut?"att-out":"att-present";
+   return `<div class="att-card"><div class="att-top"><div class="att-name">${name}</div><div class="att-status ${cls}">${status}</div></div>
+   <div class="att-time">Check-in: <b>${formatTime(r?.checkIn)}</b><br>Check-out: <b>${formatTime(r?.checkOut)}</b><br>Working: <b>${workHours(r?.checkIn,r?.checkOut)}</b></div>
+   <div class="att-actions">${!isPresent?`<button class="primary" onclick="checkInTech('${name}')">CHECK IN</button>`:!isOut?`<button class="primary" onclick="checkOutTech('${name}')">CHECK OUT</button>`:`<button disabled>COMPLETED</button>`}</div></div>`;
+ }).join("");
+ document.getElementById("attPresent").textContent=present;
+ document.getElementById("attCheckedOut").textContent=checkedOut;
+ let monthTotal=0;const prefix=day.slice(0,7);
+ Object.entries(attendanceData).forEach(([date,rs])=>{if(date.startsWith(prefix))monthTotal+=Object.values(rs||{}).filter(r=>r&&r.checkIn).length;});
+ document.getElementById("attMonth").textContent=monthTotal;
+}
+window.checkInTech=async name=>{
+ const day=localDateKey();
+ await update(ref(db,`attendance/${day}/${name}`),{checkIn:Date.now(),checkOut:null});
 };
-
-window.removeVehicle = async id=>{
-  if(confirm("Remove this vehicle from the queue?")){
-    await set(ref(db,"queue/"+id),null);
-  }
+window.checkOutTech=async name=>{
+ const day=localDateKey(),r=((attendanceData[day]||{})[name]||{});
+ if(!r.checkIn)return alert("Please check in first.");
+ await update(ref(db,`attendance/${day}/${name}`),{checkOut:Date.now()});
 };
-
-function sorted(){
-  return Object.entries(queue).map(([id,x])=>({id,...x}))
-    .sort((a,b)=>(a.createdAt||0)-(b.createdAt||0));
+function renderShopOverview(){
+ const setVal=(id,v)=>{const e=document.getElementById(id);if(e)e.textContent=v;};
+ const today=new Date();today.setHours(0,0,0,0);
+ const todayKey=today.toISOString().slice(0,10);
+ const waiting=Object.keys(items||{}).length;
+ const techNames=["Aravind","Arjun","Arivazhagan","Sarath","Venkatesh","Vijay"];
+ const busySet=new Set(Object.values(items||{}).map(v=>(v.technician||"").trim()).filter(Boolean));
+ const allTech=[...new Set([...techNames,...busySet])];
+ const busy=busySet.size,available=Math.max(0,allTech.length-busy);
+ let completedToday=0;const todayTech={};
+ Object.values(completedHistory||{}).forEach(v=>{
+   const ts=v.completedAt||v.createdAt;if(!ts)return;
+   if(new Date(ts).toISOString().slice(0,10)===todayKey){
+     completedToday++;
+     const t=(v.technician||"Unassigned").trim()||"Unassigned";
+     todayTech[t]=(todayTech[t]||0)+1;
+   }
+ });
+ const ranked=Object.entries(todayTech).sort((a,b)=>b[1]-a[1]);
+ const top=ranked.length?ranked[0][0]:"—";
+ const due=Object.values(reminderData||{}).filter(r=>{
+   if(r.status==="sent"||!r.dueDate)return false;
+   return new Date(r.dueDate+"T00:00:00")<=today;
+ }).length;
+ setVal("ovWaiting",waiting);setVal("ovCompleted",completedToday);
+ setVal("ovAvailable",available);setVal("ovBusy",busy);
+ setVal("ovDue",due);setVal("ovTop",top);
+ const summary=document.getElementById("overviewSummary");
+ if(summary)summary.innerHTML=`Today: <b>${waiting}</b> active vehicle${waiting===1?"":"s"}, <b>${completedToday}</b> completed, <b>${available}</b> technician${available===1?"":"s"} available, <b>${busy}</b> busy, and <b>${due}</b> reminder${due===1?"":"s"} due.`;
 }
 
-function renderAll(){
-  const arr=sorted();
-  const staff=document.getElementById("staffQueue");
-  if(!arr.length){staff.innerHTML='<p class="muted">No vehicles in queue.</p>';return;}
-  staff.innerHTML=arr.map(x=>`
-    <div class="queue-item">
-      <div>
-        <b>#${x.token} — ${escapeHtml(x.vehicleNo)}</b><br>
-        ${escapeHtml(x.model)} · ${escapeHtml(x.service)}<br>
-        👨‍🔧 ${escapeHtml(x.technician)}
-        <br><span class="status ${x.status}">${x.status.toUpperCase()}</span>
-      </div>
-      <div class="actions">
-        ${x.status==="waiting"?`<button class="secondary" onclick="changeStatus('${x.id}','serving')">▶ START</button>`:""}
-        ${x.status==="serving"?`<button class="secondary success" onclick="changeStatus('${x.id}','done')">✅ COMPLETE</button>`:""}
-        <button class="secondary danger" onclick="removeVehicle('${x.id}')">REMOVE</button>
-      </div>
-    </div>`).join("");
-
-  const serving=arr.find(x=>x.status==="serving");
-  const next=arr.filter(x=>x.status==="waiting").slice(0,6);
-
-  const hero=document.querySelector("#tv .hero");
-  if(serving){
-    hero.innerHTML=`<div>NOW SERVING</div>
-      <div class="token">#${serving.token}</div>
-      <div class="vehicle">${escapeHtml(serving.vehicleNo)}</div>
-      <div>${escapeHtml(serving.model)}</div>
-      <div>🔧 ${escapeHtml(serving.service)} · 👨‍🔧 ${escapeHtml(serving.technician)}</div>
-      <div class="status serving" style="margin-top:12px">ALIGNMENT IN PROGRESS</div>`;
-  }else{
-    hero.innerHTML=`<div>NOW SERVING</div><div class="token">--</div>
-      <div class="vehicle">No vehicle</div><div>Ready for next service</div>`;
-  }
-
-  document.getElementById("tvNext").innerHTML=next.length ? next.map(x=>`
-    <div class="queue-item"><div><b>#${x.token} — ${escapeHtml(x.vehicleNo)}</b><br>
-    ${escapeHtml(x.model)} · 👨‍🔧 ${escapeHtml(x.technician)}</div>
-    <span class="status waiting">WAITING</span></div>`).join("")
-    : '<p class="muted">No vehicles waiting.</p>';
+function renderTechnicianStatus(){
+ const board=document.getElementById("technicianStatusBoard");if(!board)return;
+ const names=["Aravind","Arjun","Arivazhagan","Sarath","Venkatesh","Vijay"],workload={};
+ Object.values(items||{}).forEach(v=>{const n=(v.technician||"").trim();if(n)(workload[n]||(workload[n]=[])).push(v);});
+ [...new Set([...names,...Object.keys(workload)])].forEach(n=>{});
+ const all=[...new Set([...names,...Object.keys(workload)])];
+ board.innerHTML=all.map(n=>{const jobs=(workload[n]||[]).sort((a,b)=>(a.token||0)-(b.token||0)),busy=jobs.length>0,c=jobs[0];
+ return `<div class="tech-status-card"><div class="tech-status-top"><div class="tech-status-name">${n}</div><div class="status-pill ${busy?"status-busy":"status-available"}">${busy?"BUSY":"AVAILABLE"}</div></div>${busy?`<div class="current-job"><b>${c.vehicle||"Vehicle"}</b><small>${c.model||""} • Token #${String(c.token||"").padStart(2,"0")}</small></div>`:`<div class="current-job"><b>No active vehicle</b><small>Ready for next job</small></div>`}<div class="workload-count">${jobs.length} active vehicle${jobs.length===1?"":"s"}</div></div>`}).join("");
 }
+function render(){let arr=Object.entries(items).sort((a,b)=>Number(a[1].token)-Number(b[1].token));count.textContent=arr.length+" ACTIVE";queue.innerHTML=arr.length?arr.map(([id,v])=>`<div class="row"><div class="token">#${String(v.token).padStart(2,"0")}</div><div><div class="label">VEHICLE</div><b>${v.vehicle}</b></div><div><div class="label">MODEL</div><b>${v.model}</b></div><div><div class="label">TECHNICIAN</div><select id="tech-${id}">${[...new Set([v.technician,...techs])].map(t=>`<option ${t===v.technician?"selected":""}>${t}</option>`).join("")}</select></div><div class="actions"><button class="save" onclick="changeTech('${id}')">Change Technician</button><button class="done" onclick="complete('${id}')">✓ Completed</button></div></div>`).join(""):'<div class="empty">No active vehicles.</div>'}
 
-window.findCustomer=()=>{
-  const token=Number(document.getElementById("customerToken").value);
-  const x=Object.values(queue).find(v=>Number(v.token)===token);
-  const out=document.getElementById("customerResult");
-  if(!x){out.innerHTML='<div class="card"><b>Token not found.</b><br>Please check your token number.</div>';return;}
-  out.innerHTML=`<div class="hero">
-    <div>YOUR SERVICE STATUS</div><div class="token">#${x.token}</div>
-    <div class="vehicle">${escapeHtml(x.vehicleNo)}</div>
-    <div>${escapeHtml(x.model)}</div>
-  </div>
-  <div class="card"><div class="grid">
-    <div class="stat"><b>${escapeHtml(x.service)}</b>Service</div>
-    <div class="stat"><b>${escapeHtml(x.technician)}</b>Technician</div>
-  </div><p style="text-align:center;margin-top:18px">
-    <span class="status ${x.status}">${x.status.toUpperCase()}</span></p></div>`;
+// Automatic reminder tracker
+let reminderData={};
+onValue(ref(db,"serviceReminders"),snap=>{
+ reminderData=snap.val()||{};
+ renderReminders();
+ renderShopOverview();
+});
+function reminderDateText(d){
+ return new Date(d+"T00:00:00").toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"});
+}
+function renderReminders(){
+ const list=document.getElementById("reminderList"), count=document.getElementById("dueCount");
+ if(!list||!count)return;
+ const today=new Date();today.setHours(0,0,0,0);
+ const weekEnd=new Date(today);weekEnd.setDate(weekEnd.getDate()+7);
+ const entries=Object.entries(reminderData).filter(([id,r])=>r.status!=="sent");
+ let overdue=0,week=0,upcoming=0;
+ entries.forEach(([id,r])=>{
+   const d=new Date(r.dueDate+"T00:00:00");
+   if(d<today)overdue++;
+   else if(d<=weekEnd)week++;
+   else upcoming++;
+ });
+ const setStat=(id,n)=>{const e=document.getElementById(id);if(e)e.textContent=n};
+ setStat("statOverdue",overdue);setStat("statWeek",week);setStat("statUpcoming",upcoming);setStat("statTotal",entries.length);
+ const due=entries.filter(([id,r])=>new Date(r.dueDate+"T00:00:00")<=today);
+ count.textContent=due.length+" DUE";
+ list.innerHTML=due.length?due.map(([id,r])=>`
+   <div class="queue-item">
+     <div class="token">🔔</div>
+     <div class="vehicle"><b>${r.vehicle||""}</b><small>${r.model||""} • ${r.customerName||"Customer"}</small></div>
+     <div class="tech"><b>Due by: ${reminderDateText(r.dueDate)}</b><small>Current: ${r.currentKm??"-"} km • Free: ${r.freeServiceKm??"-"} km • Paid: ${r.paidAlignmentKm??"-"} km</small><small>${r.customerPhone||""}</small></div>
+     <button class="primary" onclick="markReminderSent('${id}')">MARK REMINDED</button>
+   </div>`).join(""):'<div class="empty">No automatic reminders are due today.</div>';
+}
+window.markReminderSent=async id=>{
+ await update(ref(db,"serviceReminders/"+id),{status:"sent",sentAt:Date.now()});
+ alert("Reminder marked as completed.");
 };
 
-window.showPage=(name)=>{
-  document.querySelectorAll(".page").forEach(p=>p.classList.remove("active"));
-  document.getElementById(name).classList.add("active");
-  document.querySelectorAll("nav button").forEach(b=>b.classList.remove("active"));
-  document.getElementById(name+"Tab").classList.add("active");
-};
+let completedHistory={};
+onValue(ref(db,"completedQueue"),snap=>{completedHistory=snap.val()||{};renderTechnicianPerformance();renderServiceReports();renderServiceTypeStats();renderShopOverview();});
 
-function escapeHtml(s){
-  return String(s??"").replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[m]));
+function safeText(v){return String(v??"").replace(/[&<>"']/g,ch=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[ch]));}
+function formatCompleted(ts){
+ if(!ts)return "Completed date unavailable";
+ return new Date(ts).toLocaleString("en-IN",{day:"2-digit",month:"short",year:"numeric",hour:"2-digit",minute:"2-digit"});
 }
-</script>
-</body>
-</html>
+
+function renderServiceTypeStats(){
+ const vals=Object.values(completedHistory),now=new Date(),today=now.toISOString().slice(0,10);
+ const tc={"Alignment":0,"Alignment + Balancing":0,"Other":0},mc={};
+ vals.forEach(v=>{const ts=v.completedAt||v.createdAt;if(!ts)return;const d=new Date(ts),type=v.serviceType||"Other";
+ if(d.toISOString().slice(0,10)===today)tc[type]=(tc[type]||0)+1;
+ if(d.getFullYear()===now.getFullYear()&&d.getMonth()===now.getMonth())mc[type]=(mc[type]||0)+1;});
+ const put=(id,val)=>{const e=document.getElementById(id);if(e)e.textContent=val};
+ put("svcAlign",tc["Alignment"]||0);put("svcBal",tc["Alignment + Balancing"]||0);put("svcOther",tc["Other"]||0);
+ const box=document.getElementById("serviceTypeSummary"),rows=Object.entries(mc).sort((a,b)=>b[1]-a[1]);
+ if(box)box.innerHTML=rows.length?rows.map(([type,count])=>`<div class="report-row"><div><b>${safeText(type)}</b><small>This month</small></div><div class="report-number">${count}</div></div>`).join(""):'<div class="empty">No service records this month.</div>';
+}
+function renderServiceReports(){
+ const vals=Object.values(completedHistory);
+ const now=new Date(), todayKey=now.toISOString().slice(0,10);
+ const month=now.getMonth(), year=now.getFullYear();
+ const dayCounts={}, monthTech={}, monthTechSet={};
+ let todayCount=0, monthCount=0;
+ vals.forEach(v=>{
+   const ts=v.completedAt||v.createdAt;
+   if(!ts)return;
+   const d=new Date(ts);
+   const key=d.toISOString().slice(0,10);
+   dayCounts[key]=(dayCounts[key]||0)+1;
+   if(key===todayKey)todayCount++;
+   if(d.getFullYear()===year&&d.getMonth()===month){
+     monthCount++;
+     const tech=(v.technician||"Unassigned").trim()||"Unassigned";
+     monthTech[tech]=(monthTech[tech]||0)+1;
+     monthTechSet[tech]=true;
+   }
+ });
+ const setText=(id,val)=>{const e=document.getElementById(id);if(e)e.textContent=val};
+ setText("reportToday",todayCount);
+ setText("reportMonth",monthCount);
+ setText("reportDays",Object.keys(dayCounts).filter(k=>k.slice(0,7)===todayKey.slice(0,7)).length);
+ setText("reportTechs",Object.keys(monthTechSet).length);
+ const dailyBox=document.getElementById("dailyReportList");
+ const daily=Object.entries(dayCounts).sort((a,b)=>b[0].localeCompare(a[0]));
+ if(dailyBox)dailyBox.innerHTML=daily.length?daily.map(([date,count])=>{
+   const label=new Date(date+"T00:00:00").toLocaleDateString("en-IN",{day:"2-digit",month:"short",year:"numeric"});
+   return `<div class="report-row"><div><b>${label}</b><small>Completed services</small></div><div class="report-number">${count}</div></div>`;
+ }).join(""):'<div class="empty">No completed services yet.</div>';
+ const techBox=document.getElementById("monthlyTechReport");
+ const techs=Object.entries(monthTech).sort((a,b)=>b[1]-a[1]);
+ if(techBox)techBox.innerHTML=techs.length?techs.map(([name,count])=>`<div class="report-row"><div><b>${safeText(name)}</b><small>This month</small></div><div class="report-number">${count}</div></div>`).join(""):'<div class="empty">No completed services this month.</div>';
+}
+
+function isTodayTimestamp(ts){
+ if(!ts)return false;
+ const d=new Date(ts),n=new Date();
+ return d.getFullYear()===n.getFullYear()&&d.getMonth()===n.getMonth()&&d.getDate()===n.getDate();
+}
+function renderTechnicianPerformance(){
+ const values=Object.values(completedHistory);
+ const counts={};let today=0;
+ values.forEach(v=>{
+   const name=(v.technician||"Unassigned").trim()||"Unassigned";
+   counts[name]=(counts[name]||0)+1;
+   if(isTodayTimestamp(v.completedAt||v.createdAt))today++;
+ });
+ const ranked=Object.entries(counts).sort((a,b)=>b[1]-a[1]);
+ const setText=(id,text)=>{const e=document.getElementById(id);if(e)e.textContent=text};
+ setText("perfToday",today);
+ setText("perfTotal",values.length);
+ setText("perfTop",ranked.length?ranked[0][0]:"—");
+ const box=document.getElementById("techPerformanceList");
+ if(!box)return;
+ box.innerHTML=ranked.length?ranked.map(([name,count],i)=>`
+   <div class="tech-performance-item">
+     <div><div class="rank">#${i+1} TECHNICIAN</div><b>${safeText(name)}</b></div>
+     <div class="count">${count}</div>
+   </div>`).join(""):'<div class="empty">No completed service records yet.</div>';
+}
+window.renderHistory=()=>{
+ const q=document.getElementById("historySearch").value.trim().toLowerCase().replace(/\s+/g,"");
+ const box=document.getElementById("historyResults");
+ if(!q){box.innerHTML='<div class="empty">Enter a vehicle number, customer name or WhatsApp number.</div>';return;}
+ const matches=Object.entries(completedHistory)
+   .map(([id,v])=>({id,v}))
+   .filter(({v})=>{
+     const hay=[v.vehicle,v.model,v.customerName,v.customerPhone,v.technician].join(" ").toLowerCase().replace(/\s+/g,"");
+     return hay.includes(q);
+   })
+   .sort((a,b)=>(b.v.completedAt||b.v.createdAt||0)-(a.v.completedAt||a.v.createdAt||0));
+ box.innerHTML=matches.length?matches.map(({v})=>`
+   <div class="history-item">
+     <b>${safeText(v.vehicle||"Vehicle")}</b> — ${safeText(v.model||"")}
+     <small>👤 ${safeText(v.customerName||"Customer")} &nbsp; | &nbsp; 📱 ${safeText(v.customerPhone||"-")}</small>
+     <small>👨‍🔧 Technician: ${safeText(v.technician||"-")}</small>
+     <small>✓ Completed: ${formatCompleted(v.completedAt)}</small>
+   </div>`).join(""):'<div class="empty">No completed service history found.</div>';
+};
+document.addEventListener("keydown",e=>{if(e.key==="Enter"&&document.activeElement&&document.activeElement.id==="historySearch")renderHistory();});
+</script></body></html>
