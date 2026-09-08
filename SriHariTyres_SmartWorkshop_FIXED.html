@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#07111f">
+<title>Sri Hari Tyres – Smart Workshop</title>
+<style>
+:root{--bg:#07111f;--panel:#101b2d;--line:#263952;--text:#f4f7fb;--muted:#9fb0c6;--blue:#2f80ed;--green:#21c17a;--red:#ff6b78}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(135deg,#06101d,#0b1728);color:var(--text);min-height:100vh}
+button,input,select{font:inherit}button{cursor:pointer}.hidden{display:none!important}
+.login-wrap{min-height:100vh;display:grid;place-items:center;padding:22px}.login-card{width:min(430px,100%);background:#101b2df5;border:1px solid var(--line);border-radius:24px;padding:28px;box-shadow:0 18px 50px rgba(0,0,0,.28)}
+.logo{width:62px;height:62px;border-radius:18px;display:grid;place-items:center;background:linear-gradient(135deg,#1f7ae0,#16b67a);font-size:30px;margin-bottom:16px}
+h1,h2,h3{margin:0 0 8px}.muted{color:var(--muted)}.field{margin:15px 0}.field label{display:block;font-size:13px;color:var(--muted);margin-bottom:7px}
+input,select{width:100%;padding:13px 14px;border-radius:12px;border:1px solid var(--line);background:#0a1423;color:var(--text);outline:none}
+input:focus,select:focus{border-color:var(--blue)}.primary{width:100%;padding:13px 16px;border:0;border-radius:12px;background:var(--blue);color:#fff;font-weight:700}
+.primary:disabled{opacity:.55}.msg{min-height:22px;margin-top:12px;font-size:13px}.error{color:#ff7d87}.success{color:#6be0aa}
+.help{font-size:11px;line-height:1.5;margin-top:12px;padding:10px;border-radius:10px;background:#0b1626;border:1px solid var(--line)}
+.topbar{position:sticky;top:0;z-index:10;background:#07111fed;backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding:13px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{display:flex;align-items:center;gap:11px}.brand-mark{width:40px;height:40px;border-radius:12px;display:grid;place-items:center;background:#15304f}.brand small{display:block;color:var(--muted);font-size:11px}.brand strong{font-size:15px}
+.userbox{display:flex;align-items:center;gap:10px}.role{font-size:11px;color:#b9c8db;background:#182a43;padding:5px 8px;border-radius:999px}.logout{padding:9px 12px;border-radius:10px;background:#182437;color:#fff;border:1px solid var(--line)}
+.container{width:min(1180px,100%);margin:auto;padding:22px 16px 45px}.welcome{display:flex;justify-content:space-between;align-items:flex-end;gap:15px;margin-bottom:20px}
+.cards{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:18px}.stat{background:var(--panel);border:1px solid var(--line);border-radius:17px;padding:17px}.stat .label{font-size:12px;color:var(--muted)}.stat .num{font-size:30px;font-weight:800;margin-top:5px}
+.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.panel{background:var(--panel);border:1px solid var(--line);border-radius:18px;padding:18px}.panel-head{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:14px}
+.small-btn{padding:9px 11px;border-radius:10px;background:#18304d;color:#fff;border:1px solid var(--line)}.queue-list{display:flex;flex-direction:column;gap:9px}
+.queue-item{border:1px solid var(--line);background:#0c1727;border-radius:14px;padding:13px}.qtop{display:flex;justify-content:space-between;gap:10px}.token{font-size:20px;font-weight:900}
+.badge{font-size:11px;padding:5px 8px;border-radius:999px;background:#21334b;color:#cbd8e8;white-space:nowrap}.badge.waiting{color:#ffd48a}.badge.service{color:#75e0b0}.badge.done{color:#aebbd0}
+.qmeta{display:flex;flex-wrap:wrap;gap:8px;color:var(--muted);font-size:12px;margin:6px 0}.qactions{display:flex;gap:7px;flex-wrap:wrap;margin-top:9px}.qactions button{padding:8px 10px;border-radius:9px;background:#172941;color:#fff;border:1px solid var(--line);font-size:12px}
+.qactions .start{background:#126a49}.qactions .complete{background:#244c7c}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.add-btn{width:100%;padding:12px;border:0;border-radius:11px;background:var(--green);color:#04150e;font-weight:800;margin-top:10px}
+.now{border:1px solid #245f4a;background:linear-gradient(135deg,#0d2a27,#102235);border-radius:15px;padding:17px;margin-bottom:13px}.now .big{font-size:32px;font-weight:900}.now .vehicle{font-size:16px;margin-top:4px}.now .tech{color:#8fe5bd;font-size:13px;margin-top:5px}
+.empty{padding:28px;text-align:center;color:var(--muted);border:1px dashed var(--line);border-radius:13px}.footer{text-align:center;color:#71849d;font-size:11px;margin-top:25px}
+@media(max-width:850px){.cards{grid-template-columns:1fr 1fr}.grid{grid-template-columns:1fr}.grid .full{grid-column:auto}}
+@media(max-width:560px){.topbar{padding:10px 12px}.userbox .role{display:none}.container{padding:17px 11px 35px}.stat{padding:13px}.stat .num{font-size:25px}.form-grid{grid-template-columns:1fr}.welcome{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+
+<div id="loginScreen" class="login-wrap">
+  <div class="login-card">
+    <div class="logo">🚗</div>
+    <h1>Sri Hari Tyres</h1>
+    <p class="muted">Smart Workshop Management</p>
+
+    <div class="field">
+      <label>Email</label>
+      <input id="email" type="email" autocomplete="username" placeholder="Enter your email">
+    </div>
+
+    <div class="field">
+      <label>Password</label>
+      <input id="password" type="password" autocomplete="current-password" placeholder="Enter your password">
+    </div>
+
+    <button id="loginBtn" class="primary">Sign In</button>
+    <div id="loginMsg" class="msg"></div>
+
+    <div class="help">
+      <b>Sign-in troubleshooting</b><br>
+      If Sign In shows an error, the message below will tell you exactly what Firebase is rejecting.
+      If it says <b>unauthorized-domain</b>, add your GitHub Pages domain in Firebase Authentication → Settings → Authorized domains.
+    </div>
+
+    <p class="muted" style="font-size:11px;margin-top:18px">Authorized Sri Hari Tyres staff only.</p>
+  </div>
+</div>
+
+<div id="appScreen" class="hidden">
+<header class="topbar">
+  <div class="brand"><div class="brand-mark">🛞</div><div><strong>Sri Hari Tyres</strong><small>Smart Workshop</small></div></div>
+  <div class="userbox"><div style="text-align:right"><strong id="userName">Staff</strong><div id="userRole" class="role">Staff</div></div><button id="logoutBtn" class="logout">Logout</button></div>
+</header>
+
+<main class="container">
+<div class="welcome">
+  <div><h2>Workshop Dashboard</h2><div class="muted" id="todayText"></div></div>
+  <div class="muted" style="font-size:12px">Realtime connected</div>
+</div>
+
+<section class="cards">
+  <div class="stat"><div class="label">Waiting Vehicles</div><div id="waitingCount" class="num">0</div></div>
+  <div class="stat"><div class="label">Now Serving</div><div id="servingCount" class="num">0</div></div>
+  <div class="stat"><div class="label">Completed Today</div><div id="completedCount" class="num">0</div></div>
+  <div class="stat"><div class="label">Total Queue Today</div><div id="totalCount" class="num">0</div></div>
+</section>
+
+<div class="grid">
+<section class="panel">
+  <div class="panel-head"><h3>Now Serving</h3><span class="badge">1 Alignment Bay</span></div>
+  <div id="nowServing"></div>
+</section>
+
+<section class="panel">
+  <div class="panel-head"><h3>Add to Queue</h3><span class="badge">Authorized staff</span></div>
+  <div class="form-grid">
+    <div><label class="muted" style="font-size:12px">Vehicle Number</label><input id="vehicleNo" placeholder="TN 00 AA 0000"></div>
+    <div><label class="muted" style="font-size:12px">Vehicle / Model</label><input id="vehicleModel" placeholder="Honda City"></div>
+    <div><label class="muted" style="font-size:12px">Service Type</label>
+      <select id="serviceType"><option>Wheel Alignment</option><option>Alignment + Balancing</option><option>Two-Wheeler Service</option><option>Other</option></select>
+    </div>
+    <div><label class="muted" style="font-size:12px">Technician</label><select id="technician"></select></div>
+  </div>
+  <button id="addQueueBtn" class="add-btn">＋ Add Vehicle to Queue</button>
+  <div id="queueMsg" class="msg"></div>
+</section>
+
+<section class="panel" style="grid-column:1/-1">
+  <div class="panel-head"><h3>Workshop Queue</h3>
+    <select id="queueFilter" style="width:auto;min-width:145px">
+      <option value="all">All Vehicles</option><option value="waiting">Waiting</option><option value="in_service">Now Serving</option><option value="completed">Completed</option>
+    </select>
+  </div>
+  <div id="queueList" class="queue-list"></div>
+</section>
+</div>
+
+<div class="footer">Sri Hari Tyres • Smart Workshop • Firebase Realtime Database</div>
+</main>
+</div>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js";
+import {
+  getAuth, signInWithEmailAndPassword, onAuthStateChanged, signOut
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js";
+import {
+  getDatabase, ref, push, set, update, onValue
+} from "https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js";
+
+const firebaseConfig = {
+  apiKey:"AIzaSyBFqSsLQbiaCnKeVzmNmeEZMKmo4Bx5fwA",
+  authDomain:"sri-hari-tyres-smartservice.firebaseapp.com",
+  databaseURL:"https://sri-hari-tyres-smartservice-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId:"sri-hari-tyres-smartservice",
+  storageBucket:"sri-hari-tyres-smartservice.firebasestorage.app",
+  messagingSenderId:"410615822494",
+  appId:"1:410615822494:web:88c0e090de8965ba54638f"
+};
+
+const PEOPLE = {
+ "zkH7Q5VLzCWpafJ86cXAhPspO1z2":{name:"Yogesh",role:"Owner",type:"management"},
+ "FhW9K4QoVPSeBFjHg0ZAu9SYJAX2":{name:"Chandrasekar",role:"Manager",type:"management"},
+ "5ClIB6TsLCOC3j19bqO7vfaWWOy1":{name:"Arjun",role:"Car Technician",type:"car"},
+ "v2fcV0ElecUmqF2BgptBKHIZVgQ2":{name:"Aravind",role:"Car Technician",type:"car"},
+ "c4Nwi2qtirbQQzBdWbAzYc3iurV2":{name:"Arivazhagan",role:"Car Technician",type:"car"},
+ "I6Y8CUdtKBclPBBFmFFArhgvnx13":{name:"Sarath Kumar",role:"Car Technician",type:"car"},
+ "Q3TuUE9xf0RSuVTxXJ3mwoMxJ3T2":{name:"Vijay",role:"Car Technician",type:"car"},
+ "ltGCLVdT1jNPiKirrqIefvAj3Mx1":{name:"Venkatesh",role:"Two-Wheeler Technician",type:"two"},
+ "KJlZLRVivcWiKlTPa5OUIQO81eG3":{name:"Nandha",role:"Two-Wheeler Technician",type:"two"}
+};
+
+let currentUser=null,currentPerson=null,queue={};
+const $=id=>document.getElementById(id);
+
+$("todayText").textContent = new Intl.DateTimeFormat("en-IN",{dateStyle:"full"}).format(new Date());
+
+function msg(el,text,ok=false){
+  el.textContent=text;
+  el.className="msg "+(ok?"success":"error");
+}
+
+/* Firebase startup check */
+let auth,db;
+try{
+  const app=initializeApp(firebaseConfig);
+  auth=getAuth(app);
+  db=getDatabase(app);
+}catch(e){
+  msg($("loginMsg"),"Firebase startup error: "+friendlyError(e));
+}
+
+$("loginBtn").onclick = login;
+$("password").onkeydown = e => { if(e.key==="Enter") login(); };
+$("email").onkeydown = e => { if(e.key==="Enter") $("password").focus(); };
+$("logoutBtn").onclick = () => { if(auth) signOut(auth); };
+
+async function login(){
+  if(!auth){
+    msg($("loginMsg"),"Firebase could not start. Please replace index.html with the prepared file.");
+    return;
+  }
+
+  const email=$("email").value.trim();
+  const password=$("password").value;
+
+  if(!email) return msg($("loginMsg"),"Please enter your email.");
+  if(!password) return msg($("loginMsg"),"Please enter your password.");
+
+  $("loginBtn").disabled=true;
+  $("loginBtn").textContent="Signing In…";
+  msg($("loginMsg"),"Connecting to Firebase…");
+
+  try{
+    const result=await signInWithEmailAndPassword(auth,email,password);
+    const person=PEOPLE[result.user.uid];
+
+    if(!person){
+      await signOut(auth);
+      throw new Error("This Firebase account is not assigned to Sri Hari Tyres staff.");
+    }
+
+    msg($("loginMsg"),"Sign-in successful.",true);
+  }catch(e){
+    console.error(e);
+    msg($("loginMsg"),friendlyError(e));
+  }finally{
+    $("loginBtn").disabled=false;
+    $("loginBtn").textContent="Sign In";
+  }
+}
+
+function friendlyError(e){
+  const code=e?.code||"";
+  if(code==="auth/invalid-credential" || code==="auth/wrong-password" || code==="auth/user-not-found")
+    return "Email or password is incorrect.";
+  if(code==="auth/invalid-email") return "Please enter a valid email address.";
+  if(code==="auth/too-many-requests") return "Too many attempts. Please wait a few minutes and try again.";
+  if(code==="auth/unauthorized-domain")
+    return "GitHub Pages domain is not authorized in Firebase. Add your GitHub Pages domain under Authentication → Settings → Authorized domains.";
+  if(code==="auth/network-request-failed")
+    return "Network connection failed. Check your internet connection and try again.";
+  if(code==="auth/operation-not-allowed")
+    return "Email/Password sign-in is not enabled in Firebase Authentication.";
+  return e?.message || "Sign-in failed. Please try again.";
+}
+
+if(auth){
+  onAuthStateChanged(auth,u=>{
+    if(!u){
+      currentUser=null;currentPerson=null;
+      $("loginScreen").classList.remove("hidden");
+      $("appScreen").classList.add("hidden");
+      return;
+    }
+
+    currentUser=u;
+    currentPerson=PEOPLE[u.uid];
+
+    if(!currentPerson){
+      signOut(auth);
+      msg($("loginMsg"),"This account is not assigned to Sri Hari Tyres staff.");
+      return;
+    }
+
+    $("userName").textContent=currentPerson.name;
+    $("userRole").textContent=currentPerson.role;
+    $("loginScreen").classList.add("hidden");
+    $("appScreen").classList.remove("hidden");
+    populateTech();
+    listenQueue();
+  });
+}
+
+function populateTech(){
+  const s=$("technician");
+  s.innerHTML="";
+  Object.entries(PEOPLE)
+    .filter(([,p])=>p.type==="car"||p.type==="two")
+    .forEach(([id,p])=>{
+      const o=document.createElement("option");
+      o.value=id;
+      o.textContent=p.name+" — "+p.role;
+      s.appendChild(o);
+    });
+  if(currentPerson?.type==="car"){
+    const first=[...s.options].find(o=>PEOPLE[o.value]?.type==="car");
+    if(first)s.value=first.value;
+  }else if(currentPerson?.type==="two"){
+    const first=[...s.options].find(o=>PEOPLE[o.value]?.type==="two");
+    if(first)s.value=first.value;
+  }
+}
+
+function listenQueue(){
+  onValue(ref(db,"queue"),
+    snap=>{queue=snap.val()||{};render();},
+    e=>msg($("queueMsg"),"Database access error: "+friendlyError(e))
+  );
+}
+
+$("addQueueBtn").onclick=async()=>{
+  const vehicleNo=$("vehicleNo").value.trim().toUpperCase();
+  const model=$("vehicleModel").value.trim();
+  const serviceType=$("serviceType").value;
+  const techUid=$("technician").value;
+
+  if(!vehicleNo||!model||!techUid)
+    return msg($("queueMsg"),"Enter vehicle number, model and technician.");
+
+  const tech=PEOPLE[techUid];
+  const r=push(ref(db,"queue"));
+  const now=Date.now();
+
+  try{
+    await set(r,{
+      vehicleNo,model,serviceType,
+      technicianUid:techUid,technicianName:tech.name,
+      status:"waiting",createdAt:now,updatedAt:now,
+      createdByUid:currentUser.uid,createdByName:currentPerson.name,
+      dateKey:new Date().toISOString().slice(0,10)
+    });
+    $("vehicleNo").value="";
+    $("vehicleModel").value="";
+    msg($("queueMsg"),"Vehicle added to queue.",true);
+  }catch(e){
+    msg($("queueMsg"),"Could not add vehicle: "+friendlyError(e));
+  }
+};
+
+$("queueFilter").onchange=render;
+
+window.qStatus=async(id,status)=>{
+  const item=queue[id];
+  if(!item)return;
+
+  if(status==="in_service" &&
+     Object.values(queue).some(v=>v?.status==="in_service"))
+    return alert("The single alignment bay is already occupied. Complete the current vehicle first.");
+
+  try{
+    const changes={
+      status,
+      updatedAt:Date.now(),
+      startedAt:status==="in_service"?Date.now():(item.startedAt||null),
+      completedAt:status==="completed"?Date.now():(item.completedAt||null)
+    };
+    await update(ref(db,"queue/"+id),changes);
+  }catch(e){
+    alert(friendlyError(e));
+  }
+};
+
+function render(){
+  const a=Object.entries(queue).filter(([,v])=>v);
+  const w=a.filter(([,v])=>v.status==="waiting");
+  const s=a.filter(([,v])=>v.status==="in_service");
+  const c=a.filter(([,v])=>v.status==="completed");
+
+  $("waitingCount").textContent=w.length;
+  $("servingCount").textContent=s.length;
+  $("completedCount").textContent=c.length;
+  $("totalCount").textContent=a.length;
+
+  const n=s[0]?.[1];
+  $("nowServing").innerHTML=n
+    ? `<div class="now"><div class="big">${esc(n.vehicleNo)}</div><div class="vehicle">${esc(n.model)} • ${esc(n.serviceType)}</div><div class="tech">Technician: ${esc(n.technicianName)}</div></div>`
+    : `<div class="empty">No vehicle is currently in the alignment bay.</div>`;
+
+  let v=a.sort((x,y)=>(x[1].createdAt||0)-(y[1].createdAt||0));
+  const f=$("queueFilter").value;
+  if(f!=="all")v=v.filter(([,x])=>x.status===f);
+
+  if(currentPerson?.type==="car")
+    v=v.filter(([,x])=>x.serviceType!=="Two-Wheeler Service");
+  if(currentPerson?.type==="two")
+    v=v.filter(([,x])=>x.serviceType==="Two-Wheeler Service");
+
+  $("queueList").innerHTML=v.length
+    ? v.map(([id,x])=>card(id,x)).join("")
+    : `<div class="empty">No vehicles in this view.</div>`;
+}
+
+function card(id,v){
+  const cl=v.status==="in_service"?"service":v.status==="completed"?"done":"waiting";
+  const lab=v.status==="in_service"?"NOW SERVING":v.status.toUpperCase();
+  let b="";
+  if(v.status==="waiting")b+=`<button class="start" onclick="qStatus('${id}','in_service')">Start Service</button>`;
+  if(v.status==="in_service")b+=`<button class="complete" onclick="qStatus('${id}','completed')">Complete</button>`;
+
+  return `<div class="queue-item">
+    <div class="qtop"><div class="token">${esc(v.vehicleNo)}</div><span class="badge ${cl}">${lab}</span></div>
+    <div class="qmeta"><span>${esc(v.model)}</span><span>• ${esc(v.serviceType)}</span><span>• ${esc(v.technicianName)}</span></div>
+    <div class="qactions">${b}</div>
+  </div>`;
+}
+
+function esc(x){
+  return String(x??"").replace(/[&<>"']/g,m=>({
+    "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+  }[m]));
+}
+</script>
+</body>
+</html>
