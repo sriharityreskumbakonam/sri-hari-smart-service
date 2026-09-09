@@ -1,0 +1,432 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sri Hari Tyres – Smart Workshop</title>
+<style>
+:root{--bg:#071522;--p:#0d2032;--p2:#10283d;--l:#27445d;--b:#38bdf8;--o:#ff6b00;--g:#10b981;--r:#ef4444;--y:#f59e0b;--t:#f4f7fb;--m:#91a4b8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font:12px Arial,sans-serif}button,input,select{font:inherit}button{border:0;border-radius:7px;padding:9px 12px;background:var(--b);color:#062033;font-weight:900;cursor:pointer}button.green{background:var(--g);color:#fff}button.red{background:var(--r);color:#fff}button.dark{background:#17314a;color:#fff;border:1px solid #2b4861}button.orange{background:var(--o);color:#fff}button:disabled{opacity:.45;cursor:not-allowed}.hidden{display:none!important}header{background:#091624;border-bottom:1px solid #1c344b;padding:13px 15px;position:sticky;top:0;z-index:50}.brand{font-size:16px;font-weight:900}.brand span{color:var(--o)}.sub,.small,.label{color:var(--m);font-size:9px}.headright{position:absolute;right:12px;top:11px;text-align:right;font-size:9px}.live{color:var(--g);font-weight:900}.off{color:var(--r);font-weight:900}.nav{display:flex;gap:5px;padding:7px 10px;background:#091624;border-bottom:1px solid #1c344b;position:sticky;top:54px;z-index:49;overflow:auto}.nav button{flex:1;min-width:76px;padding:7px 8px;font-size:10px;background:#102235;color:#eaf1f7;border:1px solid #263b50;white-space:nowrap}.nav button.active{background:var(--b);color:#071522}.page{display:none;padding:12px;max-width:1450px;margin:auto}.page.active{display:block}.card{background:var(--p);border:1px solid var(--l);border-radius:10px;padding:12px;margin-bottom:10px}.card h2{font-size:15px;margin:0 0 10px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.metric{background:var(--p2);border:1px solid var(--l);border-radius:8px;padding:12px}.metric .n{font-size:25px;font-weight:900;color:var(--b)}.metric .l{font-size:9px;color:var(--m);margin-top:3px}.form{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}input,select{width:100%;background:#0b1d2d;color:var(--t);border:1px solid #334a60;border-radius:7px;min-height:37px;padding:8px 10px;font-size:11px}input:focus,select:focus{outline:1px solid var(--b);border-color:var(--b)}.actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.summary{display:grid;grid-template-columns:1fr 1fr;gap:7px}.sum{display:flex;justify-content:space-between;background:var(--p2);border:1px solid var(--l);border-radius:7px;padding:9px;font-size:11px}.sum b{color:var(--b)}.now{text-align:center;padding:20px;border:1px solid var(--b);border-radius:10px;background:radial-gradient(circle at 50% 15%,#173753,#0b1d2e 55%,#081522)}.nt{color:var(--o);font-weight:900}.nv{font-size:clamp(38px,7vw,90px);font-weight:950;line-height:1}.nm{font-size:clamp(22px,4vw,50px);color:var(--b);font-weight:900;margin:7px}.ns{color:var(--o);font-weight:900}.row{display:grid;grid-template-columns:65px 1.1fr 1fr 1.4fr 1.2fr auto;gap:7px;align-items:center;background:var(--p2);border:1px solid var(--l);border-left:3px solid var(--b);border-radius:8px;padding:9px;margin:7px 0}.token{font-size:15px;font-weight:900;color:var(--b)}.vehicle{font-weight:900}.model{color:var(--b);font-weight:800}.badge{display:inline-block;border-radius:99px;padding:3px 7px;font-size:8px;font-weight:900}.wait{background:#3b2a08;color:#fbbf24}.svc{background:#063d26;color:#86efac}.free{background:#3b1747;color:#f0abfc}.danger{color:var(--r)}.good{color:var(--g)}table{width:100%;border-collapse:collapse;min-width:760px;font-size:10px}th,td{padding:8px;border-bottom:1px solid #22394e;text-align:left}th{background:#14273b;color:#9fb1c3}.scroll{overflow:auto}.filter{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:8px}.tvhead{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:2px solid var(--o);margin-bottom:8px}.tvhead b{font-size:clamp(18px,3vw,38px)}.tvnow{min-height:58vh;display:flex;flex-direction:column;justify-content:center;text-align:center;border:1px solid var(--b);border-radius:12px;background:radial-gradient(circle at 50% 15%,#173753,#0b1d2e 55%,#071522)}.tvnow .tvtoken{color:var(--o);font-size:clamp(18px,2vw,30px);font-weight:900}.tvnow .tvveh{font-size:clamp(42px,8vw,125px);font-weight:950;line-height:1}.tvnow .tvmodel{font-size:clamp(26px,4vw,62px);color:var(--b);font-weight:900;margin:7px}.tvwaittitle{text-align:center;font-size:clamp(15px,2vw,28px);font-weight:900;margin:9px}.tvgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.tvcard{background:var(--p);border:1px solid var(--l);border-radius:8px;padding:10px;text-align:center}.tvcard .v{font-size:clamp(18px,2.4vw,38px);font-weight:900}.staffrow{display:grid;grid-template-columns:1.4fr 1fr 1fr auto;gap:7px;align-items:center;background:var(--p2);border:1px solid var(--l);border-radius:7px;padding:8px;margin:6px 0}.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;padding:15px;z-index:100}.modalbox{width:min(420px,100%);background:var(--p);border:1px solid var(--l);border-radius:12px;padding:15px}.toast{position:fixed;right:12px;bottom:15px;background:var(--p2);border:1px solid var(--b);padding:10px 13px;border-radius:8px;z-index:100000;display:none}
+@media(max-width:850px){.grid{grid-template-columns:1fr 1fr}.form,.filter{grid-template-columns:1fr 1fr}.row{grid-template-columns:55px 1fr 1fr}.row .edit,.row .actions{grid-column:1/-1}.tvgrid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.headright{display:none}.summary{grid-template-columns:1fr}.form,.filter{grid-template-columns:1fr}.grid{gap:6px}.metric{padding:9px}.metric .n{font-size:21px}.row{grid-template-columns:1fr 1fr}.row>div:first-child{grid-column:1/-1}.staffrow{grid-template-columns:1fr 1fr}.tvgrid{grid-template-columns:1fr 1fr}}
+</style><script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style id="sh-os-status-style">
+#sh-os-status{position:fixed;right:14px;bottom:14px;z-index:99999;
+font:600 11px/1.2 system-ui,sans-serif;padding:7px 10px;border-radius:999px;
+background:rgba(16,29,46,.94);color:#9db0c7;border:1px solid #29405b;
+box-shadow:0 4px 16px rgba(0,0,0,.25);pointer-events:none}
+</style>
+
+</head><body><button id="logout" class="small-btn" type="button" style="margin-left:8px">Logout</button>
+<header><div class="brand">SRI HARI <span>TYRES</span></div><div class="sub">SMART WORKSHOP & TOKEN MANAGEMENT SYSTEM</div><div class="headright"><span id="conn" class="off">● OFFLINE</span><br><span id="who">Manager (Test Mode)</span></div></header>
+<nav class="nav" id="nav"><button data-p="dashboard">🏠 DASHBOARD</button><button data-p="queue">🎫 QUEUE</button><button data-p="staff">👥 STAFF</button><button data-p="tv">📺 TV</button><button data-p="history">📋 HISTORY</button><button data-p="reports">📊 REPORTS</button><button data-p="incentive">💰 INCENTIVE</button><button data-p="activity">🔎 ACTIVITY</button></nav>
+<main>
+<section id="dashboard" class="page"><div class="grid"><div class="metric"><div class="n" id="dtotal">0</div><div class="l">TOTAL TOKENS</div></div><div class="metric"><div class="n" id="dwait">0</div><div class="l">WAITING</div></div><div class="metric"><div class="n" id="dsvc">0</div><div class="l">IN SERVICE</div></div><div class="metric"><div class="n" id="ddone">0</div><div class="l">COMPLETED</div></div></div><div class="card"><h2>📊 Service Summary</h2><div id="summary" class="summary"></div></div></section>
+<section id="queue" class="page"><div class="card"><h2>➕ Add Vehicle & Generate Token</h2><div class="form"><input id="vno" placeholder="Vehicle Number"><input id="model" placeholder="Vehicle Model"><select id="tech"></select><select id="stype"></select></div><div class="actions"><button id="add">GENERATE TOKEN</button></div><div class="small" style="margin-top:7px">Regular: 1, 2, 3... each day. Free Service: F1, F2, F3... separate sequence and never incentive eligible.</div></div><div class="card"><h2>🔧 Now Serving</h2><div id="qnow"></div></div><div class="card"><h2>⏳ Waiting Vehicles</h2><div id="waitlist"></div></div></section>
+<section id="staff" class="page">
+<div class="card manager">
+<h2>👥 Staff Management</h2>
+<div class="form">
+<input id="sname" placeholder="Staff Name">
+<input id="semail" placeholder="Login Email">
+<select id="srole"><option value="technician">Technician</option><option value="manager">Manager</option></select>
+<select id="sclass"><option value="car">Car Technician</option><option value="twoWheeler">Two-Wheeler Technician</option><option value="manager">Manager</option></select>
+</div>
+<div class="actions"><button id="saves">SAVE STAFF PROFILE</button></div>
+<div class="small">Manager can add, edit and delete staff. Technicians cannot edit staff or attendance.</div>
+</div>
+
+<div class="card"><h2>🧑‍🔧 Staff List</h2><div id="stafflist"></div></div>
+
+<div class="card">
+<h2>📅 Attendance Summary</h2>
+<div class="filter"><input type="month" id="attmonth"></div>
+<div class="scroll"><table>
+<thead><tr><th>Staff Name</th><th>Present Days</th><th>Absent Days</th><th>Working Days</th></tr></thead>
+<tbody id="attsummary"></tbody>
+</table></div>
+</div>
+
+<div class="card manager">
+<h2>🗓️ Daily Attendance</h2>
+<div class="filter"><input type="date" id="attdate"><button id="saveatt">SAVE ATTENDANCE</button></div>
+<div id="attlist"></div>
+</div>
+</section>
+<section id="tv" class="page"><div class="tvhead"><b>SRI HARI TYRES <span style="font-size:.4em;color:var(--b)">LIVE SERVICE QUEUE</span></b><span>WAITING: <b id="tvcount">0</b></span></div><div id="tvnow" class="tvnow"></div><div class="tvwaittitle">⏳ WAITING VEHICLES</div><div id="tvlist" class="tvgrid"></div></section>
+<section id="history" class="page"><div class="card"><h2>📋 Service History</h2><div class="filter"><input type="date" id="hf"><input type="date" id="ht"><input id="hs" placeholder="Search vehicle / token / technician"><select id="hstatus"><option value="">All Status</option><option>Completed</option><option>Removed</option></select></div><div class="small" style="margin-bottom:8px">History is permanent. All staff can view records. Only Manager can edit completed records. History records cannot be deleted.</div><div class="scroll"><table><thead><tr><th>Date</th><th>Token</th><th>Vehicle</th><th>Model</th><th>Technician</th><th>Service Type</th><th>Status</th><th>Created</th><th>Started</th><th>Completed</th><th>Eligible</th><th>Last Modified</th><th>Action</th></tr></thead><tbody id="hbody"></tbody></table></div></div></section>
+<section id="reports" class="page"><div class="card"><h2>📊 Reports</h2><div id="rkpi" class="grid"></div></div><div class="card"><h2>🧑‍🔧 Technician Work Done Today</h2><div class="scroll"><table id="ttoday"></table></div></div><div class="card"><h2>📅 Technician Work Done This Month</h2><div class="scroll"><table id="tmonth"></table></div></div><div class="card"><h2>🎁 Free Service Done Today</h2><div class="scroll"><table id="ftoday"></table></div></div><div class="card"><h2>🎁 Free Service Done This Month</h2><div class="scroll"><table id="fmonth"></table></div></div></section>
+<section id="incentive" class="page"><div class="card"><h2>💰 Incentive</h2><div class="filter"><select id="ifperiod"><option value="today">Today</option><option value="date">Exact Date</option><option value="month" selected>This Month</option></select><input type="date" id="ifdate"><input type="month" id="ifmonth"><select id="iftech"><option value="">All Technicians / Manager</option></select><select id="ifclass"><option value="">All</option><option value="car">Car Technician</option><option value="twoWheeler">Two-Wheeler Technician</option><option value="manager">Manager</option></select></div><div class="small" id="iflabel" style="margin-top:7px"></div></div><div class="card"><h2>📅 Monthly Accumulated Incentive</h2><div class="scroll"><table id="monthlyIncTable"><thead><tr><th>Technician / Manager</th><th>Role</th><th>Accumulated Incentive</th></tr></thead><tbody id="monthlyIncBody"></tbody><tfoot><tr><th colspan="2">TOTAL</th><th id="monthlyIncTotal">₹0.00</th></tr></tfoot></table></div><div class="small">Monthly total for the selected month. Car and two-wheeler technicians receive the shared daily pool according to attendance. Manager incentive is separate.</div></div><div class="card"><h2>💰 Daily Incentive Details</h2><div class="grid"><div class="metric"><div class="n" id="ielig">0</div><div class="l">ELIGIBLE TOKENS</div></div><div class="metric"><div class="n" id="ipool">₹0</div><div class="l">ALIGNMENT POOL</div></div><div class="metric"><div class="n" id="ifit">0</div><div class="l">2W FITTINGS</div></div><div class="metric"><div class="n" id="ishare">₹0</div><div class="l">EACH PRESENT SHARE</div></div></div><div class="small" style="margin-top:8px">Tokens 1–7: no incentive. Token 8 onwards: completed eligible regular tokens. Alignment ₹90; every other eligible regular service ₹150; Free Service ₹0. 2W fitting ₹10 each. One daily pool shared equally by all present Car + Two-Wheeler Technicians.</div></div><div class="card"><h2>🛵 Daily Inputs</h2><div class="form"><input type="number" id="fit" min="0" placeholder="Two-wheeler fittings today"><input type="number" id="cartyres" min="0" placeholder="Car tyres sold today"><input type="password" id="pin" placeholder="Manager PIN"></div><div class="actions"><button class="manager" id="saveinc">SAVE DAILY INPUT</button><button class="manager orange" id="lock">LOCK / UNLOCK DAY</button></div><div class="small">Only Manager can edit daily inputs. Manager PIN can be changed whenever required. Lock/unlock and corrections are recorded in Activity.</div></div><div class="card manager"><h2>🔐 Manager PIN</h2><div class="form"><input id="newPin" type="password" inputmode="numeric" maxlength="8" placeholder="New Manager PIN"><input id="confirmPin" type="password" inputmode="numeric" maxlength="8" placeholder="Confirm PIN"></div><div class="actions"><button id="changePin" class="dark">CHANGE PIN</button></div><div class="small">Initial PIN for this no-login build: 2580. Change it before operational use. PIN is required only for sensitive Manager actions.</div></div><div class="card"><h2>👥 Incentive Pool</h2><div id="ibreak"></div></div><div class="card manager"><h2>👔 Manager Incentive / Car Tyre Sales</h2><div class="small" id="mgrMonthSummary"></div><div class="small">Non-progressive daily slab: 300 tyres = ₹3,000 · 400 tyres = ₹6,000 · 500 tyres = ₹10,000. Below 300 = ₹0. Monthly manager incentive is the sum of each day's applicable slab.</div></div></section>
+<section id="activity" class="page"><div class="card manager">
+<h2>📦 Data Backup</h2>
+<div class="filter">
+<input type="date" id="bkfrom">
+<input type="date" id="bkto">
+<select id="bkuser"><option value="">All Users</option></select>
+<select id="bkaction"><option value="">All Actions</option></select>
+<input id="bksearch" placeholder="Search activity">
+<button id="bkclear">CLEAR</button>
+</div>
+<div class="actions"><button id="backupExcel">⬇ BACKUP ALL DATA → EXCEL</button></div>
+<div class="small">Manager-only. Creates one Excel workbook containing the complete workshop data, including Queue/Tokens, History, Staff, Attendance, Incentive, Manager Incentive, Two-Wheeler Fitting, Activity Log and Reports/Summary.</div>
+</div>
+<div class="card"><h2>🔎 Activity Log</h2><div class="filter"><input id="aq" placeholder="Search activity"><input type="date" id="ad"><button id="arefresh">REFRESH</button></div><div class="scroll"><table><thead><tr><th>Time</th><th>User</th><th>Action</th><th>Details</th></tr></thead><tbody id="abody"></tbody></table></div></div></section></main>
+<div id="historyEditPopup" class="modal hidden"><div class="modalbox"><h2>✏️ Edit Completed History</h2><div class="small">Manager PIN required. Changes are audited and incentive is recalculated from the corrected service record.</div><input type="hidden" id="heId"><input type="hidden" id="heDay"><div class="form" style="margin-top:10px"><input id="heVehicle" placeholder="Vehicle Number"><input id="heModel" placeholder="Vehicle Model"><select id="heTech"></select><select id="heService"></select></div><div class="small" style="margin-top:8px">Status remains protected. Records cannot be deleted.</div><input id="hePin" type="password" placeholder="Manager PIN" style="margin-top:8px"><div class="actions"><button id="heSave" class="green">SAVE CORRECTION</button><button id="heCancel" class="dark">CANCEL</button></div></div></div><div id="tokenPopup" class="modal hidden"><div class="modalbox" style="text-align:center"><div style="font-size:13px;font-weight:900;color:var(--g);letter-spacing:1px">✓ TOKEN GENERATED</div><div id="popupToken" style="font-size:42px;font-weight:1000;margin:8px 0;color:var(--b)"></div><div id="popupDetails" class="small" style="line-height:1.8"></div><div class="actions" style="justify-content:center;margin-top:14px"><button id="popupOk">OK</button></div></div></div><div id="login" class="modal hidden"></div><div id="toast" class="toast"></div>
+<script type="module">
+import{initializeApp,getApps}from'https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js';import{getDatabase,ref,onValue,get,set,update,push}from'https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js';import{getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut}from'https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js';
+const cfg={apiKey:'AIzaSyBFqSsLQbiaCnKeVzmNmeEZMKmo4Bx5fwA',authDomain:'sri-hari-tyres-smartservice.firebaseapp.com',databaseURL:'https://sri-hari-tyres-smartservice-default-rtdb.asia-southeast1.firebasedatabase.app',projectId:'sri-hari-tyres-smartservice',storageBucket:'sri-hari-tyres-smartservice.firebasestorage.app',messagingSenderId:'410615822494',appId:'1:410615822494:web:88c0e090de8965ba54638f'};const app=getApps().length?getApps()[0]:initializeApp(cfg),db=getDatabase(app),auth=getAuth(app);
+const services=['Alignment','Alignment + Balancing','2 Tyres + Alignment','4 Tyres + Alignment','2 Tyres + Alignment + Balancing','4 Tyres + Alignment + Balancing','Free Service'];const techDefault=[['Arjun','car'],['Aravind','car'],['Arivazhagan','car'],['Sarath Kumar','car'],['Vijay','car'],['Nandha','twoWheeler'],['Venkatesh','twoWheeler']];const S=s=>s.toUpperCase();const $=x=>document.getElementById(x);const today=()=>{let d=new Date(),z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())},dk=d=>(d||today()).replaceAll('-',''),path=()=>`days/${dk()}`;let U=null,P={},D={},ACT={},un=[];function toast(x){$('toast').textContent=x;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2000)}function mgr(){return P.role==='manager'||P.class==='manager'}function esc(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function name(){return P.name||U?.email||'Unknown'}function log(a,d){if(U)push(ref(db,'activity'),{ts:Date.now(),date:today(),user:name(),action:a,details:d})}function ts(){return Object.entries(D.tokens||{}).map(([id,x])=>({id,...x})).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0))}function eligible(x){return !x.free&&x.status==='Completed'&&Number(x.token)>=8}function value(x){return eligible(x)?(x.serviceType==='Alignment'?90:150):0}
+function technicians(){let a=Object.values(D.staff||{});if(!a.length)a=techDefault.map(x=>({name:x[0],class:x[1],role:'technician'}));return a.filter(x=>x.role!=='manager'&&x.class!=='manager')}function carTechnicians(){return technicians().filter(x=>x.class==='car')}function optsTech(sel){return carTechnicians().map(x=>`<option ${x.name===sel?'selected':''}>${esc(x.name)}</option>`).join('')}function optsSvc(sel){return services.map(x=>`<option value="${esc(x)}" ${x===sel?'selected':''}>${esc(x)}</option>`).join('')}function short(x){return x.replaceAll('Tyres','TYRES').replaceAll(' + ',' + ').toUpperCase()}
+function render(){dash();queue();tv();history();reports();incentive();staff();attendance();attendanceSummary();activity();document.querySelectorAll('.manager').forEach(x=>x.style.display=mgr()?'':'none');$('who').textContent=name()+(mgr()?' · MANAGER':' · TECHNICIAN')}
+function dash(){let a=ts();$('dtotal').textContent=a.length;$('dwait').textContent=a.filter(x=>x.status==='Waiting').length;$('dsvc').textContent=a.filter(x=>x.status==='In Service').length;$('ddone').textContent=a.filter(x=>x.status==='Completed').length;let c={};services.forEach(x=>c[x]=0);a.filter(x=>x.status==='Completed').forEach(x=>c[x.serviceType]++);$('summary').innerHTML=services.map(x=>`<div class=sum><span>${esc(short(x))}</span><b>${c[x]}</b></div>`).join('')}function nowHtml(x){return `<div class=now><div class=nt>NOW SERVING · TOKEN ${esc(x.tokenLabel)}</div><div class=nv>${esc(x.vehicleNo)}</div><div class=nm>${esc(x.vehicleModel)}</div><div class=ns>${esc(short(x.serviceType))}</div><div>🧑‍🔧 TECHNICIAN: ${esc(x.technician)}</div><div style="margin-top:8px"><span class="badge svc">● IN PROGRESS</span></div><div class="actions" style="justify-content:center;margin-top:12px"><button class="green" data-complete="${esc(x.id)}">✓ COMPLETE</button></div></div>`}
+function queue(){let a=ts(),n=a.find(x=>x.status==='In Service'),w=a.filter(x=>x.status==='Waiting');$('qnow').innerHTML=n?nowHtml(n):'<div class=small style="text-align:center;padding:18px">No vehicle currently in service.</div>';$('waitlist').innerHTML=w.length?w.map(x=>`<div class=row data-id=${x.id}><div><div class=token>${esc(x.tokenLabel)}</div><span class="badge ${x.free?'free':'wait'}">${x.free?'FREE':'WAITING'}</span></div><div><div class=vehicle>${esc(x.vehicleNo)}</div><div class=small>Vehicle Number</div></div><div><div class=model>${esc(x.vehicleModel)}</div><div class=small>Vehicle Model</div></div><div class=edit><select class=es>${optsSvc(x.serviceType)}</select></div><div class=edit><select class=et>${optsTech(x.technician)}</select></div><div class=actions><button class=green data-start=${x.id}>▶ START</button><button class=dark data-save=${x.id} type="button" title="Queue changes are saved automatically to Firebase">SAVE</button><button class=red data-remove=${x.id}>REMOVE</button></div></div>`).join(''):'<div class=small style="text-align:center;padding:18px;border:1px dashed #385168;border-radius:8px">No vehicles waiting.</div>';document.querySelectorAll('[data-start]').forEach(b=>b.onclick=()=>start(b.dataset.start));document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>remove(b.dataset.remove));document.querySelectorAll('[data-save]').forEach(b=>b.onclick=()=>edit(b.dataset.save));document.querySelectorAll('[data-start]').forEach(b=>b.disabled=!!n);document.querySelectorAll('[data-complete]').forEach(b=>b.onclick=()=>complete(b.dataset.complete))}
+async function add(){let v=$('vno').value.trim().toUpperCase(),m=$('model').value.trim(),t=$('tech').value,s=$('stype').value;if(!v||!m)return toast('Enter vehicle number and model');let a=ts(),free=s==='Free Service',n=a.filter(x=>!!x.free===free).reduce((q,x)=>Math.max(q,Number(x.token)||0),0)+1,id=push(ref(db,path()+'/tokens')).key,x={token:n,tokenLabel:free?'F'+n:String(n),free,vehicleNo:v,vehicleModel:m,technician:t,serviceType:s,status:'Waiting',createdAt:Date.now(),createdBy:name()};await set(ref(db,path()+'/tokens/'+id),x);log('Token Created',`${x.tokenLabel} · ${v} · ${s} · ${t}`);$('vno').value='';$('model').value='';$('popupToken').textContent=x.tokenLabel;$('popupDetails').innerHTML=`<b>${esc(v)}</b><br>${esc(m)}<br>Technician: ${esc(t)}<br>Service Type: ${esc(s)}<br><span class="badge wait" style="margin-top:6px">WAITING</span>`;$('tokenPopup').classList.remove('hidden')}
+async function start(id){if(ts().some(x=>x.status==='In Service'))return toast('Bay is BUSY');let x=ts().find(a=>a.id===id);await update(ref(db,path()+'/tokens/'+id),{status:'In Service',startedAt:Date.now(),startedBy:name()});log('Service Started',`${x.tokenLabel} · ${x.vehicleNo}`)}async function complete(id){let x=ts().find(a=>a.id===id);if(!x||x.status!=='In Service')return;if(!confirm(`Complete ${x.tokenLabel}?`))return;await update(ref(db,path()+'/tokens/'+id),{status:'Completed',completedAt:Date.now(),completedBy:name()});log('Service Completed',`${x.tokenLabel} · ${x.vehicleNo} · eligible=${eligible({...x,status:'Completed'})}`)}async function remove(id){let x=ts().find(a=>a.id===id);if(!x||x.status!=='Waiting')return;if(!confirm(`Remove ${x.tokenLabel}? It will not be incentive eligible.`))return;await update(ref(db,path()+'/tokens/'+id),{status:'Removed',removedAt:Date.now(),removedBy:name()});log('Token Removed',`${x.tokenLabel} · ${x.vehicleNo} · not eligible`)}async function edit(id){let x=ts().find(a=>a.id===id),r=document.querySelector(`[data-id="${id}"]`);if(!x||x.status!=='Waiting')return;let s=r.querySelector('.es').value,t=r.querySelector('.et').value;if(s===x.serviceType&&t===x.technician)return;let newFree=s==='Free Service',updates={serviceType:s,technician:t,editedAt:Date.now(),editedBy:name()};if(newFree!==!!x.free){let a=ts(),same=a.filter(z=>!!z.free===newFree),next=same.reduce((q,z)=>Math.max(q,Number(z.token)||0),0)+1,oldLabel=x.tokenLabel,newLabel=newFree?'F'+next:String(next);updates.free=newFree;updates.token=next;updates.tokenLabel=newLabel;await update(ref(db,path()+'/tokens/'+id),updates);log('Token Classification Changed',`${oldLabel} → ${newLabel} · ${x.vehicleNo} · ${x.serviceType} → ${s}`);toast(`${oldLabel} changed to ${newLabel}`)}else{await update(ref(db,path()+'/tokens/'+id),updates);log('Waiting Token Edited',`${x.tokenLabel} · ${x.vehicleNo} · ${x.serviceType} → ${s} · Technician: ${x.technician} → ${t}`);toast('Token updated')}}
+function tv(){let a=ts(),n=a.find(x=>x.status==='In Service'),w=a.filter(x=>x.status==='Waiting');$('tvcount').textContent=w.length;$('tvnow').innerHTML=n?`<div style="color:var(--o);font-weight:900;letter-spacing:2px">NOW SERVICING</div><div class=tvtoken>TOKEN ${esc(n.tokenLabel)}</div><div class=tvveh>${esc(n.vehicleNo)}</div><div class=tvmodel>${esc(n.vehicleModel)}</div><div style="color:var(--o);font-weight:900">${esc(short(n.serviceType))}</div><div>🧑‍🔧 ${esc(n.technician)}</div><div style="margin-top:8px"><span class="badge svc">● IN PROGRESS</span></div>`:'<div style="color:var(--o);font-weight:900;letter-spacing:2px">NOW SERVING</div><div class=tvveh style="font-size:clamp(24px,4vw,55px)">BAY AVAILABLE</div><div class=small>Waiting for the next vehicle</div>';$('tvlist').innerHTML=w.length?w.map(x=>`<div class=tvcard><div style="color:var(--o);font-weight:900">TOKEN ${esc(x.tokenLabel)}</div><div class=v>${esc(x.vehicleNo)}</div><div style="color:var(--b);font-weight:800">${esc(x.vehicleModel)}</div><div class=small>${esc(short(x.serviceType))}</div><div class=small>${esc(x.technician)}</div></div>`).join(''):'<div class=tvcard><div class=small>No vehicles waiting</div></div>'}
+function history(){
+ const q=($('hs').value||'').toLowerCase(),st=$('hstatus').value,from=$('hf').value||'',to=$('ht').value||'';
+ const rows=[];
+ const allDays=new Set([today(),...Object.keys(D.history||{})]);
+ allDays.forEach(day=>{
+   if(from&&day<from)return;if(to&&day>to)return;
+   const src=day===today()?D.tokens||{}:D.history?.[day]?.tokens||{};
+   Object.entries(src).forEach(([id,x])=>{
+     const r={id,day,...x};
+     if(r.status!=='Completed'&&r.status!=='Removed')return;
+     if(st&&r.status!==st)return;
+     if(q&&!([r.tokenLabel,r.vehicleNo,r.vehicleModel,r.technician,r.serviceType,r.createdBy,r.completedBy,r.editedBy].join(' ').toLowerCase().includes(q)))return;
+     rows.push(r);
+   });
+ });
+ rows.sort((a,b)=>(b.completedAt||b.removedAt||b.createdAt||0)-(a.completedAt||a.removedAt||a.createdAt||0));
+ $('hbody').innerHTML=rows.map(x=>{
+   const fmt=t=>t?new Date(t).toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):'—';
+   const lm=x.editedAt?`${esc(x.editedBy||'Manager')} · ${fmt(x.editedAt)}`:'—';
+   return `<tr><td>${esc(x.day)}</td><td><b>${esc(x.tokenLabel)}</b>${x.editedAt?' <span class="badge" style="background:#3b2a08;color:#fbbf24">EDITED</span>':''}</td><td>${esc(x.vehicleNo)}</td><td>${esc(x.vehicleModel)}</td><td>${esc(x.technician)}</td><td>${esc(x.serviceType)}</td><td>${esc(x.status)}</td><td>${fmt(x.createdAt)}<br><span class="small">${esc(x.createdBy||'—')}</span></td><td>${fmt(x.startedAt)}<br><span class="small">${esc(x.startedBy||'—')}</span></td><td>${fmt(x.completedAt)}<br><span class="small">${esc(x.completedBy||'—')}</span></td><td>${eligible(x)?'<span class="good">YES</span>':'NO'}</td><td>${lm}</td><td>${mgr()&&x.status==='Completed'?`<button class="dark" data-history-edit="${esc(x.id)}" data-history-day="${esc(x.day)}">EDIT</button>`:'—'}</td></tr>`;
+ }).join('')||'<tr><td colspan="13">No history records found.</td></tr>';
+ document.querySelectorAll('[data-history-edit]').forEach(b=>b.onclick=()=>openHistoryEdit(b.dataset.historyId||b.getAttribute('data-history-edit'),b.getAttribute('data-history-day')));
+}
+function openHistoryEdit(id,day){
+ if(!mgr())return toast('Manager access required');
+ const src=day===today()?D.tokens||{}:D.history?.[day]?.tokens||{},x=src[id];if(!x)return toast('Record not found');
+ $('heId').value=id;$('heDay').value=day;$('heVehicle').value=x.vehicleNo||'';$('heModel').value=x.vehicleModel||'';
+ $('heTech').innerHTML=optsTech(x.technician);$('heService').innerHTML=optsSvc(x.serviceType);$('hePin').value='';$('historyEditPopup').classList.remove('hidden');
+}
+function closeHistoryEdit(){$('historyEditPopup').classList.add('hidden')}
+async function saveHistoryEdit(){
+ if(!mgr())return toast('Manager access required');
+ const pin=$('hePin').value.trim(), saved=D.incentive?.managerPin||'2580';
+ if(pin!==saved)return toast('Wrong Manager PIN');
+ const id=$('heId').value,day=$('heDay').value,src=day===today()?D.tokens||{}:D.history?.[day]?.tokens||{},before=src[id];if(!before)return toast('Record not found');
+ const vehicle=$('heVehicle').value.trim().toUpperCase(),model=$('heModel').value.trim(),tech=$('heTech').value,service=$('heService').value;
+ if(!vehicle||!model||!tech||!service)return toast('Complete all fields');
+ const after={...before,vehicleNo:vehicle,vehicleModel:model,technician:tech,serviceType:service,free:service==='Free Service',editedAt:Date.now(),editedBy:name()};
+ // Completed history corrections never change the historical token sequence. Only service classification changes eligibility/value.
+ if(after.free)after.tokenLabel=String(before.tokenLabel||before.token||'').startsWith('F')?before.tokenLabel:'F'+before.token;
+ else after.tokenLabel=String(before.tokenLabel||before.token||'').startsWith('F')?String(before.token):String(before.tokenLabel||before.token||'');
+ const changes=[];['vehicleNo','vehicleModel','technician','serviceType','free','tokenLabel'].forEach(k=>{if(JSON.stringify(before[k])!==JSON.stringify(after[k]))changes.push({field:k,before:before[k],after:after[k]})});
+ if(!changes.length){closeHistoryEdit();return toast('No changes made')}
+ const base=day===today()?ref(db,path()+'/tokens/'+id):ref(db,'days/'+dk(day)+'/tokens/'+id);
+ await update(base,{vehicleNo:after.vehicleNo,vehicleModel:after.vehicleModel,technician:after.technician,serviceType:after.serviceType,free:after.free,tokenLabel:after.tokenLabel,editedAt:after.editedAt,editedBy:after.editedBy});
+ const beforeText=changes.map(c=>`${c.field}: ${c.before??'—'}`).join(' | '),afterText=changes.map(c=>`${c.field}: ${c.after??'—'}`).join(' | ');
+ log('History Edited',`Token ${before.tokenLabel||before.token} · Before: ${beforeText} · After: ${afterText} · Changed by: ${name()} · Incentive recalculated automatically`);
+ closeHistoryEdit();toast('History corrected • Incentive recalculated');render();
+}
+
+function techTable(a){let cols=services.slice(0,6),people=carTechnicians();return `<thead><tr><th>Technician</th><th>Completed Jobs</th>${cols.map(c=>`<th>${esc(short(c))}</th>`).join('')}</tr></thead><tbody>`+people.map(p=>{let z=a.filter(x=>x.status==='Completed'&&!x.free&&x.technician===p.name);return `<tr><td>${esc(p.name)}</td><td>${z.length}</td>${cols.map(c=>`<td>${z.filter(x=>x.serviceType===c).length}</td>`).join('')}</tr>`}).join('')+'</tbody>'}function freeTable(a){return '<thead><tr><th>Technician</th><th>Free Services Done</th></tr></thead><tbody>'+carTechnicians().map(p=>`<tr><td>${esc(p.name)}</td><td>${a.filter(x=>x.status==='Completed'&&x.free&&x.technician===p.name).length}</td></tr>`).join('')+'</tbody>'}function reports(){let a=ts().filter(x=>x.status==='Completed'),td=a.filter(x=>new Date(x.completedAt).toISOString().slice(0,10)===today()),mo=a.filter(x=>new Date(x.completedAt).toISOString().slice(0,7)===today().slice(0,7));$('rkpi').innerHTML=[['Completed Today',td.length],['Regular Completed',td.filter(x=>!x.free).length],['Free Service',td.filter(x=>x.free).length],['Eligible Tokens',td.filter(eligible).length]].map(x=>`<div class=metric><div class=n>${x[1]}</div><div class=l>${x[0]}</div></div>`).join('');$('ttoday').innerHTML=techTable(td);$('tmonth').innerHTML=techTable(mo);$('ftoday').innerHTML=freeTable(td);$('fmonth').innerHTML=freeTable(mo)}
+function incentiveRange(){
+ const period=$('ifperiod')?.value||'today', date=$('ifdate')?.value||today(), month=$('ifmonth')?.value||today().slice(0,7), tech=$('iftech')?.value||'', cls=$('ifclass')?.value||'';
+ let days=[];
+ if(period==='today'||period==='date') days=[period==='today'?today():date];
+ else {let [y,m]=month.split('-').map(Number),n=new Date(y,m,0).getDate();for(let d=1;d<=n;d++)days.push(`${month}-${String(d).padStart(2,'0')}`)}
+ let rows=[];
+ days.forEach(day=>{let toks=day===today()?ts():Object.values(D.history?.[day]?.tokens||{}).map((x,i)=>({id:Object.keys(D.history?.[day]?.tokens||{})[i],...x}));rows.push(...toks.map(x=>({...x,day})))});
+ return {rows,period,date,month,tech,cls,days};
+}
+function inc(){
+ const q=incentiveRange();
+ // Calculate the shared pool from ALL eligible completed tokens first.
+ // Technician/class filters affect the displayed person's share, never the pool itself.
+ const allEligible=q.rows.filter(x=>eligible(x));
+ const e=q.rows.filter(x=>eligible(x)&&(!q.tech||x.technician===q.tech)&&(!q.cls||technicians().find(t=>t.name===x.technician)?.class===q.cls));
+ let fit=0,totalPool=0,present=0;
+ q.days.forEach(day=>{
+   if(day===today()) {fit+=Number(D.incentive?.twoWFitting||0);present+=Object.values(D.attendance||{}).filter(x=>x==='P').length}
+   else {fit+=Number(D.history?.[day]?.incentive?.twoWFitting||0);present+=Object.values(D.history?.[day]?.attendance||{}).filter(x=>x==='P').length}
+ });
+ let pool=allEligible.reduce((s,x)=>s+value(x),0),fp=fit*10,total=pool+fp;
+ return {e,allEligible,pool,fit,fp,total,p:present,share:present?total/present:0,q};
+}
+function incentivePeople(){
+ const p=[];
+ carTechnicians().forEach(x=>p.push({name:x.name,role:'Car Technician',cls:'car'}));
+ technicians().filter(x=>x.class==='twoWheeler').forEach(x=>p.push({name:x.name,role:'2W Technician',cls:'twoWheeler'}));
+ const ms=Object.values(D.staff||{}).filter(x=>x.role==='manager'||x.class==='manager');
+ if(ms.length)ms.forEach(x=>p.push({name:x.name,role:'Manager',cls:'manager'})); else p.push({name:'Manager',role:'Manager',cls:'manager'});
+ return p;
+}
+function monthDayList(month){let [y,m]=month.split('-').map(Number),n=new Date(y,m,0).getDate(),r=[];for(let d=1;d<=n;d++)r.push(`${month}-${String(d).padStart(2,'0')}`);return r}
+function dayTokens(day){if(day===today())return ts();let o=D.history?.[day]?.tokens||{};return Object.entries(o).map(([id,x])=>({id,...x}))}
+function dayAttendance(day){if(day===today())return D.attendance||{};return D.history?.[day]?.attendance||D.attendanceHistory?.[day]||{}}
+function dayIncentive(day){if(day===today())return D.incentive||{};return D.history?.[day]?.incentive||{}}
+function managerSlab(n){n=Number(n)||0;if(n>=500)return 10000;if(n>=400)return 6000;if(n>=300)return 3000;return 0}
+function dayPool(day){
+ const rows=dayTokens(day), e=rows.filter(eligible), att=dayAttendance(day);
+ const align=e.filter(x=>x.serviceType==='Alignment').length, other=e.length-align;
+ const servicePool=align*90+other*150, fittings=Number(dayIncentive(day).twoWFitting)||0, fittingPool=fittings*10;
+ const present=Object.values(att).filter(x=>x==='P').length;
+ return {e,align,other,servicePool,fittings,fittingPool,total:servicePool+fittingPool,present,share:present?(servicePool+fittingPool)/present:0,manager:managerSlab(dayIncentive(day).carTyresSold)};
+}
+function renderMonthlyIncentive(){
+ const month=$('ifmonth')?.value||today().slice(0,7), days=monthDayList(month), people=incentivePeople();
+ const filterTech=$('iftech')?.value||'', filterClass=$('ifclass')?.value||'', sums={};people.forEach(p=>sums[p.name]=0);
+ days.forEach(day=>{const c=dayPool(day),att=dayAttendance(day);people.filter(p=>p.cls!=='manager'&&att[p.name]==='P').forEach(p=>{sums[p.name]+=c.share});people.filter(p=>p.cls==='manager').forEach(p=>{sums[p.name]+=c.manager})});
+ let total=0; const rows=people.filter(p=>(!filterTech||p.name===filterTech)&&(!filterClass||p.cls===filterClass)).map(p=>{let v=sums[p.name]||0;total+=v;return `<tr><td><b>${esc(p.name)}</b></td><td>${esc(p.role)}</td><td>₹${v.toFixed(2)}</td></tr>`}).join('');
+ $('monthlyIncBody').innerHTML=rows||'<tr><td colspan="3">No matching records.</td></tr>';$('monthlyIncTotal').textContent='₹'+total.toFixed(2);
+ const mgrTotal=days.reduce((n,d)=>n+dayPool(d).manager,0);$('mgrMonthSummary').textContent=`Selected month: ${month} · Manager accumulated incentive: ₹${mgrTotal.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+}
+function incentive(){
+ let current=$('iftech')?.value||'';
+ if($('iftech'))$('iftech').innerHTML='<option value="">All Technicians / Manager</option>'+incentivePeople().map(t=>`<option value="${esc(t.name)}">${esc(t.name)}</option>`).join('');
+ if($('iftech'))$('iftech').value=current;
+ const c=inc(),i=D.incentive||{};
+ $('ielig').textContent=c.e.length;$('ipool').textContent='₹'+c.pool;$('ifit').textContent=c.fit;$('ishare').textContent='₹'+c.share.toFixed(2);
+ $('fit').value=i.twoWFitting??'';$('cartyres').value=i.carTyresSold??'';
+ $('ibreak').innerHTML=[['Alignment × ₹90',c.e.filter(x=>x.serviceType==='Alignment').length*90],['Other eligible × ₹150',c.e.filter(x=>x.serviceType!=='Alignment').length*150],['2W fitting × ₹10',c.fp],['Total Pool',c.total.toFixed(2)],['Present Technicians',c.p],['Manager Today',managerSlab(i.carTyresSold)],['Status',i.locked?'LOCKED':'UNLOCKED']].map(x=>`<div class=sum><span>${x[0]}</span><b>${typeof x[1]==='number'?'₹'+x[1]:x[1]}</b></div>`).join('');
+ $('saveinc').disabled=!!i.locked;
+ $('iflabel').textContent=(c.q.period==='month'?'Month: '+c.q.month:c.q.period==='date'?'Date: '+c.q.date:'Today: '+today())+(c.q.tech?' · '+c.q.tech:'')+(c.q.cls?' · '+(c.q.cls==='car'?'Car Technician':c.q.cls==='twoWheeler'?'Two-Wheeler Technician':'Manager'):'');
+ renderMonthlyIncentive();
+}
+async function changePin(){if(!mgr())return toast('Manager access required');let a=$('newPin').value.trim(),b=$('confirmPin').value.trim();if(!/^\d{4,8}$/.test(a))return toast('PIN must be 4–8 digits');if(a!==b)return toast('PINs do not match');await update(ref(db,path()+'/incentive'),{managerPin:a,pinChangedAt:Date.now(),pinChangedBy:name()});log('Manager PIN Changed','Manager PIN changed');$('newPin').value='';$('confirmPin').value='';toast('Manager PIN changed')}
+async function pinok(){if(!mgr())return false;let p=$('pin').value.trim(),saved=D.incentive?.managerPin||'2580';if(!p)return toast('Enter Manager PIN'),false;if(saved!==p)return toast('Wrong Manager PIN'),false;if(!D.incentive?.managerPin)await update(ref(db,path()+'/incentive'),{managerPin:'2580',pinInitializedAt:Date.now()});return true}async function saveInc(){if(!(await pinok()))return;let fit=Math.max(0,Number($('fit').value)||0),ct=Math.max(0,Number($('cartyres').value)||0);await update(ref(db,path()+'/incentive'),{twoWFitting:fit,carTyresSold:ct,updatedAt:Date.now(),updatedBy:name()});log('Daily Incentive Input Changed',`2W fittings=${fit}; car tyres sold=${ct}`);toast('Daily inputs saved')}async function lock(){if(!(await pinok()))return;let l=!D.incentive?.locked;await update(ref(db,path()+'/incentive'),{locked:l,lockedAt:Date.now(),lockedBy:name()});log(l?'Incentive Day Locked':'Incentive Day Unlocked','Manager changed daily lock')} 
+function staff(){let a=Object.entries(D.staff||{});if(!a.length)a=techDefault.map((x,i)=>['d'+i,{name:x[0],class:x[1],role:'technician'}]);$('stafflist').innerHTML=a.map(([id,x])=>`<div class=staffrow><b>${esc(x.name)}</b><span>${x.class==='twoWheeler'?'Two-Wheeler Technician':x.class==='manager'?'Manager':'Car Technician'}</span><span>${esc(x.email||'')}</span><span class=actions>${mgr()?`<button class=dark data-editstaff=${id}>EDIT</button><button class=red data-delstaff=${id}>DELETE</button>`:''}</span></div>`).join('');document.querySelectorAll('[data-editstaff]').forEach(b=>b.onclick=()=>{let x=(D.staff||{})[b.dataset.editstaff];if(!x)return;$('sname').value=x.name;$('semail').value=x.email||'';$('srole').value=x.role||'technician';$('sclass').value=x.class||'car';window.editStaff=b.dataset.editstaff});document.querySelectorAll('[data-delstaff]').forEach(b=>b.onclick=async()=>{if(confirm('Delete this staff profile?')){let x=D.staff[b.dataset.delstaff];await set(ref(db,'staff/'+b.dataset.delstaff),null);log('Staff Deleted',x.name)}})}async function saveStaff(){if(!mgr())return toast('Manager access required');let n=$('sname').value.trim(),e=$('semail').value.trim(),r=$('srole').value,c=$('sclass').value;if(!n)return toast('Enter staff name');let id=window.editStaff||push(ref(db,'staff')).key;await set(ref(db,'staff/'+id),{name:n,email:e,role:r,class:c});log('Staff Profile Saved',`${n} · ${c} · ${r}`);window.editStaff=null;$('sname').value='';$('semail').value='';toast('Staff saved')}function attendanceSummary(){
+ const month=$('attmonth').value||today().slice(0,7);
+ const p=month.split('-'), y=Number(p[0]), m=Number(p[1]);
+ const days=new Date(y,m,0).getDate();
+ const records=D.attendanceHistory||{};
+ const people=technicians();
+ $('attsummary').innerHTML=people.map(t=>{
+   let present=0,absent=0;
+   for(let d=1;d<=days;d++){
+     const key=month+'-'+String(d).padStart(2,'0'), rec=records[key]||{};
+     if(rec[t.name]==='P') present++;
+     if(rec[t.name]==='A') absent++;
+   }
+   return `<tr><td><b>${esc(t.name)}</b></td><td>${present}</td><td>${absent}</td><td>${present+absent}</td></tr>`;
+ }).join('')||'<tr><td colspan="4">No staff.</td></tr>';
+}
+function attendance(){let a=technicians(),at=D.attendance||{};$('attlist').innerHTML=a.map(x=>`<div class=staffrow><b>${esc(x.name)}</b><span>${x.class==='twoWheeler'?'Two-Wheeler':'Car'}</span><select class=att data-name="${esc(x.name)}"><option value=P ${at[x.name]==='P'?'selected':''}>Present</option><option value=A ${at[x.name]==='A'?'selected':''}>Absent</option></select><span></span></div>`).join('')}async function saveAtt(){if(!mgr())return;let day=$('attdate').value||today(),o={};document.querySelectorAll('.att').forEach(x=>o[x.dataset.name]=x.value);await set(ref(db,'attendance/'+day),o);await set(ref(db,path()+'/attendance'),o);log('Attendance Updated',day+' · '+JSON.stringify(o));toast('Attendance saved')}function activity(){let q=($('aq').value||'').toLowerCase(),d=$('ad').value||today(),a=Object.values(ACT).filter(x=>x.date===d&&(!q||[x.user,x.action,x.details].join(' ').toLowerCase().includes(q))).sort((a,b)=>b.ts-a.ts);$('abody').innerHTML=a.map(x=>`<tr><td>${new Date(x.ts).toLocaleString()}</td><td>${esc(x.user)}</td><td>${esc(x.action)}</td><td>${esc(x.details)}</td></tr>`).join('')||'<tr><td colspan=4>No activity.</td></tr>'}
+function init(){services.forEach(x=>$('stype').insertAdjacentHTML('beforeend',`<option>${esc(x)}</option>`));$('attdate').value=today();$('attmonth').value=today().slice(0,7);$('hf').value=today();$('ht').value=today();$('ad').value=today();document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===b.dataset.p));document.querySelectorAll('#nav button').forEach(q=>q.classList.toggle('active',q===b))});$('add').onclick=add;$('popupOk').onclick=()=>$('tokenPopup').classList.add('hidden');$('ifdate').value=today();$('ifmonth').value=today().slice(0,7);$('ifperiod').onchange=incentive;$('ifdate').onchange=incentive;$('ifmonth').onchange=incentive;$('iftech').onchange=incentive;$('ifclass').onchange=incentive;$('saveinc').onclick=saveInc;$('lock').onclick=lock;$('changePin').onclick=changePin;$('saves').onclick=saveStaff;$('saveatt').onclick=saveAtt;$('attmonth').onchange=attendanceSummary;['hs','hstatus','hf','ht'].forEach(i=>$(i).oninput=history);['aq','ad'].forEach(i=>$(i).oninput=activity);$('arefresh').onclick=activity;$('heCancel').onclick=closeHistoryEdit;$('heSave').onclick=saveHistoryEdit;document.querySelectorAll('#nav button')[0].click()}
+
+const PEOPLE={
+'zkH7Q5VLzCWpafJ86cXAhPspO1z2':{name:'Yogesh',role:'manager',class:'manager'},
+'FhW9K4QoVPSeBFjHg0ZAu9SYJAX2':{name:'Chandrasekar',role:'manager',class:'manager'},
+'5ClIB6TsLCOC3j19bqO7vfaWWOy1':{name:'Arjun',role:'technician',class:'car'},
+'v2fcV0ElecUmqF2BgptBKHIZVgQ2':{name:'Aravind',role:'technician',class:'car'},
+'c4Nwi2qtirbQQzBdWbAzYc3iurV2':{name:'Arivazhagan',role:'technician',class:'car'},
+'I6Y8CUdtKBclPBBFmFFArhgvnx13':{name:'Sarath Kumar',role:'technician',class:'car'},
+'Q3TuUE9xf0RSuVTxXJ3mwoMxJ3T2':{name:'Vijay',role:'technician',class:'car'},
+'ltGCLVdT1jNPiKirrqIefvAj3Mx1':{name:'Venkatesh',role:'technician',class:'twoWheeler'},
+'KJlZLRVivcWiKlTPa5OUIQO81eG3':{name:'Nandha',role:'technician',class:'twoWheeler'}};
+
+const loginHtml=`<div id=authBox style="position:fixed;inset:0;z-index:9999;display:grid;place-items:center;background:#071522;padding:20px"><div style="width:min(400px,100%);background:#0d2032;border:1px solid #27445d;border-radius:18px;padding:25px;box-shadow:0 20px 60px #0008"><div style="font-size:28px">🛞</div><h2>Sri Hari Tyres</h2><div class=small style="margin-bottom:18px">Smart Workshop Management</div><input id=authEmail type=email placeholder="Email" style="width:100%;margin:6px 0;padding:12px;background:#091624;color:#fff;border:1px solid #27445d;border-radius:8px"><input id=authPass type=password placeholder="Password" style="width:100%;margin:6px 0;padding:12px;background:#091624;color:#fff;border:1px solid #27445d;border-radius:8px"><button id=authBtn style="width:100%;margin-top:10px">SIGN IN</button><div id=authMsg class=small style="margin-top:10px;color:#ef4444"></div></div></div>`;document.body.insertAdjacentHTML('afterbegin',loginHtml);
+function showAppUser(u){U=u;P=PEOPLE[u.uid]||{name:u.email?.split('@')[0]||'Staff',role:'technician',class:'car'};document.getElementById('authBox').style.display='none';$('conn').className='live';$('conn').textContent='● LIVE';init();$('tech').innerHTML=techDefault.filter(x=>P.class==='manager'||x[1]===P.class).map(x=>`<option>${esc(x[0])}</option>`).join('');un=[onValue(ref(db,path()),s=>{D=s.val()||{};render()}),onValue(ref(db,'days'),s=>{D.history=s.val()||{};render()}),onValue(ref(db,'staff'),s=>{D.staff=s.val()||{};render()}),onValue(ref(db,'activity'),s=>{ACT=s.val()||{};activity();populateBackupFilters()}),onValue(ref(db,'attendance'),s=>{D.attendanceHistory=s.val()||{};D.attendance=D.attendanceHistory[today()]||{};render()}),onValue(ref(db,path()+'/incentive'),s=>{D.incentive=s.val()||{};render()})];render();}
+$('authBtn').onclick=async()=>{const e=$('authEmail').value.trim(),p=$('authPass').value;if(!e||!p){$('authMsg').textContent='Enter email and password.';return}$('authBtn').disabled=true;$('authMsg').textContent='Signing in…';try{await signInWithEmailAndPassword(auth,e,p)}catch(err){console.error(err);$('authMsg').textContent='Email or password is incorrect.'}finally{$('authBtn').disabled=false}};$('authPass').onkeydown=e=>{if(e.key==='Enter')$('authBtn').click()};
+onAuthStateChanged(auth,u=>{if(u)showAppUser(u);else{document.getElementById('authBox').style.display='grid';$('conn').className='off';$('conn').textContent='● SIGN IN REQUIRED'}});
+$('logout').onclick=()=>signOut(auth);
+
+function backupRowsFiltered(){
+ const from=$('bkfrom')?.value||'',to=$('bkto')?.value||'',user=$('bkuser')?.value||'',action=$('bkaction')?.value||'',search=($('bksearch')?.value||'').toLowerCase();
+ return Object.values(ACT||{}).map(x=>x).filter(x=>{
+   const d=x.ts?new Date(x.ts):null, ds=d?todayOf(d):'';
+   if(from&&ds<from)return false;if(to&&ds>to)return false;
+   if(user&&x.user!==user)return false;if(action&&x.action!==action)return false;
+   if(search&&!JSON.stringify(x).toLowerCase().includes(search))return false;
+   return true;
+ });
+}
+function todayOf(d){let z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())}
+function populateBackupFilters(){
+ if(!$('bkuser'))return;
+ const rows=Object.values(ACT||{}),u=[...new Set(rows.map(x=>x.user).filter(Boolean))].sort(),a=[...new Set(rows.map(x=>x.action).filter(Boolean))].sort();
+ const cu=$('bkuser').value,ca=$('bkaction').value;
+ $('bkuser').innerHTML='<option value="">All Users</option>'+u.map(x=>`<option>${esc(x)}</option>`).join('');
+ $('bkaction').innerHTML='<option value="">All Actions</option>'+a.map(x=>`<option>${esc(x)}</option>`).join('');
+ $('bkuser').value=cu;$('bkaction').value=ca;
+}
+function allBackupData(){
+ const tokenList=ts();
+ const history=D.history||{};
+ const attendance=D.attendanceHistory||{};
+ const staff=D.staff||{};
+ const incentive=D.incentive||{};
+ const reportSummary={};
+ services.forEach(s=>reportSummary[s]=tokenList.filter(x=>x.status==='Completed'&&x.serviceType===s).length);
+ const activity=backupRowsFiltered();
+ return {
+  queue:tokenList,
+  history:Object.entries(history).flatMap(([date,v])=>Object.values(v?.tokens||{}).map(x=>({...x,date}))),
+  staff:Object.values(staff),
+  attendance:Object.entries(attendance).flatMap(([date,v])=>Object.entries(v||{}).map(([staff,status])=>({date,staff,status}))),
+  daily_incentive:Object.entries(history).flatMap(([date,v])=>[{date,incentive:v?.incentive||{}}]),
+  current_incentive:[incentive],
+  two_wheeler_fitting:[{date:today(),value:Number(incentive.twoWFitting||0)}],
+  manager_incentive:[{date:today(),carTyresSold:Number(incentive.carTyresSold||0)}],
+  activity_log:activity,
+  reports_summary:Object.entries(reportSummary).map(([service,count])=>({service,count})),
+  settings:[{service_types:services.join(' | '),daily_normal_token_rule:'Starts from 1 each day',free_service_rule:'F1, F2, F3...',incentive_rule:'Eligible completed normal tokens from 8 onwards'}]
+ };
+}
+function exportAllExcel(){
+ if(!mgr()){toast('Manager access required');return}
+ if(typeof XLSX==='undefined'){toast('Excel library could not load');return}
+ const data=allBackupData(),wb=XLSX.utils.book_new();
+ Object.entries(data).forEach(([name,rows])=>{
+   const arr=Array.isArray(rows)?rows:[rows];
+   const ws=XLSX.utils.json_to_sheet(arr.length?arr:[{Info:'No records'}]);
+   XLSX.utils.book_append_sheet(wb,ws,name.slice(0,31));
+ });
+ const stamp=today();
+ XLSX.writeFile(wb,`SriHariTyres_Backup_${stamp}.xlsx`);
+ log('Full Excel Backup',`Complete workbook exported · ${stamp}`);
+ toast('Complete Excel backup created');
+}
+
+</script>
+<script>
+/* ============================================================
+   SRI HARI TYRES — WORKSHOP OS SAFETY / AUDIT LAYER
+   No-login build. Designed to sit on top of the existing V8 UI.
+   ============================================================ */
+(function(){
+  'use strict';
+
+  const SH = window.SriHariWorkshop = window.SriHariWorkshop || {};
+
+  SH.roles = {
+    CAR_TECHNICIAN: 'Car Technician',
+    TWO_WHEELER_TECHNICIAN: '2W Technician',
+    MANAGER: 'Manager'
+  };
+
+  SH.permissions = {
+    technician: {
+      generateToken: true,
+      startService: true,
+      completeService: true,
+      editQueue: false,
+      removeToken: false,
+      editHistory: false,
+      editAttendance: false,
+      editStaff: false,
+      editIncentive: false
+    },
+    manager: {
+      generateToken: true,
+      startService: true,
+      completeService: true,
+      editQueue: true,
+      removeToken: true,
+      editHistory: true,
+      editAttendance: true,
+      editStaff: true,
+      editIncentive: true
+    }
+  };
+
+  SH.audit = SH.audit || [];
+
+  SH.recordAudit = function(action, details){
+    const entry = {
+      id: 'AUD-' + Date.now() + '-' + Math.random().toString(36).slice(2,8),
+      timestamp: new Date().toISOString(),
+      action: action,
+      details: details || {}
+    };
+    SH.audit.push(entry);
+    try {
+      const key = 'sriHariAuditLog';
+      const old = JSON.parse(localStorage.getItem(key) || '[]');
+      old.push(entry);
+      localStorage.setItem(key, JSON.stringify(old.slice(-5000)));
+    } catch(e){}
+    return entry;
+  };
+
+  SH.snapshot = function(record){
+    if (!record) return {};
+    const fields = ['token','tokenNumber','vehicleNumber','vehicleModel','serviceType',
+                    'classification','technician','status','createdBy','createdAt',
+                    'startedAt','completedAt','freeService','eligible'];
+    const out = {};
+    fields.forEach(k => { if (record[k] !== undefined) out[k] = record[k]; });
+    return JSON.parse(JSON.stringify(out));
+  };
+
+  SH.diff = function(before, after){
+    const keys = new Set(Object.keys(before || {}).concat(Object.keys(after || {})));
+    const changes = [];
+    keys.forEach(k => {
+      const a = before ? before[k] : undefined;
+      const b = after ? after[k] : undefined;
+      if (JSON.stringify(a) !== JSON.stringify(b))
+        changes.push({field:k, before:a, after:b});
+    });
+    return changes;
+  };
+
+  SH.serviceIncentive = function(serviceType, eligible){
+    if (!eligible) return 0;
+    const s = String(serviceType || '').toLowerCase();
+    if (s.includes('free')) return 0;
+    if (s.includes('alignment') && (s.includes('balanc') || s.includes('other'))) return 150;
+    return 90;
+  };
+
+  SH.isFreeService = function(record){
+    const s = String((record && (record.serviceType || record.classification)) || '').toLowerCase();
+    return !!(record && (record.freeService === true || s.includes('free')));
+  };
+
+  SH.isCompletedEligible = function(record){
+    if (!record) return false;
+    if (String(record.status || '').toLowerCase() !== 'completed') return false;
+    if (SH.isFreeService(record)) return false;
+    return Number(record.eligibleToken || record.tokenNumber || record.token || 0) >= 8;
+  };
+
+  SH.protectCompleted = function(record, attemptedByManager){
+    if (!record) return true;
+    const completed = String(record.status || '').toLowerCase() === 'completed';
+    return completed && !attemptedByManager;
+  };
+
+  SH.managerEditAudit = function(before, after, reason, actor){
+    const changes = SH.diff(before, after);
+    if (!changes.length) return null;
+    return SH.recordAudit('History Edited', {
+      token: after.token || after.tokenNumber || before.token || before.tokenNumber || '',
+      before: before,
+      after: after,
+      changes: changes,
+      reason: reason || 'Manager correction',
+      changedBy: actor || 'Manager'
+    });
+  };
+
+  // Global helper for future UI controls.
+  window.SHCan = function(action, role){
+    role = role === SH.roles.MANAGER ? 'manager' : 'technician';
+    return !!(SH.permissions[role] && SH.permissions[role][action]);
+  };
+
+  // Keep the audit layer discoverable for the Manager UI.
+  window.SHWorkshopOS = SH;
+})();
+</script>
+
+
+<div id="sh-os-status" aria-label="Workshop OS status">Workshop OS • Protected</div>
+<script>
+(function(){
+  const el=document.getElementById('sh-os-status');
+  if(el){
+    el.title='Audit and permission layer active. Login is intentionally disabled in this build.';
+  }
+})();
+</script>
+
+</body></html>
