@@ -1,0 +1,879 @@
+<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Sri Hari Tyres – Service Management</title>
+<style>
+:root{--bg:#071522;--p:#0d2032;--p2:#10283d;--l:#27445d;--b:#38bdf8;--o:#ff6b00;--g:#10b981;--r:#ef4444;--y:#f59e0b;--t:#f4f7fb;--m:#91a4b8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--t);font:12px Arial,sans-serif}button,input,select{font:inherit}button{border:0;border-radius:7px;padding:9px 12px;background:var(--b);color:#062033;font-weight:900;cursor:pointer}button.green{background:var(--g);color:#fff}button.red{background:var(--r);color:#fff}button.dark{background:#17314a;color:#fff;border:1px solid #2b4861}button.orange{background:var(--o);color:#fff}button:disabled{opacity:.45;cursor:not-allowed}.hidden{display:none!important}header{background:#091624;border-bottom:1px solid #1c344b;padding:13px 15px;position:sticky;top:0;z-index:50}.brand{font-size:16px;font-weight:900}.brand span{color:var(--o)}.sub,.small,.label{color:var(--m);font-size:9px}.headright{position:absolute;right:14px;top:8px;display:flex;align-items:center;gap:12px;font-size:9px;z-index:20}.live{color:var(--g);font-weight:900}.off{color:var(--r);font-weight:900}.nav{display:flex;gap:5px;padding:7px 10px;background:#091624;border-bottom:1px solid #1c344b;position:sticky;top:54px;z-index:49;overflow:auto}.nav button{flex:1;min-width:76px;padding:7px 8px;font-size:10px;background:#102235;color:#eaf1f7;border:1px solid #263b50;white-space:nowrap}.nav button.active{background:var(--b);color:#071522}.page{display:none;padding:12px;max-width:1450px;margin:auto}.page.active{display:block}.card{background:var(--p);border:1px solid var(--l);border-radius:10px;padding:12px;margin-bottom:10px}.card h2{font-size:15px;margin:0 0 10px}.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.metric{background:var(--p2);border:1px solid var(--l);border-radius:8px;padding:12px}.metric .n{font-size:25px;font-weight:900;color:var(--b)}.metric .l{font-size:9px;color:var(--m);margin-top:3px}.form{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}input,select{width:100%;background:#0b1d2d;color:var(--t);border:1px solid #334a60;border-radius:7px;min-height:37px;padding:8px 10px;font-size:11px}input:focus,select:focus{outline:1px solid var(--b);border-color:var(--b)}.actions{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.summary{display:grid;grid-template-columns:1fr 1fr;gap:7px}.sum{display:flex;justify-content:space-between;background:var(--p2);border:1px solid var(--l);border-radius:7px;padding:9px;font-size:11px}.sum b{color:var(--b)}.now{text-align:center;padding:20px;border:1px solid var(--b);border-radius:10px;background:radial-gradient(circle at 50% 15%,#173753,#0b1d2e 55%,#081522)}.nt{color:var(--o);font-weight:900}.nv{font-size:clamp(38px,7vw,90px);font-weight:950;line-height:1}.nm{font-size:clamp(22px,4vw,50px);color:var(--b);font-weight:900;margin:7px}.ns{color:var(--o);font-weight:900}.row{display:grid;grid-template-columns:65px 1.1fr 1fr 1.4fr 1.2fr auto;gap:7px;align-items:center;background:var(--p2);border:1px solid var(--l);border-left:3px solid var(--b);border-radius:8px;padding:9px;margin:7px 0}.token{font-size:15px;font-weight:900;color:var(--b)}.vehicle{font-weight:900}.model{color:var(--b);font-weight:800}.badge{display:inline-block;border-radius:99px;padding:3px 7px;font-size:8px;font-weight:900}.wait{background:#3b2a08;color:#fbbf24}.svc{background:#063d26;color:#86efac}.free{background:#3b1747;color:#f0abfc}.danger{color:var(--r)}.good{color:var(--g)}table{width:100%;border-collapse:collapse;min-width:760px;font-size:10px}th,td{padding:8px;border-bottom:1px solid #22394e;text-align:left}th{background:#14273b;color:#9fb1c3}.scroll{overflow:auto}.filter{display:grid;grid-template-columns:repeat(4,1fr);gap:7px;margin-bottom:8px}.tvhead{display:flex;justify-content:space-between;align-items:center;padding:9px 12px;border-bottom:2px solid var(--o);margin-bottom:8px}.tvhead b{font-size:clamp(18px,3vw,38px)}.tvnow{min-height:58vh;display:flex;flex-direction:column;justify-content:center;text-align:center;border:1px solid var(--b);border-radius:12px;background:radial-gradient(circle at 50% 15%,#173753,#0b1d2e 55%,#071522)}.tvnow .tvtoken{color:var(--o);font-size:clamp(18px,2vw,30px);font-weight:900}.tvnow .tvveh{font-size:clamp(42px,8vw,125px);font-weight:950;line-height:1}.tvnow .tvmodel{font-size:clamp(26px,4vw,62px);color:var(--b);font-weight:900;margin:7px}.tvwaittitle{text-align:center;font-size:clamp(15px,2vw,28px);font-weight:900;margin:9px}.tvgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.tvcard{background:var(--p);border:1px solid var(--l);border-radius:8px;padding:10px;text-align:center}.tvcard .v{font-size:clamp(18px,2.4vw,38px);font-weight:900}.staffrow{display:grid;grid-template-columns:1.4fr 1fr 1fr auto;gap:7px;align-items:center;background:var(--p2);border:1px solid var(--l);border-radius:7px;padding:8px;margin:6px 0}.modal{position:fixed;inset:0;background:#000b;display:flex;align-items:center;justify-content:center;padding:15px;z-index:100}.modalbox{width:min(420px,100%);background:var(--p);border:1px solid var(--l);border-radius:12px;padding:15px}.toast{position:fixed;right:12px;bottom:15px;background:var(--p2);border:1px solid var(--b);padding:10px 13px;border-radius:8px;z-index:100000;display:none}
+@media(max-width:850px){.grid{grid-template-columns:1fr 1fr}.form,.filter{grid-template-columns:1fr 1fr}.row{grid-template-columns:55px 1fr 1fr}.row .edit,.row .actions{grid-column:1/-1}.tvgrid{grid-template-columns:1fr 1fr}}@media(max-width:520px){.headright{display:none}.summary{grid-template-columns:1fr}.form,.filter{grid-template-columns:1fr}.grid{gap:6px}.metric{padding:9px}.metric .n{font-size:21px}.row{grid-template-columns:1fr 1fr}.row>div:first-child{grid-column:1/-1}.staffrow{grid-template-columns:1fr 1fr}.tvgrid{grid-template-columns:1fr 1fr}}
+
+.head-user{display:flex;flex-direction:column;align-items:flex-end;gap:3px;line-height:1.15;white-space:nowrap}
+.header-logout{padding:8px 12px;border-radius:9px;background:#17314a;color:#fff;border:1px solid #2b4861;font-size:10px;font-weight:800;white-space:nowrap;cursor:pointer}
+.header-logout:hover{background:#234664;border-color:var(--b)}
+.header-logout:active{transform:translateY(1px)}
+@media(max-width:520px){
+  .headright{right:8px;top:7px;gap:6px}
+  .head-user{display:none}
+  .header-logout{padding:8px 10px}
+}
+
+/* Incentive Management redesign */
+.incentive-page{background:linear-gradient(180deg,#f7fbff 0%,#eef6ff 100%);color:#17324d;border-radius:16px;padding:18px;max-width:1500px}
+.inc-hero{background:linear-gradient(105deg,#0b2b50,#123e6a 55%,#0b2747);color:#fff;border-radius:18px;padding:18px 22px;display:flex;justify-content:space-between;align-items:center;box-shadow:0 8px 24px #0b2b5022;margin-bottom:14px}.inc-title{display:flex;gap:14px;align-items:center}.inc-trophy{width:58px;height:58px;border-radius:16px;background:#ffb31a;color:#fff;display:grid;place-items:center;font-size:32px;box-shadow:0 5px 12px #0003}.inc-title h1{margin:0;font-size:26px}.inc-title p{margin:4px 0 0;color:#d7e9fb;font-size:13px}.inc-shop{text-align:right;font-size:11px;line-height:1.8;color:#dcecff}.inc-filters{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px}.inc-filter{border-radius:14px;padding:15px;border:1px solid}.date-box{background:#fff5f1;border-color:#ffb8a8}.month-box{background:#effcf6;border-color:#a7e4c8}.inc-filter-head{font-size:14px;margin-bottom:10px;display:flex;gap:8px;align-items:center}.inc-filter-row{display:grid;grid-template-columns:1fr 140px;gap:9px}.inc-filter input{background:#fff;color:#17324d;border-color:#b9c9d8;min-height:42px;font-size:13px}.inc-blue,.inc-green{color:#fff!important;border:0!important;min-height:42px}.inc-blue{background:#116bd6}.inc-green{background:#0a9463}.inc-help{margin-top:9px;padding:8px 10px;border-radius:8px;background:#e9f3ff;color:#28628f;font-size:10px}.month-box .inc-help{background:#ddf5e9;color:#237352}.inc-table-card{background:#fff;border-radius:14px;border:1px solid #d8e4ef;overflow:hidden;box-shadow:0 5px 18px #153b5b12;margin-bottom:14px}.inc-table-title{font-size:17px;font-weight:900;padding:14px 16px;color:#17324d}.inc-summary-table{min-width:680px;font-size:13px}.inc-summary-table th,.inc-summary-table td{padding:11px 13px;border-bottom:1px solid #dce7f0;color:#17324d}.inc-summary-table thead th{color:#fff;text-align:center;background:#173a5e}.inc-summary-table thead th:nth-child(3){background:#0f6bd7}.inc-summary-table thead th:nth-child(4){background:#087b60}.inc-summary-table tbody td:nth-child(3),.inc-summary-table tbody td:nth-child(4){font-weight:900;text-align:center;font-size:14px}.inc-summary-table tbody td:nth-child(3){background:#edf6ff}.inc-summary-table tbody td:nth-child(4){background:#effbf5}.inc-summary-table tfoot th,.inc-summary-table tfoot td{background:#123653;color:#fff;font-weight:900;font-size:14px}.inc-summary-table tfoot td{text-align:center}.inc-bottom-grid{display:grid;grid-template-columns:1fr 1.25fr 1fr;gap:14px}.inc-input-card,.inc-calc-card,.inc-rules-card{border-radius:14px;padding:16px;min-height:310px}.inc-input-card{background:#fbf0ff;border:1px solid #d9b6ed}.inc-calc-card{background:#eef7ff;border:1px solid #b7d8f4}.inc-rules-card{background:#fff9ed;border:1px solid #f1d28d}.inc-card-title{font-size:15px;font-weight:900;margin-bottom:10px}.inc-input-card p{font-size:11px;color:#667d91;line-height:1.5}.inc-input-card label{display:block;font-size:11px;font-weight:800;margin:18px 0 5px}.inc-input-card input{background:#fff;color:#17324d;border-color:#ccb8d9;min-height:43px;font-size:15px}.inc-purple{background:#7a28a8!important;color:#fff!important;width:100%;margin-top:9px}.inc-rate{background:#f1dcff;color:#6b2b87;border-radius:8px;padding:10px;margin-top:12px;font-size:10px}.inc-selected-date{font-size:11px;color:#52718b;margin-bottom:8px}.inc-calc-table{min-width:0;font-size:11px}.inc-calc-table td{padding:7px 8px;color:#17324d;border-bottom:1px solid #cfe1ef}.inc-calc-table td:last-child{text-align:right;font-weight:900}.inc-total-row td{background:#d8edff;font-size:13px}.inc-share-row td{background:#dff7e9;font-size:14px;font-weight:900}.inc-rules-card ol{margin:5px 0 0;padding-left:22px;color:#6d5a30;font-size:11px;line-height:1.75}.inc-rules-card li{margin-bottom:3px}.inc-manager-card{background:#102d47;border-radius:12px;padding:12px 14px;color:#fff;margin-top:14px}.inc-lock-status{float:right;background:#0c9b69;border-radius:20px;padding:4px 9px;font-size:9px;font-weight:900}.inc-manager-row{display:grid;grid-template-columns:1fr auto 1fr 1fr auto;gap:7px;margin-top:9px}.inc-manager-row input{background:#0a2034;color:#fff;border-color:#3a5c76}.inc-manager-row button{min-height:37px}.incentive-page .scroll{overflow:auto}@media(max-width:900px){.inc-bottom-grid{grid-template-columns:1fr 1fr}.inc-rules-card{grid-column:1/-1}.inc-hero{align-items:flex-start}.inc-shop{font-size:9px}}@media(max-width:650px){.incentive-page{padding:9px}.inc-hero{padding:14px;display:block}.inc-title h1{font-size:21px}.inc-shop{text-align:left;margin-top:10px}.inc-filters{grid-template-columns:1fr}.inc-filter-row{grid-template-columns:1fr 110px}.inc-bottom-grid{grid-template-columns:1fr}.inc-rules-card{grid-column:auto}.inc-manager-row{grid-template-columns:1fr 1fr}.inc-manager-row button{width:100%}}
+</style><script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style id="sh-os-status-style">
+#sh-os-status{position:fixed;right:14px;bottom:14px;z-index:99999;
+font:600 11px/1.2 system-ui,sans-serif;padding:7px 10px;border-radius:999px;
+background:rgba(16,29,46,.94);color:#9db0c7;border:1px solid #29405b;
+box-shadow:0 4px 16px rgba(0,0,0,.25);pointer-events:none}
+</style>
+
+
+<style id="queue-edit-styles">
+#queueEditModal{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.68);display:flex;align-items:center;justify-content:center;padding:16px}
+#queueEditModal .modal-card{width:min(560px,100%);background:#10263a;color:#fff;border:1px solid #31516c;border-radius:16px;box-shadow:0 18px 60px rgba(0,0,0,.45);overflow:hidden}
+#queueEditModal .modal-head{display:flex;justify-content:space-between;align-items:center;padding:15px 18px;background:#163b5a}
+#queueEditModal .modal-head button{background:none;border:0;color:#fff;font-size:20px}
+#queueEditModal .modal-body{padding:18px}
+#queueEditModal .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#queueEditModal label{font-size:12px;font-weight:700}
+#queueEditModal label.full{grid-column:1/-1}
+#queueEditModal input,#queueEditModal select{width:100%;box-sizing:border-box;margin-top:6px;padding:10px;border-radius:8px;border:1px solid #46657d;background:#0a1d2e;color:#fff}
+#queueEditModal input:disabled{opacity:.65}
+#queueEditModal .queue-edit-note{margin-top:14px;padding:10px;border-radius:8px;background:#102f43;font-size:12px;color:#bfe5ff}
+#queueEditModal .modal-actions{display:flex;justify-content:flex-end;gap:8px;padding:12px 18px;background:#0b1d2d}
+#queueEditModal .modal-actions button{border:0;border-radius:8px;padding:10px 14px}
+#queueEditModal .modal-actions .primary{background:#0b8fdf;color:#fff}
+@media(max-width:600px){#queueEditModal .form-grid{grid-template-columns:1fr}#queueEditModal label.full{grid-column:auto}}
+</style>
+
+<style id="queueEditBtnStyle">button.blue{background:#168eea!important;color:#fff!important;border:0!important} .row .actions{display:flex;gap:5px;flex-wrap:wrap}.row .actions button{white-space:nowrap}</style>
+</head><body>
+<header><div class="brand">SRI HARI <span>TYRES</span></div><div class="sub">TYRE SALES • WHEEL ALIGNMENT • TOKEN MANAGEMENT</div><div class="headright">
+  <div class="head-user">
+    <span id="conn" class="off">● OFFLINE</span>
+    <span id="who">Manager (Test Mode)</span>
+  </div>
+  <button id="logoutBtn" class="header-logout" type="button" title="Logout">↪ Logout</button>
+</div></header>
+<nav class="nav" id="nav"><button data-p="dashboard">🏠 &nbsp;DASHBOARD</button><button data-p="queue">🎫 &nbsp;QUEUE</button><button data-p="staff">👥 &nbsp;STAFF</button><button data-p="tv">📺 &nbsp;TV</button><button data-p="history">📋 &nbsp;HISTORY</button><button data-p="reports">📊 &nbsp;REPORTS</button><button data-p="incentive">💰 &nbsp;INCENTIVE</button><button data-p="activity">🔎 &nbsp;ACTIVITY</button></nav>
+<main>
+<section id="dashboard" class="page"><div class="grid"><div class="metric"><div class="n" id="dtotal">0</div><div class="l">TOTAL TOKENS</div></div><div class="metric"><div class="n" id="dwait">0</div><div class="l">WAITING</div></div><div class="metric"><div class="n" id="dsvc">0</div><div class="l">IN SERVICE</div></div><div class="metric"><div class="n" id="ddone">0</div><div class="l">COMPLETED</div></div></div><div class="card"><h2>▤ Service Summary</h2><div id="summary" class="summary"></div></div></section>
+<section id="queue" class="page"><div class="card"><h2>＋ Add Vehicle & Generate Token</h2><div class="form"><input id="vno" placeholder="Vehicle Number"><input id="model" placeholder="Vehicle Model"><select id="tech"></select><select id="stype"></select></div><div class="actions"><button id="add">GENERATE TOKEN</button></div><div class="small" style="margin-top:7px">Regular: 1, 2, 3... each day. Free Service: F1, F2, F3... separate sequence and never incentive eligible.</div></div><div class="card"><h2>▶ Now Serving</h2><div id="qnow"></div></div><div class="card"><h2>◷ Waiting Vehicles</h2><div id="waitlist"></div></div></section>
+<section id="staff" class="page">
+<div class="card manager">
+<h2>♙ Staff Management</h2>
+<div class="form">
+<input id="sname" placeholder="Staff Name">
+<input id="semail" placeholder="Login Email">
+<select id="srole"><option value="technician">Technician</option><option value="manager">Manager</option></select>
+<select id="sclass"><option value="car">Car Technician</option><option value="twoWheeler">Two-Wheeler Technician</option><option value="manager">Manager</option></select>
+</div>
+<div class="actions"><button id="saves">SAVE STAFF PROFILE</button></div>
+<div class="small">Manager can add, edit and delete staff. Technicians cannot edit staff or attendance.</div>
+</div>
+
+<div class="card"><h2>☷ Staff List</h2><div id="stafflist"></div></div>
+
+<div class="card">
+<h2>▤ Attendance Summary</h2>
+<div class="filter"><input type="month" id="attmonth"></div>
+<div class="scroll"><table>
+<thead><tr><th>Staff Name</th><th>Present Days</th><th>Absent Days</th><th>Working Days</th></tr></thead>
+<tbody id="attsummary"></tbody>
+</table></div>
+</div>
+
+<div class="card manager">
+<h2>✓ Daily Attendance</h2>
+<div class="filter"><input type="date" id="attdate"><button id="saveatt">SAVE ATTENDANCE</button></div>
+<div id="attlist"></div>
+</div>
+</section>
+<section id="tv" class="page"><div class="tvhead"><b>SRI HARI TYRES <span style="font-size:.4em;color:var(--b)">LIVE SERVICE QUEUE</span></b><span>WAITING: <b id="tvcount">0</b></span></div><div id="tvnow" class="tvnow"></div><div class="tvwaittitle">◷ WAITING VEHICLES</div><div id="tvlist" class="tvgrid"></div></section>
+<section id="history" class="page"><div class="card"><h2>◷ Service History</h2><div class="filter"><input type="date" id="hf"><input type="date" id="ht"><input id="hs" placeholder="Search vehicle / token / technician"><select id="hstatus"><option value="">All Status</option><option>Completed</option><option>Removed</option></select></div><div class="small" style="margin-bottom:8px">All staff can view records. Only Manager can edit or delete completed records. Deletions are audited and excluded from incentive calculation.</div><div class="scroll"><table><thead><tr><th>Date</th><th>Token</th><th>Vehicle</th><th>Model</th><th>Technician</th><th>Service Type</th><th>Status</th><th>Created</th><th>Started</th><th>Completed</th><th>Eligible</th><th>Last Modified</th><th>Action</th></tr></thead><tbody id="hbody"></tbody></table></div></div></section>
+<section id="reports" class="page"><div class="card"><h2>Reports & Performance</h2><div class="filter" style="grid-template-columns:1fr 1fr;align-items:end"><label>Report View<select id="reportView"><option value="day">Daily</option><option value="month">Monthly</option></select></label><label id="reportDateWrap">Select Date<input type="date" id="reportDate"></label><label id="reportMonthWrap" style="display:none">Select Month<input type="month" id="reportMonth"></label></div><div id="reportMonthLabel" class="small" style="margin:4px 0 10px"></div><div id="rkpi" class="grid"></div></div><div class="card"><h2>Technician-wise Work Done</h2><div class="scroll"><table id="tmonth"></table></div></div><div class="card"><h2>Technician-wise Work Summary</h2><div class="scroll"><table id="fmonth"></table></div></div><div class="card"><h2 id="twoWReportHeading">Two wheeler summary</h2><div class="small" id="twoWReportLabel"></div><div class="scroll"><table id="twoWReport"></table></div></div></section>
+<section id="incentive" class="page incentive-page">
+  <div class="inc-hero">
+    <div class="inc-title"><div class="inc-trophy">★</div><div><h1>Incentive Management</h1><p>Daily & Monthly Incentive Summary</p></div></div>
+    <div class="inc-shop">⌖ 50-1, Venkatesha Nagar, Ullur, Kumbakonam - 612001<br>☎ 6382212457</div>
+  </div>
+  <div class="inc-filters">
+    <div class="inc-filter date-box"><div class="inc-filter-head">▣ <b>Check Incentive for a Particular Date</b></div><div class="inc-filter-row"><input type="date" id="ifdate"><button id="applyIncDate" class="inc-blue">APPLY</button></div><div class="inc-help">Select a date and click Apply to view that day's incentive.</div></div>
+    <div class="inc-filter month-box"><div class="inc-filter-head">▣ <b>Check Monthly Accumulated Incentive</b></div><div class="inc-filter-row"><input type="month" id="ifmonth"><button id="applyIncMonth" class="inc-green">APPLY</button></div><div class="inc-help">Select a month and click Apply to view monthly accumulated incentive.</div></div>
+  </div>
+  <div class="inc-table-card" style="padding:14px">
+    <div class="inc-table-title" style="padding:0 0 10px">Incentive Backup – Permanent Records</div>
+    <div class="small" style="font-size:11px;line-height:1.6;margin-bottom:10px">Download a readable Excel statement for the selected date or month. A permanent snapshot is also saved in Firebase as an audit copy; each download creates a new version.</div>
+    <div class="actions">
+      <button id="saveDailyIncentiveBackup" class="inc-blue">DOWNLOAD DAILY INCENTIVE EXCEL</button>
+      <button id="saveMonthlyIncentiveBackup" class="inc-green">DOWNLOAD MONTHLY INCENTIVE EXCEL</button>
+    </div>
+    <div id="incentiveBackupStatus" class="inc-help" style="margin-top:10px">Choose the date or month above, then download the Excel file. A separate permanent Firebase audit snapshot is also retained.</div>
+  </div>
+  <div class="inc-table-card">
+    <div class="inc-table-title">★ Incentive Summary</div>
+    <div class="scroll"><table id="incSummaryTable" class="inc-summary-table"><thead><tr><th>#</th><th>Employee</th><th class="today-col">Today Incentive <span id="incDateLabel"></span></th><th class="month-col">This Month Accumulated <span id="incMonthLabel"></span></th></tr></thead><tbody id="incSummaryBody"></tbody><tfoot><tr><th colspan="2">TOTAL</th><th id="incTodayTotal">₹0.00</th><th id="incMonthTotal">₹0.00</th></tr></tfoot></table></div>
+  </div>
+  <div class="inc-bottom-grid">
+    <div class="inc-input-card">
+      <div class="inc-card-title">◉ Two Wheeler Tyre Sales / Fitment</div>
+      <p>Enter total number of two-wheeler tyres sold or fitted today.</p>
+      <label>Number of Tyres</label><input type="number" id="fit" min="0" placeholder="Enter tyre quantity">
+      <button id="saveinc" class="inc-purple manager">SAVE</button>
+      <div class="inc-rate">◉ Two-wheeler incentive rate: <b>₹10 per tyre</b></div>
+    </div>
+    <div class="inc-calc-card">
+      <div class="inc-card-title">▤ Today's Calculation Summary</div>
+      <div class="inc-selected-date" id="incCalcDate">Date: --/--/----</div>
+      <table class="inc-calc-table"><tr><td>Eligible Paid Jobs (After first 7)</td><td id="ielig">0</td></tr><tr><td>Alignment Jobs × <span id="incAlignCount">0</span> × ₹90</td><td id="incAlignCalc">₹0</td></tr><tr><td>Alignment + Balancing × <span id="incComboCount">0</span> × ₹150</td><td id="incComboCalc">₹0</td></tr><tr><td>Two Wheeler Tyres × <span id="incFitCount">0</span> × ₹10</td><td id="incFitCalc">₹0</td></tr><tr class="inc-total-row"><td>Total Incentive Pool</td><td id="ipool">₹0</td></tr><tr><td>Present Staff</td><td id="incPresent">0</td></tr><tr class="inc-share-row"><td>Per Head Incentive</td><td id="ishare">₹0.00</td></tr></table>
+    </div>
+    <div class="inc-rules-card">
+      <div class="inc-card-title">☷ Incentive Rules</div>
+      <ol><li>First 7 completed paid-service jobs are not eligible.</li><li>Free Service jobs are not eligible.</li><li>Deleted / removed tokens are not eligible.</li><li>Wheel Alignment – <b>₹90</b> per eligible job.</li><li>Alignment + Balancing – <b>₹150</b> per eligible job.</li><li>Two Wheeler Tyre – <b>₹10 per tyre</b>.</li><li>Daily incentive pool is shared equally among present technicians.</li></ol>
+    </div>
+  </div>
+  <div class="inc-manager-card manager">
+    <div><b>⚙ Manager Controls</b><span class="inc-lock-status" id="incLockStatus">UNLOCKED</span></div>
+    <div class="inc-manager-row"><input type="password" id="pin" placeholder="Manager PIN"><button id="lock" class="orange">LOCK / UNLOCK DAY</button><input type="password" id="newPin" placeholder="New PIN"><input type="password" id="confirmPin" placeholder="Confirm PIN"><button id="changePin" class="dark">CHANGE PIN</button></div>
+  </div>
+  <select id="ifperiod" style="display:none"><option value="date">Date</option></select><select id="iftech" style="display:none"></select><select id="ifclass" style="display:none"></select>
+  <div id="iflabel" style="display:none"></div><div id="ifit" style="display:none"></div><div id="ibreak" style="display:none"></div><div id="monthlyIncBody" style="display:none"></div><div id="monthlyIncTotal" style="display:none"></div><div id="mgrMonthSummary" style="display:none"></div><input id="cartyres" type="hidden" value="">
+</section>
+<section id="activity" class="page"><div class="card manager">
+<h2>⇩ Data Backup</h2>
+<div class="filter">
+<input type="date" id="bkfrom">
+<input type="date" id="bkto">
+<select id="bkuser"><option value="">All Users</option></select>
+<select id="bkaction"><option value="">All Actions</option></select>
+<input id="bksearch" placeholder="Search activity">
+<button id="bkclear">CLEAR</button>
+</div>
+<div class="filter" style="margin-top:8px;grid-template-columns:1fr 1fr">
+<label>Manual Excel Backup Period<select id="manualBackupPeriod"><option value="Daily">Daily</option><option value="Monthly" selected>Monthly</option><option value="Quarterly">Quarterly</option></select></label>
+<label id="manualBackupDateWrap">Select Date<input type="date" id="manualBackupDate"></label>
+<label id="manualBackupMonthWrap">Select Month<input type="month" id="manualBackupMonth"></label>
+<label id="manualBackupQuarterWrap" style="display:none">Select Quarter<select id="manualBackupQuarter"><option value="1">Q1 (Jan-Mar)</option><option value="2">Q2 (Apr-Jun)</option><option value="3">Q3 (Jul-Sep)</option><option value="4">Q4 (Oct-Dec)</option></select></label>
+</div>
+<div class="actions"><button id="backupExcel">MANUAL EXCEL BACKUP NOW</button><button id="chooseBackupFolder" class="orange">CHOOSE BACKUP FOLDER</button></div><div class="small" style="margin-top:7px;color:#86efac">Manual backup creates only the Excel workbook for the selected date, month or quarter. It does not create a JSON file.</div>
+ <div class="card" style="margin-top:10px;background:#10283d">
+  <h2 style="font-size:13px">Automatic Backup Settings</h2>
+  <div class="small" style="line-height:1.7">Choose the backup folder on the billing computer (recommended: D:\SRI HARI TYRES BACKUP). The browser will create DAILY, MONTHLY, QUARTERLY, FIREBASE JSON and BACKUP LOGS folders automatically.</div>
+  <div id="backupFolderStatus" class="small" style="margin:8px 0;color:#fbbf24">Backup folder not selected on this device.</div>
+  <div class="form" style="grid-template-columns:repeat(3,1fr)">
+   <label class="small">Daily backup time<input id="backupTime" type="time" value="21:30"></label>
+   <label class="small">Automatic backup<input id="backupAuto" type="checkbox" checked style="width:20px;min-height:20px"></label>
+   <label class="small">Backup device<input value="Billing computer only" disabled></label>
+  </div>
+  <div id="backupLastStatus" class="small" style="margin-top:8px">No successful backup recorded on this device.</div>
+  <div class="small" style="margin-top:7px;color:#fbbf24">Important: Chrome must be open and this app signed in on the billing computer at the scheduled time. This browser backup cannot run while the app is fully closed or the computer is off. Keep monthly pen-drive copies separately.</div>
+ </div>
+ <div class="small">Manager-only. Daily/monthly/quarterly Excel files use the approved 7-sheet workbook format. Full Firebase JSON preserves the complete database for technical recovery. Backups are retained; no automatic deletion.</div>
+</div>
+<div class="card"><h2>◉ Activity Log</h2><div class="filter"><input id="aq" placeholder="Search activity"><input type="date" id="ad"><button id="arefresh">REFRESH</button></div><div class="scroll"><table><thead><tr><th>Time</th><th>User</th><th>Action</th><th>Details</th></tr></thead><tbody id="abody"></tbody></table></div></div>
+<div class="panel" style="margin-top:14px">
+  <div class="panel-head">
+    <h3>Data Backup</h3>
+    <button id="activityBackupExcel" class="small-btn" type="button">⇩ Backup as Excel</button>
+  </div>
+  <div class="muted" style="font-size:12px">Export your workshop data to an Excel backup file.</div>
+</div>
+</section></main>
+<div id="historyEditPopup" class="modal hidden"><div class="modalbox"><h2>✎ Edit Completed History</h2><div class="small">Manager PIN required. Changes are audited and incentive is recalculated from the corrected service record.</div><input type="hidden" id="heId"><input type="hidden" id="heDay"><div class="form" style="margin-top:10px"><input id="heVehicle" placeholder="Vehicle Number"><input id="heModel" placeholder="Vehicle Model"><select id="heTech"></select><select id="heService"></select></div><div class="small" style="margin-top:8px">Status remains protected. Deleted records are excluded from incentive calculation.</div><input id="hePin" type="password" placeholder="Manager PIN" style="margin-top:8px"><div class="actions"><button id="heSave" class="green">SAVE CORRECTION</button><button id="heCancel" class="dark">CANCEL</button></div></div></div><div id="tokenPopup" class="modal hidden"><div class="modalbox" style="text-align:center"><div style="font-size:13px;font-weight:900;color:var(--g);letter-spacing:1px">✓ TOKEN GENERATED</div><div id="popupToken" style="font-size:42px;font-weight:1000;margin:8px 0;color:var(--b)"></div><div id="popupDetails" class="small" style="line-height:1.8"></div><div class="actions" style="justify-content:center;margin-top:14px"><button id="popupOk">OK</button></div></div></div><div id="login" class="modal hidden"></div><div id="toast" class="toast"></div>
+<script type="module">
+import{initializeApp,getApps}from'https://www.gstatic.com/firebasejs/12.18.0/firebase-app.js';import{getDatabase,ref,onValue,get,set,update,push}from'https://www.gstatic.com/firebasejs/12.18.0/firebase-database.js';import{getAuth,signInWithEmailAndPassword,onAuthStateChanged,signOut}from'https://www.gstatic.com/firebasejs/12.18.0/firebase-auth.js';
+const cfg={apiKey:'AIzaSyBFqSsLQbiaCnKeVzmNmeEZMKmo4Bx5fwA',authDomain:'sri-hari-tyres-smartservice.firebaseapp.com',databaseURL:'https://sri-hari-tyres-smartservice-default-rtdb.asia-southeast1.firebasedatabase.app',projectId:'sri-hari-tyres-smartservice',storageBucket:'sri-hari-tyres-smartservice.firebasestorage.app',messagingSenderId:'410615822494',appId:'1:410615822494:web:88c0e090de8965ba54638f'};const app=getApps().length?getApps()[0]:initializeApp(cfg),db=getDatabase(app),auth=getAuth(app);
+const services=['Alignment','Alignment + Balancing','2 Tyres + Alignment','4 Tyres + Alignment','2 Tyres + Alignment + Balancing','4 Tyres + Alignment + Balancing','Free Service'];const techDefault=[['Arjun','car'],['Aravind','car'],['Arivazhagan','car'],['Sarath Kumar','car'],['Vijay','car'],['Nandha','twoWheeler'],['Venkatesh','twoWheeler']];const S=s=>s.toUpperCase();const $=x=>document.getElementById(x);const today=()=>{let d=new Date(),z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())},dk=d=>(d||today()).replaceAll('-',''),path=()=>`days/${dk()}`;let U=null,P={},D={},ACT={},un=[];function toast(x){$('toast').textContent=x;$('toast').style.display='block';setTimeout(()=>$('toast').style.display='none',2000)}function mgr(){return P.role==='manager'||P.class==='manager'||P.role==='owner'||P.class==='owner'}function esc(x){return String(x??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}function name(){return P.name||U?.email||'Unknown'}function log(a,d){if(U)push(ref(db,'activity'),{ts:Date.now(),date:today(),user:name(),action:a,details:d})}function ts(){return Object.entries(D.tokens||{}).map(([id,x])=>({id,...x})).sort((a,b)=>(a.createdAt||0)-(b.createdAt||0))}
+function dayKeyFor(x){if(x?.day)return x.day;if(x?.completedAt){const d=new Date(x.completedAt),z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())}if(x?.createdAt){const d=new Date(x.createdAt),z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())}return today()}
+function isFreeService(x){const s=String(x?.serviceType||x?.service||'').trim().toLowerCase();return x?.free===true || s==='free service' || s.includes('free service')}
+function dayCompletedPaid(day){let rows;if(day===today())rows=ts();else {const hk=dk(day);rows=Object.entries(D.history?.[hk]?.tokens||{}).map(([id,x])=>({id,...x,day}));}return rows.filter(x=>x.status==='Completed'&&!isFreeService(x)&&x.status!=='Removed').sort((a,b)=>(a.completedAt||a.createdAt||0)-(b.completedAt||b.createdAt||0))}
+function eligible(x){if(!x||isFreeService(x)||x.status!=='Completed')return false;const day=dayKeyFor(x),rows=dayCompletedPaid(day),idx=rows.findIndex(r=>r.id===x.id);return idx>=7}
+function value(x){return eligible(x)?(x.serviceType==='Alignment'?90:150):0}
+function technicians(){let a=Object.values(D.staff||{});if(!a.length)a=techDefault.map(x=>({name:x[0],class:x[1],role:'technician'}));return a.filter(x=>x.role!=='manager'&&x.class!=='manager')}function carTechnicians(){return technicians().filter(x=>x.class==='car')}function optsTech(sel){return carTechnicians().map(x=>`<option ${x.name===sel?'selected':''}>${esc(x.name)}</option>`).join('')}function optsSvc(sel){return services.map(x=>`<option value="${esc(x)}" ${x===sel?'selected':''}>${esc(x)}</option>`).join('')}function short(x){return x.replaceAll('Tyres','TYRES').replaceAll(' + ',' + ').toUpperCase()}
+function render(){dash();queue();tv();history();reports();incentive();staff();attendance();attendanceSummary();activity();document.querySelectorAll('.manager').forEach(x=>x.style.display=mgr()?'':'none');$('who').textContent=name()+(P.role==='owner'?' – OWNER':(mgr()?' – MANAGER':' – TECHNICIAN'))}
+function dash(){let a=ts();$('dtotal').textContent=a.length;$('dwait').textContent=a.filter(x=>x.status==='Waiting').length;$('dsvc').textContent=a.filter(x=>x.status==='In Service').length;$('ddone').textContent=a.filter(x=>x.status==='Completed').length;let c={};services.forEach(x=>c[x]=0);a.filter(x=>x.status==='Completed').forEach(x=>c[x.serviceType]++);$('summary').innerHTML=services.map(x=>`<div class=sum><span>${esc(short(x))}</span><b>${c[x]}</b></div>`).join('')}function nowHtml(x){return `<div class=now><div class=nt>NOW SERVING – TOKEN ${esc(x.tokenLabel)}</div><div class=nv>${esc(x.vehicleNo)}</div><div class=nm>${esc(x.vehicleModel)}</div><div class=ns>${esc(short(x.serviceType))}</div><div>♙ TECHNICIAN: ${esc(x.technician)}</div><div style="margin-top:8px"><span class="badge svc">● IN PROGRESS</span></div><div class="actions" style="justify-content:center;margin-top:12px"><button class="blue" data-edit-queue="${esc(x.id)}">✎ EDIT</button><button class="green" data-complete="${esc(x.id)}">✓ COMPLETE</button></div></div>`}
+let queueEditCurrentId=null;
+function queueTokenById(id){
+  const wanted=String(id||'');
+  const pool=D.tokens||{};
+  if(pool[wanted]) return {id:wanted,data:pool[wanted]};
+  return null;
+}
+function queueTechOptions(current){
+  const names=[...new Set([...techDefault.map(x=>x[0]),...Object.values(D.staff||{}).map(x=>x?.name).filter(Boolean)])];
+  return names.map(n=>`<option value="${esc(n)}" ${n===current?'selected':''}>${esc(n)}</option>`).join('');
+}
+function queueServiceOptions(current){
+  return services.map(s=>`<option value="${esc(s)}" ${s===current?'selected':''}>${esc(s)}</option>`).join('');
+}
+function openQueueEdit(id){
+  const found=queueTokenById(id);
+  if(!found) return toast('Queue token could not be found. Please refresh the queue.');
+  const x=found.data;
+  if(x.status==='Completed') return toast('Completed vehicles must be edited through History.');
+  if(x.status!=='Waiting' && x.status!=='In Service') return toast('This vehicle cannot be edited now.');
+  queueEditCurrentId=found.id;
+  $('qeTokenId').value=found.id;
+  $('qeToken').value=x.tokenLabel||x.token||found.id;
+  $('qeVehicleNo').value=x.vehicleNo||x.vehicleNumber||'';
+  $('qeVehicleModel').value=x.vehicleModel||x.model||'';
+  $('qeTechnician').innerHTML=queueTechOptions(x.technician||'');
+  $('qeJob').innerHTML=queueServiceOptions(x.serviceType||x.job||'');
+  $('queueEditModal').style.display='flex';
+}
+async function saveQueueEdit(){
+  const id=queueEditCurrentId;
+  const found=queueTokenById(id);
+  if(!found) return false;
+  const x=found.data;
+  const patch={
+    vehicleNo:$('qeVehicleNo').value.trim().toUpperCase(),
+    vehicleModel:$('qeVehicleModel').value.trim(),
+    technician:$('qeTechnician').value,
+    serviceType:$('qeJob').value,
+    editedAt:Date.now(),
+    editedBy:name()
+  };
+  if(!patch.vehicleNo||!patch.vehicleModel||!patch.technician||!patch.serviceType){
+    toast('Vehicle number, model, technician and job are required.');
+    return false;
+  }
+  const changed=['vehicleNo','vehicleModel','technician','serviceType'].some(k=>String(x[k]??'')!==String(patch[k]??''));
+  if(!changed) return true;
+  // Update the SAME Firebase token record. Token number, status and queue position are untouched.
+  await update(ref(db,path()+'/tokens/'+found.id),patch);
+  log('Queue Token Edited',`${x.tokenLabel||x.token} – ${x.vehicleNo||''} ? ${patch.vehicleNo} – ${x.vehicleModel||''} ? ${patch.vehicleModel} – ${x.technician||''} ? ${patch.technician} – ${x.serviceType||''} ? ${patch.serviceType}`);
+  toast(`${x.tokenLabel||x.token} updated`);
+  return true;
+}
+function closeQueueEdit(){
+  $('queueEditModal').style.display='none';
+  queueEditCurrentId=null;
+}
+function bindQueueEditFields(){
+  $('qeClose')?.addEventListener('click',closeQueueEdit);
+  $('qeCancel')?.addEventListener('click',closeQueueEdit);
+  ['qeVehicleNo','qeVehicleModel','qeTechnician','qeJob'].forEach(id=>{
+    const el=$(id);
+    if(!el) return;
+    el.onchange=async()=>{ if(queueEditCurrentId) await saveQueueEdit(); };
+  });
+}
+function queue(){
+  let a=ts(),n=a.find(x=>x.status==='In Service'),w=a.filter(x=>x.status==='Waiting');
+  $('qnow').innerHTML=n?nowHtml(n):'<div class=small style="text-align:center;padding:18px">No vehicle currently in service.</div>';
+  $('waitlist').innerHTML=w.length?w.map(x=>`<div class=row data-id="${esc(x.id)}">
+    <div><div class=token>${esc(x.tokenLabel)}</div><span class="badge ${x.free?'free':'wait'}">${x.free?'FREE':'WAITING'}</span></div>
+    <div><div class=vehicle>${esc(x.vehicleNo)}</div><div class=small>Vehicle Number</div></div>
+    <div><div class=model>${esc(x.vehicleModel)}</div><div class=small>Vehicle Model</div></div>
+    <div class=small>${esc(short(x.serviceType))}</div>
+    <div class=small>♙ ${esc(x.technician)}</div>
+    <div class=actions>
+      <button class=blue data-edit-queue="${esc(x.id)}">✎ EDIT</button>
+      <button class=green data-start="${esc(x.id)}">▶ START</button>
+      <button class=red data-remove="${esc(x.id)}">REMOVE</button>
+    </div>
+  </div>`).join(''):'<div class=small style="text-align:center;padding:18px;border:1px dashed #385168;border-radius:8px">No vehicles waiting.</div>';
+  document.querySelectorAll('[data-start]').forEach(b=>b.onclick=()=>start(b.dataset.start));
+  document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>remove(b.dataset.remove));
+  document.querySelectorAll('[data-edit-queue]').forEach(b=>b.onclick=()=>openQueueEdit(b.dataset.editQueue));
+  document.querySelectorAll('[data-complete]').forEach(b=>b.onclick=()=>complete(b.dataset.complete));
+  document.querySelectorAll('[data-start]').forEach(b=>b.disabled=!!n);
+}
+async function add(){let v=$('vno').value.trim().toUpperCase(),m=$('model').value.trim(),t=$('tech').value,s=$('stype').value;if(!v||!m)return toast('Enter vehicle number and model');let a=ts(),free=s==='Free Service',counter=free?'freeTokenCounter':'regularTokenCounter',stored=Number(D[counter]||0),usedMax=a.filter(x=>!!x.free===free).reduce((q,x)=>Math.max(q,Number(x.token)||0),0),n=Math.max(stored,usedMax)+1,id=push(ref(db,path()+'/tokens')).key,x={token:n,tokenLabel:free?'F'+n:String(n),free,vehicleNo:v,vehicleModel:m,technician:t,serviceType:s,status:'Waiting',createdAt:Date.now(),createdBy:name()};await update(ref(db,path()),{[counter]:n,tokens:{...D.tokens,[id]:x}});log('Token Created',`${x.tokenLabel} – ${v} – ${s} – ${t}`);$('vno').value='';$('model').value='';$('popupToken').textContent=x.tokenLabel;$('popupDetails').innerHTML=`<b>${esc(v)}</b><br>${esc(m)}<br>Technician: ${esc(t)}<br>Service Type: ${esc(s)}<br><span class="badge wait" style="margin-top:6px">WAITING</span>`;$('tokenPopup').classList.remove('hidden')}
+async function start(id){if(ts().some(x=>x.status==='In Service'))return toast('Bay is BUSY');let x=ts().find(a=>a.id===id);await update(ref(db,path()+'/tokens/'+id),{status:'In Service',startedAt:Date.now(),startedBy:name()});log('Service Started',`${x.tokenLabel} – ${x.vehicleNo}`)}async function complete(id){let x=ts().find(a=>a.id===id);if(!x||x.status!=='In Service')return;if(!confirm(`Complete ${x.tokenLabel}?`))return;await update(ref(db,path()+'/tokens/'+id),{status:'Completed',completedAt:Date.now(),completedBy:name()});log('Service Completed',`${x.tokenLabel} – ${x.vehicleNo} – eligible=${eligible({...x,status:'Completed'})}`)}async function remove(id){let x=ts().find(a=>a.id===id);if(!x||x.status!=='Waiting')return;if(!confirm(`Remove ${x.tokenLabel}? It will not be incentive eligible.`))return;await update(ref(db,path()+'/tokens/'+id),{status:'Removed',removedAt:Date.now(),removedBy:name()});log('Token Removed',`${x.tokenLabel} – ${x.vehicleNo} – not eligible`)}function tv(){let a=ts(),n=a.find(x=>x.status==='In Service'),w=a.filter(x=>x.status==='Waiting');$('tvcount').textContent=w.length;$('tvnow').innerHTML=n?`<div style="color:var(--o);font-weight:900;letter-spacing:2px">NOW SERVICING</div><div class=tvtoken>TOKEN ${esc(n.tokenLabel)}</div><div class=tvveh>${esc(n.vehicleNo)}</div><div class=tvmodel>${esc(n.vehicleModel)}</div><div style="color:var(--o);font-weight:900">${esc(short(n.serviceType))}</div><div>♟ ${esc(n.technician)}</div><div style="margin-top:8px"><span class="badge svc">● IN PROGRESS</span></div>`:'<div style="color:var(--o);font-weight:900;letter-spacing:2px">NOW SERVING</div><div class=tvveh style="font-size:clamp(24px,4vw,55px)">BAY AVAILABLE</div><div class=small>Waiting for the next vehicle</div>';$('tvlist').innerHTML=w.length?w.map(x=>`<div class=tvcard><div style="color:var(--o);font-weight:900">TOKEN ${esc(x.tokenLabel)}</div><div class=v>${esc(x.vehicleNo)}</div><div style="color:var(--b);font-weight:800">${esc(x.vehicleModel)}</div><div class=small>${esc(short(x.serviceType))}</div><div class=small>${esc(x.technician)}</div></div>`).join(''):'<div class=tvcard><div class=small>No vehicles waiting</div></div>'}
+function history(){
+ const q=($('hs').value||'').toLowerCase(),st=$('hstatus').value,from=$('hf').value||'',to=$('ht').value||'';
+ const rows=[];
+ const historicalKeys=Object.keys(D.history||{}).filter(k=>k!=='tokens');
+ const allDays=new Set([today(),...historicalKeys.map(k=>k.length===8?`${k.slice(0,4)}-${k.slice(4,6)}-${k.slice(6,8)}`:k)]);
+ allDays.forEach(day=>{
+   if(from&&day<from)return;if(to&&day>to)return;
+   const src=day===today()?D.tokens||{}:D.history?.[dk(day)]?.tokens||{};
+   Object.entries(src).forEach(([id,x])=>{
+     const r={id,day,...x};
+     if(r.status!=='Completed'&&r.status!=='Removed')return;
+     if(st&&r.status!==st)return;
+     if(q&&!([r.tokenLabel,r.vehicleNo,r.vehicleModel,r.technician,r.serviceType,r.createdBy,r.completedBy,r.editedBy].join(' ').toLowerCase().includes(q)))return;
+     rows.push(r);
+   });
+ });
+ rows.sort((a,b)=>(b.completedAt||b.removedAt||b.createdAt||0)-(a.completedAt||a.removedAt||a.createdAt||0));
+ $('hbody').innerHTML=rows.map(x=>{
+   const fmt=t=>t?new Date(t).toLocaleString('en-IN',{day:'2-digit',month:'short',hour:'2-digit',minute:'2-digit'}):'—';
+   const lm=x.editedAt?`${esc(x.editedBy||'Manager')} – ${fmt(x.editedAt)}`:'—';
+   return `<tr><td>${esc(x.day)}</td><td><b>${esc(x.tokenLabel)}</b>${x.editedAt?' <span class="badge" style="background:#3b2a08;color:#fbbf24">EDITED</span>':''}</td><td>${esc(x.vehicleNo)}</td><td>${esc(x.vehicleModel)}</td><td>${esc(x.technician)}</td><td>${esc(x.serviceType)}</td><td>${esc(x.status)}</td><td>${fmt(x.createdAt)}<br><span class="small">${esc(x.createdBy||'—')}</span></td><td>${fmt(x.startedAt)}<br><span class="small">${esc(x.startedBy||'—')}</span></td><td>${fmt(x.completedAt)}<br><span class="small">${esc(x.completedBy||'—')}</span></td><td>${eligible(x)?'<span class="good">YES</span>':'NO'}</td><td>${lm}</td><td>${mgr()&&x.status==='Completed'?`<button class="dark" data-history-edit="${esc(x.id)}" data-history-day="${esc(x.day)}">EDIT</button> <button class="red" data-history-delete="${esc(x.id)}" data-history-day="${esc(x.day)}">DELETE</button>`:'—'}</td></tr>`;
+ }).join('')||'<tr><td colspan="13">No history records found.</td></tr>';
+ document.querySelectorAll('[data-history-edit]').forEach(b=>b.onclick=()=>openHistoryEdit(b.dataset.historyId||b.getAttribute('data-history-edit'),b.getAttribute('data-history-day')));document.querySelectorAll('[data-history-delete]').forEach(b=>b.onclick=()=>deleteHistory(b.getAttribute('data-history-delete'),b.getAttribute('data-history-day')));
+}
+async function deleteHistory(id,day){
+ if(!mgr())return toast('Manager access required');
+ const pin=prompt('Enter Manager PIN to delete this history record:');
+ if(pin===null)return;
+ const saved=D.incentive?.managerPin||'2580';
+ if(pin!==saved)return toast('Wrong Manager PIN');
+ const src=day===today()?D.tokens||{}:D.history?.[dk(day)]?.tokens||{},x=src[id];
+ if(!x||x.status!=='Completed')return toast('Completed history record not found');
+ if(!confirm(`DELETE ${x.tokenLabel||x.token} – ${x.vehicleNo}? This cannot be undone.`))return;
+ const base=day===today()?ref(db,path()+'/tokens/'+id):ref(db,'days/'+dk(day)+'/tokens/'+id);
+ await set(base,null);
+ log('History Deleted',`Token ${x.tokenLabel||x.token} – ${x.vehicleNo} – ${x.serviceType} – Deleted by: ${name()}`);
+ toast('History record deleted');
+ render();
+}
+
+function openHistoryEdit(id,day){
+ if(!mgr())return toast('Manager access required');
+ const src=day===today()?D.tokens||{}:D.history?.[dk(day)]?.tokens||{},x=src[id];if(!x)return toast('Record not found');
+ $('heId').value=id;$('heDay').value=day;$('heVehicle').value=x.vehicleNo||'';$('heModel').value=x.vehicleModel||'';
+ $('heTech').innerHTML=optsTech(x.technician);$('heService').innerHTML=optsSvc(x.serviceType);$('hePin').value='';$('historyEditPopup').classList.remove('hidden');
+}
+function closeHistoryEdit(){$('historyEditPopup').classList.add('hidden')}
+async function saveHistoryEdit(){
+ if(!mgr())return toast('Manager access required');
+ const pin=$('hePin').value.trim(), saved=D.incentive?.managerPin||'2580';
+ if(pin!==saved)return toast('Wrong Manager PIN');
+ const id=$('heId').value,day=$('heDay').value,src=day===today()?D.tokens||{}:D.history?.[dk(day)]?.tokens||{},before=src[id];if(!before)return toast('Record not found');
+ const vehicle=$('heVehicle').value.trim().toUpperCase(),model=$('heModel').value.trim(),tech=$('heTech').value,service=$('heService').value;
+ if(!vehicle||!model||!tech||!service)return toast('Complete all fields');
+ const after={...before,vehicleNo:vehicle,vehicleModel:model,technician:tech,serviceType:service,free:service==='Free Service',editedAt:Date.now(),editedBy:name()};
+ // Completed history corrections never change the historical token sequence. Only service classification changes eligibility/value.
+ if(after.free)after.tokenLabel=String(before.tokenLabel||before.token||'').startsWith('F')?before.tokenLabel:'F'+before.token;
+ else after.tokenLabel=String(before.tokenLabel||before.token||'').startsWith('F')?String(before.token):String(before.tokenLabel||before.token||'');
+ const changes=[];['vehicleNo','vehicleModel','technician','serviceType','free','tokenLabel'].forEach(k=>{if(JSON.stringify(before[k])!==JSON.stringify(after[k]))changes.push({field:k,before:before[k],after:after[k]})});
+ if(!changes.length){closeHistoryEdit();return toast('No changes made')}
+ const base=day===today()?ref(db,path()+'/tokens/'+id):ref(db,'days/'+dk(day)+'/tokens/'+id);
+ await update(base,{vehicleNo:after.vehicleNo,vehicleModel:after.vehicleModel,technician:after.technician,serviceType:after.serviceType,free:after.free,tokenLabel:after.tokenLabel,editedAt:after.editedAt,editedBy:after.editedBy});
+ const beforeText=changes.map(c=>`${c.field}: ${c.before??'—'}`).join(' | '),afterText=changes.map(c=>`${c.field}: ${c.after??'—'}`).join(' | ');
+ log('History Edited',`Token ${before.tokenLabel||before.token} – Before: ${beforeText} – After: ${afterText} – Changed by: ${name()} – Incentive recalculated automatically`);
+ closeHistoryEdit();toast('History corrected – Incentive recalculated');render();
+}
+
+function reportRows(){
+ const byKey=new Map(),addRows=(source,day)=>Object.entries(source||{}).forEach(([id,x])=>{
+  if(!x)return;const stamp=Number(x.completedAt||0),d=stamp?new Date(stamp):null;
+  const date=d&&!isNaN(d)?todayOf(d):(x.day||day||dayKeyFor(x));
+  const key=String(date).replaceAll('-','');
+  const row={id,...x,reportDate:date};
+  if(row.status==='Completed')byKey.set(key+'_'+id,row);
+ });
+ Object.entries(D.history||{}).forEach(([k,v])=>{
+  const day=k.length===8?`${k.slice(0,4)}-${k.slice(4,6)}-${k.slice(6,8)}`:k;
+  addRows(v?.tokens,day);
+ });
+ addRows(D.tokens,today());
+ return [...byKey.values()].sort((a,b)=>(a.completedAt||0)-(b.completedAt||0));
+}
+function reportTokenTable(rows){
+ const cols=['Date','Token','Vehicle No.','Vehicle Model','Technician','Work','Service'];
+ return `<thead><tr>${cols.map(x=>`<th>${x}</th>`).join('')}</tr></thead><tbody>`+(rows.length?rows.map(x=>`<tr><td>${esc(x.reportDate)}</td><td>${esc(x.tokenLabel||x.token||'')}</td><td>${esc(x.vehicleNo||x.vehicleNumber||'')}</td><td>${esc(x.vehicleModel||'')}</td><td>${esc(x.technician||'')}</td><td>${esc(x.serviceType||x.service||'')}</td><td>${isFreeService(x)?'Free':'Paid'}</td></tr>`).join(''):'<tr><td colspan="7">No completed tokens for this month</td></tr>')+'</tbody>';
+}
+function technicianWorkTable(rows,filter){
+ const cols=services.filter(x=>x!=='Free Service');const people=technicians();
+ return `<thead><tr><th>Technician</th><th>Total Jobs</th>${cols.map(c=>`<th>${esc(short(c))}</th>`).join('')}</tr></thead><tbody>`+people.map(p=>{const z=rows.filter(x=>x.technician===p.name&&(!filter||filter(x)));return `<tr><td>${esc(p.name)}</td><td><b>${z.length}</b></td>${cols.map(c=>`<td>${z.filter(x=>(x.serviceType||x.service)===c).length}</td>`).join('')}</tr>`}).join('')+`<tr><th>TOTAL</th><th>${rows.filter(x=>!filter||filter(x)).length}</th>${cols.map(c=>`<th>${rows.filter(x=>(x.serviceType||x.service)===c&&(!filter||filter(x))).length}</th>`).join('')}</tr></tbody>`;
+}
+function technicianPaidFreeTable(rows){
+ const people=technicians();
+ const body=people.map(p=>{
+  const jobs=rows.filter(x=>x.technician===p.name);
+  const paid=jobs.filter(x=>!isFreeService(x)).length;
+  const free=jobs.filter(isFreeService).length;
+  return `<tr><td>${esc(p.name)}</td><td><b>${jobs.length}</b></td><td>${paid}</td><td>${free}</td></tr>`;
+ }).join('');
+ const totalPaid=rows.filter(x=>!isFreeService(x)).length;
+ const totalFree=rows.filter(isFreeService).length;
+ return `<thead><tr><th>Technician</th><th>Total Work Done</th><th>Paid Jobs</th><th>Free Jobs</th></tr></thead><tbody>${body}<tr><th>TOTAL</th><th>${rows.length}</th><th>${totalPaid}</th><th>${totalFree}</th></tr></tbody>`;
+}
+function workWiseTable(rows){
+ const works=services.filter(x=>x!=='Free Service');
+ return '<thead><tr><th>Work Type</th><th>Completed Jobs</th><th>Paid</th><th>Free</th></tr></thead><tbody>'+works.map(w=>{const z=rows.filter(x=>(x.serviceType||x.service)===w);return `<tr><td>${esc(w)}</td><td>${z.length}</td><td>${z.filter(x=>!isFreeService(x)).length}</td><td>${z.filter(isFreeService).length}</td></tr>`}).join('')+`<tr><th>FREE SERVICE</th><th>${rows.filter(isFreeService).length}</th><th>0</th><th>${rows.filter(isFreeService).length}</th></tr><tr><th>TOTAL</th><th>${rows.length}</th><th>${rows.filter(x=>!isFreeService(x)).length}</th><th>${rows.filter(isFreeService).length}</th></tr></tbody>`;
+}
+function focusedWorkTable(rows,service){const z=rows.filter(x=>(x.serviceType||x.service)===service);return '<thead><tr><th>Technician</th><th>Completed Jobs</th><th>Paid</th><th>Free</th></tr></thead><tbody>'+technicians().map(p=>{const a=z.filter(x=>x.technician===p.name);return `<tr><td>${esc(p.name)}</td><td>${a.length}</td><td>${a.filter(x=>!isFreeService(x)).length}</td><td>${a.filter(isFreeService).length}</td></tr>`}).join('')+`<tr><th>TOTAL</th><th>${z.length}</th><th>${z.filter(x=>!isFreeService(x)).length}</th><th>${z.filter(isFreeService).length}</th></tr></tbody>`}
+function freeTable(a){return '<thead><tr><th>Technician</th><th>Free Services Done</th></tr></thead><tbody>'+technicians().map(p=>`<tr><td>${esc(p.name)}</td><td>${a.filter(x=>isFreeService(x)&&x.technician===p.name).length}</td></tr>`).join('')+`<tr><th>TOTAL</th><th>${a.filter(isFreeService).length}</th></tr></tbody>`}
+function twoWheelerReportTable(view,date,month){
+ const days=view==='day'?[date]:monthDayList(month);
+ const rows=days.map(day=>({day,qty:Number(dayIncentive(day).twoWFitting)||0})).filter(x=>x.qty>0);
+ const total=rows.reduce((n,x)=>n+x.qty,0);
+ $('twoWReportLabel').textContent=view==='day'
+  ? 'Two-wheeler tyres fitted on the selected date'
+  : 'Daily two-wheeler tyre fitting totals for the selected month';
+ return `<thead><tr><th>${view==='day'?'Date':'Day'}</th><th>Tyres Fitted</th></tr></thead><tbody>${rows.length?rows.map(x=>`<tr><td>${esc(x.day)}</td><td>${x.qty}</td></tr>`).join(''):`<tr><td colspan="2">No two-wheeler fittings recorded for this ${view==='day'?'date':'month'}.</td></tr>`}<tr><th>TOTAL</th><th>${total}</th></tr></tbody>`;
+}
+function reports(){
+ const view=$('reportView')?.value||'day';
+ const all=reportRows();
+ const date=$('reportDate')?.value||today();
+ const month=$('reportMonth')?.value||today().slice(0,7);
+ const selected=view==='month'
+  ? all.filter(x=>String(x.reportDate||'').slice(0,7)===month)
+  : all.filter(x=>String(x.reportDate||'')===date);
+ const paid=selected.filter(x=>!isFreeService(x)),free=selected.filter(isFreeService);
+ $('reportDateWrap').style.display=view==='day'?'':'none';
+ $('reportMonthWrap').style.display=view==='month'?'':'none';
+ $('reportMonthLabel').textContent=view==='day'
+  ? 'Showing completed work for '+new Date(date+'T00:00:00').toLocaleDateString('en-IN',{day:'2-digit',month:'long',year:'numeric'})
+  : 'Showing completed work for '+new Date(month+'-01T00:00:00').toLocaleDateString('en-IN',{month:'long',year:'numeric'});
+ $('rkpi').innerHTML=[['Completed Jobs',selected.length],['Paid Jobs',paid.length],['Free Service Completed',free.length],['Alignment Only',selected.filter(x=>(x.serviceType||x.service)==='Alignment').length],['Alignment + Balancing',selected.filter(x=>(x.serviceType||x.service)==='Alignment + Balancing').length]].map(x=>`<div class=metric><div class=n>${x[1]}</div><div class=l>${x[0]}</div></div>`).join('');
+ $('tmonth').innerHTML=technicianWorkTable(selected,null);
+ $('fmonth').innerHTML=technicianPaidFreeTable(selected);
+ $('twoWReport').innerHTML=twoWheelerReportTable(view,date,month);
+ const summaryTitle=document.querySelector('#reports .card:last-child h2');
+ if(summaryTitle)summaryTitle.textContent='Two wheeler summary';
+ const techTitle=document.querySelector('#reports .card:nth-of-type(2) h2');
+ if(techTitle)techTitle.textContent=view==='day'?'Technician-wise Work Done Today':'Technician-wise Work Done This Month';
+}
+function incentiveRange(){
+ const period=$('ifperiod')?.value||'today', date=$('ifdate')?.value||today(), month=$('ifmonth')?.value||today().slice(0,7), tech=$('iftech')?.value||'', cls=$('ifclass')?.value||'';
+ let days=[];
+ if(period==='today'||period==='date') days=[period==='today'?today():date];
+ else {let [y,m]=month.split('-').map(Number),n=new Date(y,m,0).getDate();for(let d=1;d<=n;d++)days.push(`${month}-${String(d).padStart(2,'0')}`)}
+ let rows=[];
+ days.forEach(day=>{let toks=day===today()?ts():Object.values(D.history?.[dk(day)]?.tokens||{}).map((x,i)=>({id:Object.keys(D.history?.[dk(day)]?.tokens||{})[i],...x}));rows.push(...toks.map(x=>({...x,day})))});
+ return {rows,period,date,month,tech,cls,days};
+}
+function inc(){
+ const q=incentiveRange();
+ // Calculate the shared pool from ALL eligible completed tokens first.
+ // Technician/class filters affect the displayed person's share, never the pool itself.
+ const allEligible=q.rows.filter(x=>eligible(x));
+ const e=q.rows.filter(x=>eligible(x)&&(!q.tech||x.technician===q.tech)&&(!q.cls||technicians().find(t=>t.name===x.technician)?.class===q.cls));
+ let fit=0,totalPool=0,present=0;
+ q.days.forEach(day=>{
+   if(day===today()) {fit+=Number(D.incentive?.twoWFitting||0);present+=Object.values(D.attendance||{}).filter(x=>x==='P').length}
+   else {fit+=Number(D.history?.[dk(day)]?.incentive?.twoWFitting||0);present+=Object.values(D.history?.[dk(day)]?.attendance||{}).filter(x=>x==='P').length}
+ });
+ let pool=allEligible.reduce((s,x)=>s+value(x),0),fp=fit*10,total=pool+fp;
+ return {e,allEligible,pool,fit,fp,total,p:present,share:present?total/present:0,q};
+}
+function incentivePeople(){
+ const p=[];
+ carTechnicians().forEach(x=>p.push({name:x.name,role:'Car Technician',cls:'car'}));
+ technicians().filter(x=>x.class==='twoWheeler').forEach(x=>p.push({name:x.name,role:'2W Technician',cls:'twoWheeler'}));
+ const ms=Object.values(D.staff||{}).filter(x=>x.role==='manager'||x.class==='manager');
+ if(ms.length)ms.forEach(x=>p.push({name:x.name,role:'Manager',cls:'manager'})); else p.push({name:'Manager',role:'Manager',cls:'manager'});
+ return p;
+}
+function monthDayList(month){let [y,m]=month.split('-').map(Number),n=new Date(y,m,0).getDate(),r=[];for(let d=1;d<=n;d++)r.push(`${month}-${String(d).padStart(2,'0')}`);return r}
+function dayTokens(day){if(day===today())return ts();let o=D.history?.[dk(day)]?.tokens||{};return Object.entries(o).map(([id,x])=>({id,...x,day}))}
+function dayAttendance(day){if(day===today())return D.attendance||{};return D.history?.[dk(day)]?.attendance||D.attendanceHistory?.[day]||{}}
+function dayIncentive(day){if(day===today())return D.incentive||{};return D.history?.[dk(day)]?.incentive||{}}
+function managerSlab(n){n=Number(n)||0;if(n>=500)return 10000;if(n>=400)return 6000;if(n>=300)return 3000;return 0}
+function dayPool(day){
+ const rows=dayTokens(day), e=rows.filter(eligible), att=dayAttendance(day);
+ const align=e.filter(x=>String(x.serviceType||'').trim()==='Alignment').length, other=e.length-align;
+ const servicePool=align*90+other*150, fittings=Number(dayIncentive(day).twoWFitting)||0, fittingPool=fittings*10;
+ const present=Object.values(att).filter(x=>x==='P').length;
+ return {e,align,other,servicePool,fittings,fittingPool,total:servicePool+fittingPool,present,share:present?(servicePool+fittingPool)/present:0,manager:managerSlab(dayIncentive(day).carTyresSold)};
+}
+function renderMonthlyIncentive(){
+ const month=$('ifmonth')?.value||today().slice(0,7), days=monthDayList(month), people=incentivePeople();
+ const filterTech=$('iftech')?.value||'', filterClass=$('ifclass')?.value||'', sums={};people.forEach(p=>sums[p.name]=0);
+ days.forEach(day=>{const c=dayPool(day),att=dayAttendance(day);people.filter(p=>p.cls!=='manager'&&att[p.name]==='P').forEach(p=>{sums[p.name]+=c.share});people.filter(p=>p.cls==='manager').forEach(p=>{sums[p.name]+=c.manager})});
+ let total=0; const rows=people.filter(p=>(!filterTech||p.name===filterTech)&&(!filterClass||p.cls===filterClass)).map(p=>{let v=sums[p.name]||0;total+=v;return `<tr><td><b>${esc(p.name)}</b></td><td>${esc(p.role)}</td><td>\u20B9${v.toFixed(2)}</td></tr>`}).join('');
+ $('monthlyIncBody').innerHTML=rows||'<tr><td colspan="3">No matching records.</td></tr>';$('monthlyIncTotal').textContent='\u20B9'+total.toFixed(2);
+ const mgrTotal=days.reduce((n,d)=>n+dayPool(d).manager,0);$('mgrMonthSummary').textContent=`Selected month: ${month} – Manager accumulated incentive: ₹${mgrTotal.toLocaleString('en-IN',{minimumFractionDigits:2,maximumFractionDigits:2})}`;
+}
+function fmtDMY(v){if(!v)return '';let a=v.split('-');return a.length===3?`${a[2]}/${a[1]}/${a[0]}`:v}
+function selectedDay(){return $('ifdate')?.value||today()}
+function selectedMonth(){return $('ifmonth')?.value||today().slice(0,7)}
+function employeeTodayShare(day,name){const c=dayPool(day),att=dayAttendance(day);return att[name]==='P'?c.share:0}
+function incentive(){
+ const day=selectedDay(),month=selectedMonth(), people=technicians();
+ const dc=dayPool(day);
+ const rows=people.map((p,i)=>({p,v:employeeTodayShare(day,p.name),m:0}));
+ const days=monthDayList(month);
+ rows.forEach(r=>{let total=0;days.forEach(d=>{const c=dayPool(d),att=dayAttendance(d);if(att[r.p.name]==='P')total+=c.share});r.m=total});
+ $('incDateLabel').textContent=`(${fmtDMY(day)})`;$('incMonthLabel').textContent=`(${month.slice(5,7)}/${month.slice(0,4)})`;$('incCalcDate').textContent='Date: '+fmtDMY(day);
+ $('incSummaryBody').innerHTML=rows.map((r,i)=>`<tr><td>${i+1}</td><td><b>${esc(r.p.name)}</b></td><td>\u20B9${r.v.toFixed(2)}</td><td>\u20B9${r.m.toFixed(2)}</td></tr>`).join('')||'<tr><td colspan="4">No staff records.</td></tr>';
+ const todayTotal=rows.reduce((s,r)=>s+r.v,0),monthTotal=rows.reduce((s,r)=>s+r.m,0);$('incTodayTotal').textContent='\u20B9'+todayTotal.toFixed(2);$('incMonthTotal').textContent='\u20B9'+monthTotal.toFixed(2);
+ const align=dc.align*90,combo=dc.other*150,fit=dc.fittingPool;
+ $('ielig').textContent=dc.e.length;$('incAlignCount').textContent=dc.align;$('incComboCount').textContent=dc.other;$('incFitCount').textContent=dc.fittings;$('incAlignCalc').textContent='\u20B9'+align.toFixed(2);$('incComboCalc').textContent='\u20B9'+combo.toFixed(2);$('incFitCalc').textContent='\u20B9'+fit.toFixed(2);$('ipool').textContent='\u20B9'+dc.total.toFixed(2);$('incPresent').textContent=dc.present;$('ishare').textContent='\u20B9'+dc.share.toFixed(2);
+ const current=D.incentive||{}; $('fit').value=day===today()?(current.twoWFitting??''):(dayIncentive(day).twoWFitting??''); $('saveinc').disabled=day!==today()||!!current.locked;
+ $('incLockStatus').textContent=current.locked?'LOCKED':'UNLOCKED';$('incLockStatus').style.background=current.locked?'#c83b3b':'#0c9b69';
+}
+
+function incentiveDailySnapshot(day){
+ const c=dayPool(day),att=dayAttendance(day),people=incentivePeople();
+ const staff=people.map(p=>({name:p.name,role:p.role,class:p.cls,present:att[p.name]==='P',incentive:p.cls==='manager'?c.manager:(att[p.name]==='P'?c.share:0)}));
+ const eligibleJobs=c.e.map(x=>({token:x.tokenLabel||x.token||'Not Provided',vehicleNo:x.vehicleNo||'Not Provided',technician:x.technician||'Not Provided',serviceType:x.serviceType||'Not Provided',completedAt:Number(x.completedAt||0)}));
+ return {date:day,createdAt:Date.now(),createdBy:name(),calculation:{eligiblePaidJobs:c.e.length,alignmentJobs:c.align,alignmentAmount:c.align*90,alignmentBalancingJobs:c.other,alignmentBalancingAmount:c.other*150,twoWheelerTyres:c.fittings,twoWheelerAmount:c.fittingPool,totalPool:c.total,presentTechnicians:c.present,perHeadShare:c.share,managerIncentive:c.manager},attendance:att,staff,eligibleJobs,source:'Sri Hari Tyres Smart Service'};
+}
+function incentiveMonthlySnapshot(month){
+ const days=monthDayList(month),people=incentivePeople(),daily=days.map(d=>incentiveDailySnapshot(d));
+ const staff=people.map(p=>{const entries=daily.map(d=>{const x=d.staff.find(z=>z.name===p.name);return {date:d.date,present:!!x?.present,incentive:Number(x?.incentive||0)}});return {name:p.name,role:p.role,class:p.cls,workingDays:entries.filter(x=>x.present).length,totalIncentive:entries.reduce((n,x)=>n+x.incentive,0),daily:entries}});
+ return {month,periodStart:days[0],periodEnd:days[days.length-1],createdAt:Date.now(),createdBy:name(),staff,dailySummaries:daily.map(d=>({date:d.date,calculation:d.calculation,attendance:d.attendance})),grandTotal:staff.reduce((n,x)=>n+x.totalIncentive,0),source:'Sri Hari Tyres Smart Service'};
+}
+function downloadIncentiveExcel(type,payload){
+ if(typeof XLSX==='undefined')throw new Error('Excel library is not available. Connect to the internet and retry.');
+ const wb=XLSX.utils.book_new(),money=n=>Number(n||0);
+ if(type==='daily'){
+  const c=payload.calculation;
+  const summary=[['SRI HARI TYRES – DAILY INCENTIVE BACKUP'],['Date',payload.date],['Created At',new Date(payload.createdAt).toLocaleString('en-IN')],['Created By',payload.createdBy],[],['Calculation','Count','Amount (₹)'],['Eligible paid jobs',c.eligiblePaidJobs,''],['Wheel alignment',c.alignmentJobs,c.alignmentAmount],['Alignment + Balancing',c.alignmentBalancingJobs,c.alignmentBalancingAmount],['Two-wheeler tyres',c.twoWheelerTyres,c.twoWheelerAmount],['Total incentive pool','',c.totalPool],['Present technicians',c.presentTechnicians,''],['Per-head incentive','',c.perHeadShare],['Manager incentive','',c.managerIncentive]];
+  const staff=[['Technician / Staff','Role','Class','Attendance','Incentive (₹)'],...payload.staff.map(x=>[x.name,x.role,x.class,x.present?'Present':'Absent',money(x.incentive)])];
+  const jobs=[['Token No.','Vehicle No.','Technician','Service Type','Completion Time'],...payload.eligibleJobs.map(x=>[x.token,x.vehicleNo,x.technician,x.serviceType,x.completedAt?new Date(x.completedAt).toLocaleString('en-IN'):'Not Provided'])];
+  const attendance=[['Staff Name','Attendance'],...Object.entries(payload.attendance||{}).map(([n,v])=>[n,v==='P'?'Present':v==='A'?'Absent':v])];
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(summary),'Daily Summary');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(staff),'Staff Incentive');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(jobs),'Eligible Jobs');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(attendance),'Attendance');
+ }else{
+  const summary=[['SRI HARI TYRES – MONTHLY INCENTIVE BACKUP'],['Month',payload.month],['Created At',new Date(payload.createdAt).toLocaleString('en-IN')],['Created By',payload.createdBy],['Grand Total Incentive (₹)',money(payload.grandTotal)]];
+  const staff=[['Staff Name','Role','Class','Working Days','Total Incentive (₹)'],...payload.staff.map(x=>[x.name,x.role,x.class,x.workingDays,money(x.totalIncentive)])];
+  const daily=[['Date','Eligible Paid Jobs','Alignment Jobs','Alignment Amount (₹)','Alignment + Balancing Jobs','Alignment + Balancing Amount (₹)','2W Tyres','2W Amount (₹)','Total Pool (₹)','Present Technicians','Per Head Share (₹)','Manager Incentive (₹)'],...payload.dailySummaries.map(x=>{const c=x.calculation;return [x.date,c.eligiblePaidJobs,c.alignmentJobs,c.alignmentAmount,c.alignmentBalancingJobs,c.alignmentBalancingAmount,c.twoWheelerTyres,c.twoWheelerAmount,c.totalPool,c.presentTechnicians,c.perHeadShare,c.managerIncentive]})];
+  const dailyByStaff=[['Staff Name','Role','Class','Working Days','Total Incentive (₹)',...monthDayList(payload.month)],...payload.staff.map(x=>[x.name,x.role,x.class,x.workingDays,money(x.totalIncentive),...x.daily.map(d=>money(d.incentive))])];
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(summary),'Monthly Summary');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(staff),'Staff Monthly Total');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(daily),'Daily Breakdown');
+  XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(dailyByStaff),'Daily Staff Detail');
+ }
+ const filename=type==='daily'?`Sri_Hari_Tyres_Incentive_Daily_${payload.date}.xlsx`:`Sri_Hari_Tyres_Incentive_Monthly_${payload.month}.xlsx`;
+ XLSX.writeFile(wb,filename,{bookType:'xlsx',cellStyles:true});
+ return filename;
+}
+async function saveIncentiveArchive(type){
+ if(!mgr())return toast('Manager access required');
+ if(!(await pinok()))return;
+ const day=$('ifdate').value||today(),month=$('ifmonth').value||today().slice(0,7);
+ try{
+  const payload=type==='daily'?incentiveDailySnapshot(day):incentiveMonthlySnapshot(month);
+  const filename=downloadIncentiveExcel(type,payload);
+  const target=type==='daily'?`incentiveBackups/daily/${dk(day)}`:`incentiveBackups/monthly/${month.replace('-','')}`;
+  const saved=await push(ref(db,target),payload);
+  log(type==='daily'?'Daily Incentive Backup Saved':'Monthly Incentive Backup Saved',`${type==='daily'?day:month} | Archive ID: ${saved.key} | Snapshot saved permanently`);
+  $('incentiveBackupStatus').textContent=`Downloaded ${filename} | Permanent Firebase archive saved | Archive ID: ${saved.key}`;
+  toast(`${type==='daily'?'Daily':'Monthly'} incentive Excel downloaded and permanent archive saved`);
+ }catch(e){console.error('Incentive archive failed',e);toast('Incentive backup failed: '+e.message)}
+}
+async function changePin(){if(!mgr())return toast('Manager access required');let a=$('newPin').value.trim(),b=$('confirmPin').value.trim();if(!/^\d{4,8}$/.test(a))return toast('PIN must be 4-8 digits');if(a!==b)return toast('PINs do not match');await update(ref(db,path()+'/incentive'),{managerPin:a,pinChangedAt:Date.now(),pinChangedBy:name()});log('Manager PIN Changed','Manager PIN changed');$('newPin').value='';$('confirmPin').value='';toast('Manager PIN changed')}
+async function pinok(){if(!mgr())return false;let p=$('pin').value.trim(),saved=D.incentive?.managerPin||'2580';if(!p)return toast('Enter Manager PIN'),false;if(saved!==p)return toast('Wrong Manager PIN'),false;if(!D.incentive?.managerPin)await update(ref(db,path()+'/incentive'),{managerPin:'2580',pinInitializedAt:Date.now()});return true}async function saveInc(){if(!(await pinok()))return;let fit=Math.max(0,Number($('fit').value)||0);await update(ref(db,path()+'/incentive'),{twoWFitting:fit,updatedAt:Date.now(),updatedBy:name()});log('Daily Incentive Input Changed',`2W fittings=${fit}`);toast('Two-wheeler incentive input saved')}async function lock(){if(!(await pinok()))return;let l=!D.incentive?.locked;await update(ref(db,path()+'/incentive'),{locked:l,lockedAt:Date.now(),lockedBy:name()});log(l?'Incentive Day Locked':'Incentive Day Unlocked','Manager changed daily lock')} 
+function staff(){let a=Object.entries(D.staff||{});if(!a.length)a=techDefault.map((x,i)=>['d'+i,{name:x[0],class:x[1],role:'technician'}]);$('stafflist').innerHTML=a.map(([id,x])=>`<div class=staffrow><b>${esc(x.name)}</b><span>${x.class==='twoWheeler'?'Two-Wheeler Technician':x.class==='manager'?'Manager':'Car Technician'}</span><span>${esc(x.email||'')}</span><span class=actions>${mgr()?`<button class=dark data-editstaff=${id}>EDIT</button><button class=red data-delstaff=${id}>DELETE</button>`:''}</span></div>`).join('');document.querySelectorAll('[data-editstaff]').forEach(b=>b.onclick=()=>{let x=(D.staff||{})[b.dataset.editstaff];if(!x)return;$('sname').value=x.name;$('semail').value=x.email||'';$('srole').value=x.role||'technician';$('sclass').value=x.class||'car';window.editStaff=b.dataset.editstaff});document.querySelectorAll('[data-delstaff]').forEach(b=>b.onclick=async()=>{if(confirm('Delete this staff profile?')){let x=D.staff[b.dataset.delstaff];await set(ref(db,'staff/'+b.dataset.delstaff),null);log('Staff Deleted',x.name)}})}async function saveStaff(){if(!mgr())return toast('Manager access required');let n=$('sname').value.trim(),e=$('semail').value.trim(),r=$('srole').value,c=$('sclass').value;if(!n)return toast('Enter staff name');let id=window.editStaff||push(ref(db,'staff')).key;await set(ref(db,'staff/'+id),{name:n,email:e,role:r,class:c});log('Staff Profile Saved',`${n} – ${c} – ${r}`);window.editStaff=null;$('sname').value='';$('semail').value='';toast('Staff saved')}function attendanceSummary(){
+ const month=$('attmonth').value||today().slice(0,7);
+ const p=month.split('-'), y=Number(p[0]), m=Number(p[1]);
+ const days=new Date(y,m,0).getDate();
+ const records=D.attendanceHistory||{};
+ const people=technicians();
+ $('attsummary').innerHTML=people.map(t=>{
+   let present=0,absent=0;
+   for(let d=1;d<=days;d++){
+     const key=month+'-'+String(d).padStart(2,'0'), rec=records[key]||{};
+     if(rec[t.name]==='P') present++;
+     if(rec[t.name]==='A') absent++;
+   }
+   return `<tr><td><b>${esc(t.name)}</b></td><td>${present}</td><td>${absent}</td><td>${present+absent}</td></tr>`;
+ }).join('')||'<tr><td colspan="4">No staff.</td></tr>';
+}
+function attendance(){let a=technicians(),at=D.attendance||{};$('attlist').innerHTML=a.map(x=>`<div class=staffrow><b>${esc(x.name)}</b><span>${x.class==='twoWheeler'?'Two-Wheeler':'Car'}</span><select class=att data-name="${esc(x.name)}"><option value=P ${at[x.name]==='P'?'selected':''}>Present</option><option value=A ${at[x.name]==='A'?'selected':''}>Absent</option></select><span></span></div>`).join('')}async function saveAtt(){if(!mgr())return;let day=$('attdate').value||today(),o={};document.querySelectorAll('.att').forEach(x=>o[x.dataset.name]=x.value);await set(ref(db,'attendance/'+day),o);await set(ref(db,path()+'/attendance'),o);log('Attendance Updated',day+' – '+JSON.stringify(o));toast('Attendance saved')}function activity(){let q=($('aq').value||'').toLowerCase(),d=$('ad').value||today(),a=Object.values(ACT).filter(x=>x.date===d&&(!q||[x.user,x.action,x.details].join(' ').toLowerCase().includes(q))).sort((a,b)=>b.ts-a.ts);$('abody').innerHTML=a.map(x=>`<tr><td>${new Date(x.ts).toLocaleString()}</td><td>${esc(x.user)}</td><td>${esc(x.action)}</td><td>${esc(x.details)}</td></tr>`).join('')||'<tr><td colspan=4>No activity.</td></tr>'}
+function init(){services.forEach(x=>$('stype').insertAdjacentHTML('beforeend',`<option>${esc(x)}</option>`));$('attdate').value=today();$('attmonth').value=today().slice(0,7);if($('reportMonth'))$('reportMonth').value=today().slice(0,7);if($('reportDate'))$('reportDate').value=today();if($('reportView'))$('reportView').onchange=reports;if($('reportDate'))$('reportDate').onchange=reports;if($('reportMonth'))$('reportMonth').onchange=reports;$('hf').value=today();$('ht').value=today();$('ad').value=today();document.querySelectorAll('#nav button').forEach(b=>b.onclick=()=>{document.querySelectorAll('.page').forEach(p=>p.classList.toggle('active',p.id===b.dataset.p));document.querySelectorAll('#nav button').forEach(q=>q.classList.toggle('active',q===b))});$('add').onclick=add;$('popupOk').onclick=()=>$('tokenPopup').classList.add('hidden');$('ifdate').value=today();$('ifmonth').value=today().slice(0,7);$('applyIncDate').onclick=incentive;$('applyIncMonth').onclick=incentive;$('ifdate').onchange=()=>{};$('ifmonth').onchange=()=>{};$('saveinc').onclick=saveInc;$('saveDailyIncentiveBackup').onclick=()=>saveIncentiveArchive('daily');$('saveMonthlyIncentiveBackup').onclick=()=>saveIncentiveArchive('monthly');$('lock').onclick=lock;$('changePin').onclick=changePin;$('saves').onclick=saveStaff;$('saveatt').onclick=saveAtt;$('attmonth').onchange=attendanceSummary;['hs','hstatus','hf','ht'].forEach(i=>$(i).oninput=history);['aq','ad'].forEach(i=>$(i).oninput=activity);$('arefresh').onclick=activity;$('heCancel').onclick=closeHistoryEdit;$('heSave').onclick=saveHistoryEdit;document.querySelectorAll('#nav button')[0].click()}
+
+const PEOPLE={
+'zkH7Q5VLzCWpafJ86cXAhPspO1z2':{name:'Yogesh',role:'owner',class:'owner'},
+'FhW9K4QoVPSeBFjHg0ZAu9SYJAX2':{name:'Chandrasekar',role:'manager',class:'manager'},
+'5ClIB6TsLCOC3j19bqO7vfaWWOy1':{name:'Arjun',role:'technician',class:'car'},
+'v2fcV0ElecUmqF2BgptBKHIZVgQ2':{name:'Aravind',role:'technician',class:'car'},
+'c4Nwi2qtirbQQzBdWbAzYc3iurV2':{name:'Arivazhagan',role:'technician',class:'car'},
+'I6Y8CUdtKBclPBBFmFFArhgvnx13':{name:'Sarath Kumar',role:'technician',class:'car'},
+'Q3TuUE9xf0RSuVTxXJ3mwoMxJ3T2':{name:'Vijay',role:'technician',class:'car'},
+'ltGCLVdT1jNPiKirrqIefvAj3Mx1':{name:'Venkatesh',role:'technician',class:'twoWheeler'},
+'KJlZLRVivcWiKlTPa5OUIQO81eG3':{name:'Nandha',role:'technician',class:'twoWheeler'}};
+
+const loginHtml=`<div id=authBox class="auth-screen"><div class="auth-glow auth-glow-one"></div><div class="auth-glow auth-glow-two"></div><div class="auth-card"><div class="auth-mark">🛞</div><div class="auth-brand">SRI HARI <span>TYRES</span></div><div class="auth-tagline">TYRE SALES • WHEEL ALIGNMENT • SERVICE</div><div class="auth-divider"></div><h2>Welcome Back</h2><p class="auth-caption">Sign in to continue to Sri Hari Tyres</p><label class="auth-label" for="authEmail">EMAIL ADDRESS</label><input id=authEmail type=email placeholder="Enter your email" autocomplete="username"><label class="auth-label" for="authPass">PASSWORD</label><input id=authPass type=password placeholder="Enter your password" autocomplete="current-password"><button id=authBtn class="auth-submit">SIGN IN <span>→</span></button><div id=authMsg class="auth-message"></div><div class="auth-footer">SRI HARI TYRES · KUMBAKONAM</div></div></div><style>.auth-screen{position:fixed;inset:0;z-index:99999;display:grid;place-items:center;overflow:hidden;background:radial-gradient(ellipse at 50% 10%,#173e5d 0%,#0b2135 42%,#06111d 100%);padding:20px}.auth-glow{position:absolute;width:320px;height:320px;border:1px solid #d99b3b33;border-radius:50%;pointer-events:none}.auth-glow:before,.auth-glow:after{content:"";position:absolute;inset:22px;border:1px solid #d99b3b22;border-radius:50%}.auth-glow:after{inset:48px}.auth-glow-one{top:-170px;left:-110px}.auth-glow-two{right:-170px;bottom:-180px}.auth-card{position:relative;width:min(410px,100%);padding:30px 28px 22px;border:1px solid #c18a3b66;border-radius:22px;background:linear-gradient(145deg,#132e45f5,#091a2bf7);box-shadow:0 25px 80px #0009,0 0 35px #d99b3b12;color:#f7f9fc}.auth-mark{width:68px;height:68px;display:grid;place-items:center;margin:0 auto 12px;border-radius:20px;background:linear-gradient(145deg,#f5bd59,#b87820);font-size:39px;box-shadow:0 8px 22px #0005}.auth-brand{text-align:center;font-size:23px;font-weight:950;letter-spacing:1.4px}.auth-brand span{color:#f3b64f}.auth-tagline{text-align:center;color:#9eb4c8;font-size:9px;letter-spacing:1.5px;margin-top:6px}.auth-divider{height:1px;background:linear-gradient(90deg,transparent,#bd8b46,transparent);margin:20px 0}.auth-card h2{text-align:center;font-size:21px;margin:0 0 5px}.auth-caption{text-align:center;color:#9eb4c8;font-size:11px;margin:0 0 20px}.auth-label{display:block;color:#c5d3df;font-size:9px;font-weight:800;letter-spacing:1px;margin:12px 0 5px}.auth-card input{width:100%;min-height:45px;padding:12px;background:#071725;color:#fff;border:1px solid #35516a;border-radius:9px;font-size:12px}.auth-card input:focus{outline:1px solid #e5aa48;border-color:#e5aa48}.auth-submit{width:100%;min-height:46px;margin-top:18px;background:linear-gradient(90deg,#e6a63f,#bd7620);color:#142333;border-radius:9px;font-weight:950;letter-spacing:1px}.auth-submit span{float:right;font-size:18px;line-height:12px}.auth-message{min-height:17px;margin-top:9px;text-align:center;color:#ff8585;font-size:10px}.auth-footer{text-align:center;color:#718ba1;font-size:8px;letter-spacing:1.7px;margin-top:10px}@media(max-width:480px){.auth-card{padding:25px 20px 18px}}</style>`;document.body.insertAdjacentHTML('afterbegin',loginHtml);
+document.addEventListener('DOMContentLoaded',bindQueueEditFields);
+function showAppUser(u){U=u;P=PEOPLE[u.uid]||{name:u.email?.split('@')[0]||'Staff',role:'technician',class:'car'};document.getElementById('authBox').style.display='none';$('conn').className='live';$('conn').textContent='● LIVE';init();$('tech').innerHTML=techDefault.filter(x=>(P.class==='manager'||P.class==='owner')||x[1]===P.class).map(x=>`<option>${esc(x[0])}</option>`).join('');un=[onValue(ref(db,path()),s=>{D=s.val()||{};render()}),onValue(ref(db,'days'),s=>{D.history=s.val()||{};render()}),onValue(ref(db,'staff'),s=>{D.staff=s.val()||{};render()}),onValue(ref(db,'activity'),s=>{ACT=s.val()||{};activity();populateBackupFilters()}),onValue(ref(db,'attendance'),s=>{D.attendanceHistory=s.val()||{};D.attendance=D.attendanceHistory[today()]||{};render()}),onValue(ref(db,path()+'/incentive'),s=>{D.incentive=s.val()||{};render()})];render();}
+$('authBtn').onclick=async()=>{const e=$('authEmail').value.trim(),p=$('authPass').value;if(!e||!p){$('authMsg').textContent='Enter email and password.';return}$('authBtn').disabled=true;$('authMsg').textContent='Signing in…';try{await signInWithEmailAndPassword(auth,e,p)}catch(err){console.error(err);$('authMsg').textContent='Email or password is incorrect.'}finally{$('authBtn').disabled=false}};$('authPass').onkeydown=e=>{if(e.key==='Enter')$('authBtn').click()};
+onAuthStateChanged(auth,u=>{if(u)showAppUser(u);else{document.getElementById('authBox').style.display='grid';$('conn').className='off';$('conn').textContent='● SIGN IN REQUIRED'}});
+$('logoutBtn').onclick=async()=>{
+  const b=$('logoutBtn');
+  if(b.disabled)return;
+  b.disabled=true;
+  try{ await signOut(auth); }
+  catch(err){ console.error('Logout failed:',err); toast('Logout failed: '+(err?.message||'Please try again')); b.disabled=false; }
+};
+
+
+function backupRowsFiltered(){
+ const from=$('bkfrom')?.value||'',to=$('bkto')?.value||'',user=$('bkuser')?.value||'',action=$('bkaction')?.value||'',search=($('bksearch')?.value||'').toLowerCase();
+ return Object.values(ACT||{}).map(x=>x).filter(x=>{
+   const d=x.ts?new Date(x.ts):null, ds=d?todayOf(d):'';
+   if(from&&ds<from)return false;if(to&&ds>to)return false;
+   if(user&&x.user!==user)return false;if(action&&x.action!==action)return false;
+   if(search&&!JSON.stringify(x).toLowerCase().includes(search))return false;
+   return true;
+ });
+}
+function todayOf(d){let z=n=>String(n).padStart(2,'0');return d.getFullYear()+'-'+z(d.getMonth()+1)+'-'+z(d.getDate())}
+function populateBackupFilters(){
+ if(!$('bkuser'))return;
+ const rows=Object.values(ACT||{}),u=[...new Set(rows.map(x=>x.user).filter(Boolean))].sort(),a=[...new Set(rows.map(x=>x.action).filter(Boolean))].sort();
+ const cu=$('bkuser').value,ca=$('bkaction').value;
+ $('bkuser').innerHTML='<option value="">All Users</option>'+u.map(x=>`<option>${esc(x)}</option>`).join('');
+ $('bkaction').innerHTML='<option value="">All Actions</option>'+a.map(x=>`<option>${esc(x)}</option>`).join('');
+ $('bkuser').value=cu;$('bkaction').value=ca;
+}
+const BACKUP_TEMPLATE_B64='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';
+const BACKUP_DB_NAME='SriHariTyresBackupPrefs';
+const BACKUP_STORE='handles';
+let backupDirectoryHandle=null,backupSchedulerStarted=false,backupRunning=false;
+function backupDate(d=new Date()){return `${d.getFullYear()}-${String(d.getMonth()+1).padStart(2,'0')}-${String(d.getDate()).padStart(2,'0')}`}
+function backupDateKey(d){return backupDate(d).replaceAll('-','')}
+function backupTimeText(ms){return ms?new Date(Number(ms)).toLocaleTimeString('en-IN',{hour:'2-digit',minute:'2-digit',hour12:true}):'Not Provided'}
+function backupDateText(day){if(!day)return 'Not Provided';const d=new Date(`${day}T12:00:00`);return isNaN(d)?String(day):d.toLocaleDateString('en-IN',{day:'2-digit',month:'short',year:'numeric'}).replace(/ /g,'-')}
+function backupDuration(x){const a=Number(x.startedAt||0),b=Number(x.completedAt||0);return a&&b&&b>=a?`${Math.round((b-a)/60000)} min`:'Not Provided'}
+function backupDayLabel(key){const z=String(key||'');return /^\d{8}$/.test(z)?`${z.slice(0,4)}-${z.slice(4,6)}-${z.slice(6,8)}`:z}
+function backupAllRecords(root){
+ const dayMap=new Map();
+ const addDay=(key,val)=>{const day=backupDayLabel(key);if(!/^\d{4}-\d{2}-\d{2}$/.test(day)||!val)return;const old=dayMap.get(day)||{};dayMap.set(day,{...old,...val,tokens:{...(old.tokens||{}),...(val.tokens||{})},incentive:{...(old.incentive||{}),...(val.incentive||{})},attendance:{...(old.attendance||{}),...(val.attendance||{})}})};
+ Object.entries(root.days||{}).forEach(([k,v])=>addDay(k,v));
+ Object.entries(root.history||{}).forEach(([k,v])=>addDay(k,v));
+ const currentKey=backupDateKey(new Date());
+ if(root.days?.[currentKey])addDay(currentKey,root.days[currentKey]);
+ const all=[];
+ for(const [day,pack] of dayMap){for(const [id,x] of Object.entries(pack.tokens||{})){if(x&&typeof x==='object')all.push({id,day,...x})}}
+ const dedup=new Map();all.forEach(x=>dedup.set(`${x.day}_${x.id}`,x));
+ return {dayMap,allTokens:[...dedup.values()].sort((a,b)=>(a.completedAt||a.createdAt||0)-(b.completedAt||b.createdAt||0)),staff:root.staff||{},attendance:root.attendance||{},activity:root.activity||{},root};
+}
+function backupIsFree(x){const s=String(x.serviceType||x.service||'').toLowerCase();return x.free===true||x.freeService===true||s.includes('free service')}
+function backupService(x){return String(x.serviceType||x.service||'Not Provided')}
+function backupCompleted(rows){return rows.filter(x=>String(x.status||'').toLowerCase()==='completed')}
+function backupDateRange(records,start,end){return records.filter(x=>x.day>=start&&x.day<=end)}
+function backupMonthBounds(day){const [y,m]=day.split('-').map(Number);return [`${y}-${String(m).padStart(2,'0')}-01`,`${y}-${String(m).padStart(2,'0')}-${new Date(y,m,0).getDate()}`]}
+function backupQuarterBounds(day){const [y,m]=day.split('-').map(Number),q=Math.floor((m-1)/3),sm=q*3+1,em=sm+2;return [`${y}-${String(sm).padStart(2,'0')}-01`,`${y}-${String(em).padStart(2,'0')}-${new Date(y,em,0).getDate()}`]}
+function backupTechNames(data,rows){const names=new Set(Object.values(data.staff||{}).map(x=>x?.name).filter(Boolean));rows.forEach(x=>{if(x.technician)names.add(x.technician)});return [...names].sort((a,b)=>a.localeCompare(b))}
+function backupTokenRow(x){const completed=Number(x.completedAt||0),started=Number(x.startedAt||0);return [x.tokenLabel||x.token||'Not Provided',backupDateText(x.day),completed?backupTimeText(completed):'Not Provided',x.vehicleNo||x.vehicleNumber||'Not Provided',x.vehicleModel||x.model||'Not Provided',x.customerName||x.customer||'Not Provided',x.mobile||x.mobileNo||x.phone||'Not Provided',backupService(x),x.technician||'Not Provided',backupIsFree(x)?'Free':'Paid',started?backupTimeText(started):'Not Provided',backupDuration(x)]}
+function backupSummary(rows,fittings){const done=backupCompleted(rows),paid=done.filter(x=>!backupIsFree(x)),free=done.filter(backupIsFree);return {total:done.length,paid:paid.length,free:free.length,alignment:done.filter(x=>backupService(x).toLowerCase()==='alignment').length,combo:done.filter(x=>backupService(x).toLowerCase().includes('alignment')&&backupService(x).toLowerCase().includes('balancing')).length,fittings:Number(fittings||0)}}
+function backupFittings(dayMap,start,end){let n=0;for(const [day,pack] of dayMap){if(day>=start&&day<=end)n+=Number(pack.incentive?.twoWFitting||0)}return n}
+function backupBuildWorkbook(snapshot,periodType,start,end){
+ if(typeof XLSX==='undefined')throw new Error('Excel library is not available. Connect to the internet and retry.');
+ const records=backupDateRange(snapshot.allTokens,start,end),done=backupCompleted(records),paid=done.filter(x=>!backupIsFree(x)),free=done.filter(backupIsFree),fittings=backupFittings(snapshot.dayMap,start,end),sum=backupSummary(records,fittings);
+ const names=backupTechNames(snapshot,done);
+ const wb=XLSX.read(BACKUP_TEMPLATE_B64,{type:'base64',cellStyles:true});
+ const replaceRows=(sheetName,rows)=>{const ws=wb.Sheets[sheetName];if(!ws)throw new Error(`Template sheet missing: ${sheetName}`);const range=XLSX.utils.decode_range(ws['!ref']||'A1'),maxCols=range.e.c+1;for(let r=1;r<=Math.max(range.e.r,rows.length);r++)for(let c=0;c<maxCols;c++){const addr=XLSX.utils.encode_cell({r,c});if(ws[addr]){delete ws[addr].v;delete ws[addr].w;delete ws[addr].f;ws[addr].t='z'}}for(let r=0;r<rows.length;r++)for(let c=0;c<rows[r].length;c++){const addr=XLSX.utils.encode_cell({r:r+1,c}),base=XLSX.utils.encode_cell({r:1,c});const cell={t:typeof rows[r][c]==='number'?'n':'s',v:rows[r][c]};if(ws[base]?.s)cell.s=ws[base].s;ws[addr]=cell}ws['!ref']=`A1:${XLSX.utils.encode_cell({r:Math.max(1,rows.length),c:maxCols-1})}`;ws['!autofilter']={ref:`A1:${XLSX.utils.encode_col(maxCols-1)}${Math.max(1,rows.length+1)}`};ws['!freeze']={xSplit:0,ySplit:1};};
+ replaceRows('Daily Completed Tokens',done.map(backupTokenRow));
+ const techRows=names.map(n=>{const z=done.filter(x=>x.technician===n);return [n,z.length,z.filter(x=>!backupIsFree(x)).length,z.filter(backupIsFree).length,z.filter(x=>backupService(x).toLowerCase()==='alignment').length,z.filter(x=>backupService(x).toLowerCase().includes('alignment')&&backupService(x).toLowerCase().includes('balancing')).length,z.length?z.length/(done.length||1):0,z.length]});
+ if(techRows.length)techRows.push(['TOTAL',sum.total,sum.paid,sum.free,sum.alignment,sum.combo,1,techRows.reduce((a,r)=>a+Number(r[7]||0),0)/(techRows.length||1)]);
+ replaceRows('Technician-wise Work',techRows);
+ replaceRows('Free Service Report',free.map(x=>[x.tokenLabel||x.token||'Not Provided',backupDateText(x.day),x.vehicleNo||'Not Provided',x.vehicleModel||'Not Provided',x.customerName||x.customer||'Not Provided',x.technician||'Not Provided',backupService(x)]));
+ replaceRows('Paid Service Report',paid.map(x=>[x.tokenLabel||x.token||'Not Provided',backupDateText(x.day),x.vehicleNo||'Not Provided',x.vehicleModel||'Not Provided',x.customerName||x.customer||'Not Provided',x.technician||'Not Provided',backupService(x)]));
+ const fitRows=[...([...snapshot.dayMap.entries()].filter(([d])=>d>=start&&d<=end).map(([d,p])=>[backupDateText(d),Number(p.incentive?.twoWFitting||0)]).filter(r=>r[1]>0)),['TOTAL',fittings]];
+ replaceRows('Two-Wheeler Fittings',fitRows);
+ const periodLabel=periodType==='Daily'?backupDateText(start):periodType==='Monthly'?new Date(`${start}T12:00:00`).toLocaleDateString('en-IN',{month:'long',year:'numeric'}):`Q${Math.floor((Number(start.slice(5,7))-1)/3)+1} ${start.slice(0,4)}`;
+ replaceRows('Daily-Monthly-Quarterly Summary',[[periodType,periodLabel,sum.total,sum.paid,sum.free,sum.alignment,sum.combo,sum.fittings,sum.total?sum.paid/sum.total:0,sum.total?sum.free/sum.total:0]]);
+ const dash=wb.Sheets['Management Dashboard'];
+ const setCell=(a,v)=>{const prior=dash[a]||{};dash[a]={...prior,t:typeof v==='number'?'n':'s',v};};
+ setCell('B4',`${periodLabel} (actual Firebase records)`);setCell('B6','Actual Value');setCell('B7',sum.total);setCell('B8',sum.paid);setCell('B9',sum.free);setCell('B10',sum.alignment);setCell('B11',sum.combo);setCell('B12',sum.fittings);setCell('E7','Period');setCell('F7','Completed Jobs');setCell('D8',periodLabel);setCell('E8',sum.total);setCell('D9','Period total');setCell('E9',sum.total);setCell('A15','Actual records exported from Firebase. Missing customer details are shown as Not Provided.');
+ const out=XLSX.write(wb,{bookType:'xlsx',type:'array',cellStyles:true});if(!out||out.byteLength<1500)throw new Error('Excel workbook validation failed.');
+ return {bytes:out,counts:{completed:done.length,paid:paid.length,free:free.length,technicians:names.length,twoWheelerFittings:fittings},periodLabel};
+}
+function backupIndexedDb(){return new Promise((resolve,reject)=>{const req=indexedDB.open(BACKUP_DB_NAME,1);req.onupgradeneeded=()=>{if(!req.result.objectStoreNames.contains(BACKUP_STORE))req.result.createObjectStore(BACKUP_STORE)};req.onsuccess=()=>resolve(req.result);req.onerror=()=>reject(req.error)})}
+async function backupSaveHandle(handle){const dbi=await backupIndexedDb();return new Promise((resolve,reject)=>{const tx=dbi.transaction(BACKUP_STORE,'readwrite');tx.objectStore(BACKUP_STORE).put(handle,'directory');tx.oncomplete=()=>{dbi.close();resolve()};tx.onerror=()=>{dbi.close();reject(tx.error)}})}
+async function backupLoadHandle(){try{const dbi=await backupIndexedDb();return await new Promise((resolve,reject)=>{const tx=dbi.transaction(BACKUP_STORE,'readonly'),r=tx.objectStore(BACKUP_STORE).get('directory');r.onsuccess=()=>{dbi.close();resolve(r.result||null)};r.onerror=()=>{dbi.close();reject(r.error)}})}catch(e){return null}}
+async function backupPermission(handle,request=false){if(!handle)return false;let p=await handle.queryPermission({mode:'readwrite'});if(p!=='granted'&&request)p=await handle.requestPermission({mode:'readwrite'});return p==='granted'}
+function backupStatus(message,good=false){const el=document.getElementById('backupFolderStatus');if(el){el.textContent=message;el.style.color=good?'#86efac':'#fbbf24'}}
+function backupLastStatus(message){const el=document.getElementById('backupLastStatus');if(el)el.textContent=message}
+async function chooseBackupFolder(){if(!mgr())return toast('Owner or Manager access required');if(!window.showDirectoryPicker)return toast('Folder backup requires Chrome on the Windows billing computer.');try{const h=await window.showDirectoryPicker({id:'sri-hari-tyres-backup',mode:'readwrite'});if(!(await backupPermission(h,true)))throw new Error('Folder permission was not granted.');backupDirectoryHandle=h;await backupSaveHandle(h);backupStatus(`Selected folder: ${h.name}`,true);toast('Backup folder connected on this computer');}catch(e){if(e.name!=='AbortError'){console.error(e);toast('Could not select backup folder: '+e.message)}}}
+async function backupWriteFile(dir,name,blob){const fh=await dir.getFileHandle(name,{create:true}),w=await fh.createWritable();await w.write(blob);await w.close();const f=await fh.getFile();if(!f.size)throw new Error(`${name} is empty after writing`);return f.size}
+async function backupSubdir(root,name,year){const a=await root.getDirectoryHandle(name,{create:true});return year?await a.getDirectoryHandle(String(year),{create:true}):a}
+function backupStamp(){const d=new Date();return `${backupDate(d)}_${String(d.getHours()).padStart(2,'0')}${String(d.getMinutes()).padStart(2,'0')}${String(d.getSeconds()).padStart(2,'0')}${String(d.getMilliseconds()).padStart(3,'0')}`}
+async function backupReadFullFirebase(){const snap=await get(ref(db));if(!snap.exists())throw new Error('Firebase returned an empty database. Backup cancelled.');const value=snap.val();if(!value||typeof value!=='object'||Object.keys(value).length===0)throw new Error('Firebase data is empty. Backup cancelled.');const json=JSON.stringify(value);const verified=JSON.parse(json);if(!verified||Object.keys(verified).length===0)throw new Error('Firebase JSON validation failed.');return {value,blob:new Blob([JSON.stringify(value,null,2)],{type:'application/json'}),snapshot:backupAllRecords(value)}}
+async function backupWriteLog(root,entry){const dir=await root.getDirectoryHandle('BACKUP LOGS',{create:true});let old=[];try{const h=await dir.getFileHandle('backup-history.json'),f=await h.getFile();old=JSON.parse(await f.text())||[]}catch(e){}old.push(entry);await backupWriteFile(dir,'backup-history.json',new Blob([JSON.stringify(old,null,2)],{type:'application/json'}))}
+async function performBackup(periodType='Daily',manual=false,includeJson=true,selectedAnchor=backupDate(new Date())){if(backupRunning)throw new Error('A backup is already running.');if(!mgr())throw new Error('Owner or Manager access required.');if(!backupDirectoryHandle)backupDirectoryHandle=await backupLoadHandle();if(!backupDirectoryHandle)throw new Error('Choose the backup folder first on the billing computer.');if(!(await backupPermission(backupDirectoryHandle,manual)))throw new Error('Backup folder permission is not available. Re-select the folder.');backupRunning=true;try{
+ const {value,blob,snapshot}=await backupReadFullFirebase(),now=new Date(),today=backupDate(now),anchor=selectedAnchor||today;let start=anchor,end=anchor,folder='DAILY',period='Daily';
+ if(periodType==='Monthly'){[start,end]=backupMonthBounds(anchor);folder='MONTHLY';period='Monthly'}else if(periodType==='Quarterly'){[start,end]=backupQuarterBounds(anchor);folder='QUARTERLY';period='Quarterly'}
+ const report=backupBuildWorkbook(snapshot,period,start,end),stamp=backupStamp(),year=start.slice(0,4),sub=await backupSubdir(backupDirectoryHandle,folder,year),jsonDir=await backupSubdir(backupDirectoryHandle,'FIREBASE JSON',year);
+ const prefix=period==='Daily'?start:period==='Monthly'?start.slice(0,7):`Q${Math.floor((Number(start.slice(5,7))-1)/3)+1}_${year}`;
+ const excelName=`${prefix}_${stamp}.xlsx`,jsonName=`${today}_${stamp}_FULL_FIREBASE.json`;
+ const excelSize=await backupWriteFile(sub,excelName,new Blob([report.bytes],{type:'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'}));
+ const jsonSize=includeJson?await backupWriteFile(jsonDir,jsonName,blob):null;
+ const entry={status:'SUCCESS',type:manual?'Manual Excel':period,createdAt:new Date().toISOString(),excel:`${folder}/${year}/${excelName}`,excelBytes:excelSize,...(includeJson?{json:`FIREBASE JSON/${year}/${jsonName}`,jsonBytes:jsonSize}:{}),counts:report.counts,periodStart:start,periodEnd:end};
+ await backupWriteLog(backupDirectoryHandle,entry);localStorage.setItem(`sht_backup_${period.toLowerCase()}_${period==='Daily'?start:period==='Monthly'?start.slice(0,7):`${year}-Q${Math.floor((Number(start.slice(5,7))-1)/3)+1}`}`,'SUCCESS');localStorage.setItem('sht_backup_last_success',entry.createdAt);
+ backupLastStatus(`Last successful backup: ${new Date(entry.createdAt).toLocaleString('en-IN')} | ${manual?'Manual Excel':period} | ${report.counts.completed} completed jobs | ${includeJson?'Excel + full Firebase JSON':'Excel only'} verified`);toast(`${manual?'Manual Excel':period} backup completed successfully`);return entry;
+ }finally{backupRunning=false}}
+async function manualJsonBackup(){if(!mgr())return toast('Owner or Manager access required');try{if(!backupDirectoryHandle)backupDirectoryHandle=await backupLoadHandle();if(!backupDirectoryHandle||!(await backupPermission(backupDirectoryHandle,true)))return toast('Choose the backup folder first.');const {blob}=await backupReadFullFirebase(),d=new Date(),dir=await backupSubdir(backupDirectoryHandle,'FIREBASE JSON',backupDate(d).slice(0,4)),name=`${backupDate(d)}_${backupStamp()}_FULL_FIREBASE_MANUAL.json`,size=await backupWriteFile(dir,name,blob);await backupWriteLog(backupDirectoryHandle,{status:'SUCCESS',type:'Manual JSON',createdAt:d.toISOString(),json:`FIREBASE JSON/${backupDate(d).slice(0,4)}/${name}`,jsonBytes:size});toast('Full Firebase JSON backup verified and saved');}catch(e){console.error(e);toast('JSON backup failed: '+e.message)}}
+async function exportAllExcel(){try{const period=$('manualBackupPeriod')?.value||'Monthly';let anchor=backupDate(new Date());if(period==='Daily')anchor=$('manualBackupDate')?.value||anchor;else if(period==='Monthly'){const m=$('manualBackupMonth')?.value||anchor.slice(0,7);anchor=m+'-01';}else{const y=Number(($('manualBackupMonth')?.value||anchor.slice(0,7)).slice(0,4)),q=Number($('manualBackupQuarter')?.value||1);anchor=`${y}-${String((q-1)*3+1).padStart(2,'0')}-01`;}const entry=await performBackup(period,true,false,anchor);toast(`Manual ${period} Excel backup saved. ${entry.counts.completed} completed records.`)}catch(e){console.error('Backup failed:',e);toast('Excel backup failed: '+e.message)}}
+function backupScheduler(){if(backupSchedulerStarted)return;backupSchedulerStarted=true;const run=async()=>{if(!mgr()||!document.getElementById('backupAuto')?.checked)return;if(!backupDirectoryHandle)backupDirectoryHandle=await backupLoadHandle();if(!backupDirectoryHandle||!(await backupPermission(backupDirectoryHandle,false)))return;const now=new Date(),today=backupDate(now),time=document.getElementById('backupTime')?.value||'21:30',hm=`${String(now.getHours()).padStart(2,'0')}:${String(now.getMinutes()).padStart(2,'0')}`;if(hm<time)return;const dayKey=`daily_${today}`;if(!localStorage.getItem('sht_backup_'+dayKey)){try{await performBackup('Daily',false)}catch(e){console.error(e);backupLastStatus('AUTOMATIC DAILY BACKUP FAILED: '+e.message);toast('Automatic backup failed. Check folder permission and internet.');return}}
+ const lastDay=new Date(now.getFullYear(),now.getMonth()+1,0).getDate();if(now.getDate()===lastDay){const mk=`monthly_${today.slice(0,7)}`;if(!localStorage.getItem('sht_backup_'+mk)){try{await performBackup('Monthly',false)}catch(e){console.error(e);backupLastStatus('AUTOMATIC MONTHLY BACKUP FAILED: '+e.message)}}}
+ const quarterEnd=[2,5,8,11].includes(now.getMonth())&&now.getDate()===new Date(now.getFullYear(),now.getMonth()+1,0).getDate();if(quarterEnd){const q=`Q${Math.floor(now.getMonth()/3)+1}`;const qk=`quarterly_${today.slice(0,4)}-${q}`;if(!localStorage.getItem('sht_backup_'+qk)){try{await performBackup('Quarterly',false)}catch(e){console.error(e);backupLastStatus('AUTOMATIC QUARTERLY BACKUP FAILED: '+e.message)}}}
+ };run();setInterval(run,60000)}
+async function initBackupControls(){const periodSel=$('manualBackupPeriod'),dateWrap=$('manualBackupDateWrap'),monthWrap=$('manualBackupMonthWrap'),quarterWrap=$('manualBackupQuarterWrap'),dateInput=$('manualBackupDate'),monthInput=$('manualBackupMonth');if(dateInput)dateInput.value=backupDate(new Date());if(monthInput)monthInput.value=backupDate(new Date()).slice(0,7);const syncManualPeriod=()=>{const v=periodSel?.value||'Monthly';if(dateWrap)dateWrap.style.display=v==='Daily'?'':'none';if(monthWrap)monthWrap.style.display=v==='Monthly'?'':'none';if(quarterWrap)quarterWrap.style.display=v==='Quarterly'?'':'none'};periodSel?.addEventListener('change',syncManualPeriod);syncManualPeriod();const auto=$('backupAuto'),time=$('backupTime');if(auto)auto.checked=localStorage.getItem('sht_backup_auto')!=='false';if(time)time.value=localStorage.getItem('sht_backup_time')||'21:30';auto?.addEventListener('change',()=>localStorage.setItem('sht_backup_auto',String(auto.checked)));time?.addEventListener('change',()=>localStorage.setItem('sht_backup_time',time.value));$('chooseBackupFolder')?.addEventListener('click',chooseBackupFolder);const last=localStorage.getItem('sht_backup_last_success');if(last)backupLastStatus('Last successful backup: '+new Date(last).toLocaleString('en-IN'));backupDirectoryHandle=await backupLoadHandle();if(backupDirectoryHandle){const ok=await backupPermission(backupDirectoryHandle,false);backupStatus(ok?`Selected folder: ${backupDirectoryHandle.name}`:`Folder saved: ${backupDirectoryHandle.name} (permission required)`,ok)}else backupStatus('Backup folder not selected on this device.');backupScheduler()}
+const backupButtons=[document.getElementById('backupExcel'),document.getElementById('activityBackupExcel')].filter(Boolean);
+backupButtons.forEach(btn=>btn.addEventListener('click',async()=>{if(btn.disabled)return;btn.disabled=true;const old=btn.textContent;btn.textContent='CREATING VERIFIED BACKUP…';try{await exportAllExcel()}finally{btn.disabled=false;btn.textContent=old}}));
+const oldInit=init;init=function(){oldInit();initBackupControls()};
+
+
+</script>
+<script>
+/* ============================================================
+   SRI HARI TYRES – WORKSHOP OS SAFETY / AUDIT LAYER
+   No-login build. Designed to sit on top of the existing V8 UI.
+   ============================================================ */
+(function(){
+  'use strict';
+
+  const SH = window.SriHariWorkshop = window.SriHariWorkshop || {};
+
+  SH.roles = {
+    CAR_TECHNICIAN: 'Car Technician',
+    TWO_WHEELER_TECHNICIAN: '2W Technician',
+    OWNER: 'Owner',
+     MANAGER: 'Manager'
+  };
+
+  SH.permissions = {
+    technician: {
+      generateToken: true,
+      startService: true,
+      completeService: true,
+      editQueue: false,
+      removeToken: false,
+      editHistory: false,
+      editAttendance: false,
+      editStaff: false,
+      editIncentive: false
+    },
+    manager: {
+      generateToken: true,
+      startService: true,
+      completeService: true,
+      editQueue: true,
+      removeToken: true,
+      editHistory: true,
+      editAttendance: true,
+      editStaff: true,
+      editIncentive: true
+    }
+  };
+
+  SH.audit = SH.audit || [];
+
+  SH.recordAudit = function(action, details){
+    const entry = {
+      id: 'AUD-' + Date.now() + '-' + Math.random().toString(36).slice(2,8),
+      timestamp: new Date().toISOString(),
+      action: action,
+      details: details || {}
+    };
+    SH.audit.push(entry);
+    try {
+      const key = 'sriHariAuditLog';
+      const old = JSON.parse(localStorage.getItem(key) || '[]');
+      old.push(entry);
+      localStorage.setItem(key, JSON.stringify(old.slice(-5000)));
+    } catch(e){}
+    return entry;
+  };
+
+  SH.snapshot = function(record){
+    if (!record) return {};
+    const fields = ['token','tokenNumber','vehicleNumber','vehicleModel','serviceType',
+                    'classification','technician','status','createdBy','createdAt',
+                    'startedAt','completedAt','freeService','eligible'];
+    const out = {};
+    fields.forEach(k => { if (record[k] !== undefined) out[k] = record[k]; });
+    return JSON.parse(JSON.stringify(out));
+  };
+
+  SH.diff = function(before, after){
+    const keys = new Set(Object.keys(before || {}).concat(Object.keys(after || {})));
+    const changes = [];
+    keys.forEach(k => {
+      const a = before ? before[k] : undefined;
+      const b = after ? after[k] : undefined;
+      if (JSON.stringify(a) !== JSON.stringify(b))
+        changes.push({field:k, before:a, after:b});
+    });
+    return changes;
+  };
+
+  SH.serviceIncentive = function(serviceType, eligible){
+    if (!eligible) return 0;
+    const s = String(serviceType || '').toLowerCase();
+    if (s.includes('free')) return 0;
+    if (s.includes('alignment') && (s.includes('balanc') || s.includes('other'))) return 150;
+    return 90;
+  };
+
+  SH.isFreeService = function(record){
+    const s = String((record && (record.serviceType || record.classification)) || '').toLowerCase();
+    return !!(record && (record.freeService === true || s.includes('free')));
+  };
+
+  SH.isCompletedEligible = function(record){
+    if (!record) return false;
+    if (String(record.status || '').toLowerCase() !== 'completed') return false;
+    if (SH.isFreeService(record)) return false;
+    return Number(record.eligibleToken || record.tokenNumber || record.token || 0) >= 8;
+  };
+
+  SH.protectCompleted = function(record, attemptedByManager){
+    if (!record) return true;
+    const completed = String(record.status || '').toLowerCase() === 'completed';
+    return completed && !attemptedByManager;
+  };
+
+  SH.managerEditAudit = function(before, after, reason, actor){
+    const changes = SH.diff(before, after);
+    if (!changes.length) return null;
+    return SH.recordAudit('History Edited', {
+      token: after.token || after.tokenNumber || before.token || before.tokenNumber || '',
+      before: before,
+      after: after,
+      changes: changes,
+      reason: reason || 'Manager correction',
+      changedBy: actor || 'Manager'
+    });
+  };
+
+  // Global helper for future UI controls.
+  window.SHCan = function(action, role){
+    role = role === SH.roles.OWNER ? 'owner' : (role === SH.roles.MANAGER ? 'manager' : 'technician');
+    return !!(SH.permissions[role] && SH.permissions[role][action]);
+  };
+
+  // Keep the audit layer discoverable for the Manager UI.
+  window.SHWorkshopOS = SH;
+
+})();
+</script>
+
+
+
+
+<div id="queueEditModal" class="modal" style="display:none">
+  <div class="modal-card">
+    <div class="modal-head">
+      <strong>✎ Edit Queue Token</strong>
+      <button type="button" id="qeClose">?</button>
+    </div>
+    <div class="modal-body">
+      <input type="hidden" id="qeTokenId">
+      <div class="form-grid">
+        <label>Token Number
+          <input id="qeToken" readonly disabled>
+        </label>
+        <label>Vehicle Number
+          <input id="qeVehicleNo" autocomplete="off">
+        </label>
+        <label>Vehicle Model
+          <input id="qeVehicleModel" autocomplete="off">
+        </label>
+        <label>Technician
+          <select id="qeTechnician"></select>
+        </label>
+        <label class="full">Job / Service
+          <select id="qeJob"></select>
+        </label>
+      </div>
+      <div class="queue-edit-note">No Save button is required – changes are saved automatically when you leave a field or close this window.</div><div class="queue-edit-note">
+        ℹ Token number cannot be changed. Existing status and token position are preserved.
+      </div>
+    </div>
+    <div class="modal-actions">
+      <button type="button" id="qeCancel">Cancel</button>
+      
+    </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+</body></html>
